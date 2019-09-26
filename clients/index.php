@@ -4,15 +4,6 @@ $dsn = "mysql:host=$Host;dbname=$DB;";
 $dbh = new PDO($dsn, $UName, $PWord);
 $stmt = $dbh->prepare("select * from client");
 $stmt->execute();
-
-//$conn = new mysqli($Host, $UName, $PWord, $DB);
-//// Check connection
-//if ($conn->connect_error) {
-//    die("Connection failed: " . $conn->connect_error);
-//}
-//
-//$sql = "SELECT * FROM client";
-//$result = $conn->query($sql);
 ?>
 
 
@@ -66,38 +57,12 @@ $stmt->execute();
 
     <!-- Navbar -->
     <ul class="navbar-nav ml-auto ml-md-0">
-      <li class="nav-item dropdown no-arrow mx-1">
-        <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-bell fa-fw"></i>
-          <span class="badge badge-danger">9+</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown no-arrow mx-1">
-        <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-envelope fa-fw"></i>
-          <span class="badge badge-danger">7</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
+
       <li class="nav-item dropdown no-arrow">
         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-user-circle fa-fw"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-          <a class="dropdown-item" href="#">Settings</a>
-          <a class="dropdown-item" href="#">Activity Log</a>
-          <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
         </div>
       </li>
@@ -112,24 +77,8 @@ $stmt->execute();
       <li class="nav-item">
         <a class="nav-link" href="index.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span>
+          <span>Products</span>
         </a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Pages</span>
-        </a>
-        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <h6 class="dropdown-header">Login Screens:</h6>
-          <a class="dropdown-item" href="login.html">Login</a>
-          <a class="dropdown-item" href="register.html">Register</a>
-          <a class="dropdown-item" href="forgot-password.html">Forgot Password</a>
-          <div class="dropdown-divider"></div>
-          <h6 class="dropdown-header">Other Pages:</h6>
-          <a class="dropdown-item" href="404.html">404 Page</a>
-          <a class="dropdown-item" href="blank.html">Blank Page</a>
-        </div>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="charts.html">
@@ -144,7 +93,7 @@ $stmt->execute();
         <li class="nav-item">
         <a class="nav-link" href="tables.html">
           <i class="fas fa-fw fa-table"></i>
-          <span>Products</span></a>
+          <span>Projects</span></a>
       </li>
 
     </ul>
@@ -156,9 +105,8 @@ $stmt->execute();
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="#">Dashboard</a>
+            <a href="../clients/add.php">Add Client</a>
           </li>
-          <li class="breadcrumb-item active">Tables</li>
         </ol>
 
 
@@ -185,6 +133,8 @@ $stmt->execute();
                     <th>Email</th>
                     <th>Mobile</th>
                     <th>List</th>
+                    <th>Delete</th>
+                    <th>Edit</th>
                   </tr>
                 </thead>
                 <tfoot>
@@ -198,6 +148,8 @@ $stmt->execute();
                     <th>Email</th>
                     <th>Mobile</th>
                     <th>List</th>
+                    <th>Delete</th>
+                    <th>Edit</th>
                   </tr>
                 </tfoot>
                 <tbody>
@@ -214,7 +166,8 @@ $stmt->execute();
                         <td><?php echo $row[7];  ?></td>
                         <td><?php echo $row[8];  ?></td>
                         <td><?php echo $row[9];  ?></td>
-
+                        <td>Delete</td>
+                        <td>Edit</td>
                     </tr>
                 <?php
                 }
@@ -274,20 +227,32 @@ $stmt->execute();
   <!-- Bootstrap core JavaScript-->
   <script src="../vendor/jquery/jquery.min.js"></script>
   <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
   <!-- Core plugin JavaScript-->
   <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
-
   <!-- Page level plugin JavaScript-->
   <script src="../vendor/datatables/jquery.dataTables.js"></script>
   <script src="../vendor/datatables/dataTables.bootstrap4.js"></script>
-
   <!-- Custom scripts for all pages-->
   <script src="../js/sb-admin.min.js"></script>
-
   <!-- Demo scripts for this page-->
   <script src="../js/demo/datatables-demo.js"></script>
-
 </body>
-
 </html>
+
+<script>
+    $('#dataTable').dataTable( {
+        "columns": [
+            null,
+            null,
+            { "orderable": false },
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "orderable": false },
+            { "orderable": false }
+        ]
+    } );
+</script>
