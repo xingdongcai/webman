@@ -1,5 +1,5 @@
 <?php
-include("connection.php");
+include("../connection.php");
 $conn = new mysqli($Host, $UName, $PWord, $DB);
 // Check connection
 if ($conn->connect_error) {
@@ -41,7 +41,7 @@ $result = $conn->query($sql);
 
   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-    <a class="navbar-brand mr-1" href="index.php">Start Bootstrap</a>
+    <a class="navbar-brand mr-1" href="index.php">Famox</a>
 
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
       <i class="fas fa-bars"></i>
@@ -129,13 +129,19 @@ $result = $conn->query($sql);
       <li class="nav-item">
         <a class="nav-link" href="charts.html">
           <i class="fas fa-fw fa-chart-area"></i>
-          <span>Charts</span></a>
+          <span>Categories</span></a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="tables.html">
           <i class="fas fa-fw fa-table"></i>
-          <span>Tables</span></a>
+          <span>Clients</span></a>
       </li>
+        <li class="nav-item">
+        <a class="nav-link" href="tables.html">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Products</span></a>
+      </li>
+
     </ul>
 
     <div id="content-wrapper">
@@ -224,7 +230,7 @@ $result = $conn->query($sql);
       <footer class="sticky-footer">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright © Your Website 2019</span>
+            <span>Copyright © Famox 2019</span>
           </div>
         </div>
       </footer>
