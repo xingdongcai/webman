@@ -8,7 +8,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT * FROM admin";
+$sql = "SELECT * FROM client";
 $result = $conn->query($sql);
 
 
@@ -16,9 +16,11 @@ while ($row = $result->fetch_object()) {
     ?>
 
     <tr>
-        <td><?php echo $row->uname; ?></td>
-        <td><?php echo $row->pword; ?></td>
+        <td><?php echo $row->client_gname; ?></td>
+        <td><?php echo $row->client_fname; ?></td>
+        <td><?php echo $row->client_street; ?></td>
     </tr>
+    <br>
 
 
     <?php

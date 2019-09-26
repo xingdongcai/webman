@@ -8,23 +8,9 @@ if ($conn->connect_error) {
 
 $sql = "SELECT * FROM client";
 $result = $conn->query($sql);
-
-
-while ($row = $result->fetch_object()) {
-    ?>
-
-    <tr>
-        <td><?php echo $row->client_gname; ?></td>
-        <td><?php echo $row->client_fname; ?></td>
-    </tr>
-
-
-    <?php
-}
-
-mysqli_free_result($result);
-mysqli_close($conn);
 ?>
+
+
 
 
 <!DOCTYPE html>
@@ -55,7 +41,7 @@ mysqli_close($conn);
 
   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-    <a class="navbar-brand mr-1" href="index.html">Start Bootstrap</a>
+    <a class="navbar-brand mr-1" href="index.php">Start Bootstrap</a>
 
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
       <i class="fas fa-bars"></i>
@@ -119,7 +105,7 @@ mysqli_close($conn);
     <!-- Sidebar -->
     <ul class="sidebar navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="index.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span>
         </a>
@@ -173,7 +159,7 @@ mysqli_close($conn);
         <div class="card mb-3">
           <div class="card-header">
             <i class="fas fa-table"></i>
-            Data Table Example</div>
+            Client Table</div>
           <div class="card-body">
             <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -204,46 +190,32 @@ mysqli_close($conn);
                   </tr>
                 </tfoot>
                 <tbody>
+
                 <?php while($row = mysqli_fetch_array($result)){
                 ?>
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>System Architect</td>
-                    <td>Edinburgh</td>
-                    <td>61</td>
-                    <td>2011/04/25</td>
-                    <td>$320,800</td>
-                    <td>$320,800</td>
-                    <td>$320,800</td>
-                    <td>$320,800</td>
-                  </tr>
-                  <tr>
-                    <td><?php echo $row['client_gname']  ?></td>
-                    <td><?php echo $row['client_fname']  ?></td>
-                    <td><?php echo $row['client_street']  ?></td>
-                    <td><?php echo $row['client_suburb']  ?></td>
-                    <td><?php echo $row['client_state']  ?></td>
-                    <td><?php echo $row['client_pc']  ?></td>
-                    <td><?php echo $row['client_email']  ?></td>
-                    <td><?php echo $row['client_mobile']  ?></td>
-                    <td><?php echo $row['client_mailinglist']  ?></td>
-                  </tr>
-                    <?php
+                    <tr>
+                        <td><?php echo $row[1];  ?></td>
+                        <td><?php echo $row[2];  ?></td>
+                        <td><?php echo $row[3];  ?></td>
+                        <td><?php echo $row[4];  ?></td>
+                        <td><?php echo $row[5];  ?></td>
+                        <td><?php echo $row[6];  ?></td>
+                        <td><?php echo $row[7];  ?></td>
+                        <td><?php echo $row[8];  ?></td>
+                        <td><?php echo $row[9];  ?></td>
+
+                    </tr>
+                <?php
                 }
-                mysqli_free_result($result);
-                mysqli_close($conn);
                 ?>
 
                 </tbody>
               </table>
             </div>
           </div>
-          <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+          <div class="card-footer small text-muted">Famox</div>
         </div>
 
-        <p class="small text-center text-muted my-5">
-          <em>More table examples coming soon...</em>
-        </p>
 
       </div>
       <!-- /.container-fluid -->
