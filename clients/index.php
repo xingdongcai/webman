@@ -166,12 +166,17 @@ $stmt->execute();
                         <td><?php echo $row[7];  ?></td>
                         <td><?php echo $row[8];  ?></td>
                         <td><?php echo $row[9];  ?></td>
-                        <td>Delete</td>
-                        <td>Edit</td>
+                        <td>
+                            <a href="../clients/ClientModify.php?clientid=<?php echo $row[0];?>">Delete</a>
+                        </td>
+                        <td>
+                            <a href="../clients/ClientModify.php?clientid=<?php echo $row[0];?>&Action=Update">Edit</a>
+                        </td>
+
                     </tr>
                 <?php
                 }
-                $stmt->closeCursor();
+                //$stmt->closeCursor();
                 ?>
 
                 </tbody>
@@ -222,6 +227,24 @@ $stmt->execute();
         </div>
       </div>
     </div>
+  </div>
+<!--        Delete Modal-->
+  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Please confirm deletion of the following client record</h5>
+                  <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                  </button>
+              </div>
+              <div class="modal-body"><?php echo $_GET["clientid"]; ?></div>
+              <div class="modal-footer">
+                  <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                  <a class="btn btn-primary" href="login.html">Confirm</a>
+              </div>
+          </div>
+      </div>
   </div>
 
   <!-- Bootstrap core JavaScript-->
