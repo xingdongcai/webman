@@ -1,5 +1,5 @@
 <?php
-include("../connection.php");
+include("connection.php");
 $conn = new mysqli($Host, $UName, $PWord, $DB);
 // Check connection
 if ($conn->connect_error) {
