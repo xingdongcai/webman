@@ -1,13 +1,18 @@
 <?php
 include("../connection.php");
-$conn = new mysqli($Host, $UName, $PWord, $DB);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+$dsn = "mysql:host=$Host;dbname=$DB;";
+$dbh = new PDO($dsn, $UName, $PWord);
+$stmt = $dbh->prepare("select * from client");
+$stmt->execute();
 
-$sql = "SELECT * FROM client";
-$result = $conn->query($sql);
+//$conn = new mysqli($Host, $UName, $PWord, $DB);
+//// Check connection
+//if ($conn->connect_error) {
+//    die("Connection failed: " . $conn->connect_error);
+//}
+//
+//$sql = "SELECT * FROM client";
+//$result = $conn->query($sql);
 ?>
 
 
@@ -197,7 +202,7 @@ $result = $conn->query($sql);
                 </tfoot>
                 <tbody>
 
-                <?php while($row = mysqli_fetch_array($result)){
+                <?php while($row = $stmt->fetch()){
                 ?>
                     <tr>
                         <td><?php echo $row[1];  ?></td>
@@ -213,6 +218,7 @@ $result = $conn->query($sql);
                     </tr>
                 <?php
                 }
+                $stmt->closeCursor();
                 ?>
 
                 </tbody>
