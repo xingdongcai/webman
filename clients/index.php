@@ -97,7 +97,7 @@ $stmt->execute();
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a class="btn-block btn btn-primary"     href="../clients/add.html">Add Client</a>
+            <a class="btn-block btn btn-primary"     href="../clients/add.php">Add Client</a>
           </li>
         </ol>
 
