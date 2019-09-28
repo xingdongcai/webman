@@ -169,10 +169,10 @@ $stmt->execute();
                         <td><?php echo $row[8];  ?></td>
                         <td><?php echo $row[9];  ?></td>
                         <td>
-                            <a href="../clients/ClientModify.php?clientid=<?php echo $row[0];?>">Delete</a>
+                            <a href="../clients/CustModify.php?clientid=<?php echo $row[0];?>&Action=Delete">Delete</a>
                         </td>
                         <td>
-                            <a href="../clients/ClientModify.php?clientid=<?php echo $row[0];?>&Action=Update">Edit</a>
+                            <a href="../clients/CustModify.php?clientid=<?php echo $row[0];?>&Action=Update">Edit</a>
                         </td>
 
                     </tr>

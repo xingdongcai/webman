@@ -152,6 +152,11 @@
                             <td><input type="text" name="mobile" size="15"
                                        value="<?php echo $row->client_mobile; ?>"></td>
                         </tr>
+                        <tr>
+                            <td><b>Mailing List</b></td>
+                            <td><input type="number" name="mailinglist" size="5"
+                                       value="<?php echo $row->client_mailinglist; ?>"></td>
+                        </tr>
                     </table>
                     <br><br/>
                     <table align="center">
@@ -168,7 +173,7 @@
                 $query="UPDATE client set client_gname='$_POST[fname]',
 	            client_fname='$_POST[sname]', client_street='$_POST[street]',
 	            client_suburb='$_POST[suburb]',client_state='$_POST[state]',client_pc='$_POST[postcode]',
-                client_email='$_POST[email]',client_mobile='$_POST[mobile]' 
+                client_email='$_POST[email]',client_mobile='$_POST[mobile]', client_mailinglist='$_POST[mailinglist]'
                 WHERE client_id =".$_GET["clientid"];
 
                 $stmt = $dbh->prepare($query);
@@ -244,7 +249,7 @@
             // do ajax now
             //console.log("submitted");
         });
-        alert("Hello");
+        //alert("Hello");
         // $('#submitButton').click(function(event){
         //     $('#updateClientForm').submit();
         //     event.preventDefault();
