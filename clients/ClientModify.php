@@ -105,18 +105,17 @@
         switch($strAction) {
             case "Update":
                 ?>
-                <form method="post"
+                <form method="POST" id="updateClientForm"
                       action="../clients/ClientModify.php?clientid=<?php echo $_GET["clientid"]; ?>&Action=ConfirmUpdate">
-                    <center>Customer details amendment<br/></center>
-                    <p/>
+                    <center>Customer details amendment</center>
                     <table align="center" cellpadding="3">
-                        <tr/>
+                        <tr>
                         <td><b>Client. No.</b></td>
                         <td><?php echo $row->client_id; ?></td>
                         </tr>
                         <tr>
                             <td><b>Firstname</b></td>
-                            <td><input type="text"  class="form-label-group"    name="fname" size="25" value="<?php echo $row->client_gname; ?>">
+                            <td><input type="text" name="fname" size="25" value="<?php echo $row->client_gname; ?>">
                             </td>
                         </tr>
                         <tr>
@@ -131,8 +130,7 @@
                         </tr>
                         <tr>
                             <td><b>Suburb</b></td>
-                            <td><input type="text" name="suburb" size="10"
-                                       value="<?php echo $row->client_suburb; ?>"></td>
+                            <td><input type="text" name="suburb" size="10" value="<?php echo $row->client_suburb; ?>"></td>
                         </tr>
                         <tr>
                             <td><b>State</b></td>
@@ -141,7 +139,7 @@
                         </tr>
                         <tr>
                             <td><b>Postcode</b></td>
-                            <td><input type="text" name="posscode" size="10" value="<?php echo $row->client_pc; ?>">
+                            <td><input type="text" name="postcode" size="10" value="<?php echo $row->client_pc; ?>">
                             </td>
                         </tr>
                         <tr>
@@ -155,10 +153,11 @@
                                        value="<?php echo $row->client_mobile; ?>"></td>
                         </tr>
                     </table>
-                    <br/>
+                    <br><br/>
                     <table align="center">
                         <tr>
-                            <td><input type="submit"   class="btn btn-primary btn-block"     value="Update Customer"></td>
+<!--                            <td><input type="submit"  id="submitButton"    class="btn btn-primary btn-block"   value="Submit" onclick="submitform()" ></td>-->
+                            <td><input type="button"  class="btn btn-primary btn-block"      value="Submit"  onclick="submitform()"></td>
                             <td><input type="button"  class="btn btn-primary btn-block"      value="Return to List" OnClick="window.location='index.php'"></td>
                         </tr>
                     </table>
@@ -171,11 +170,14 @@
 	            client_suburb='$_POST[suburb]',client_state='$_POST[state]',client_pc='$_POST[postcode]',
                 client_email='$_POST[email]',client_mobile='$_POST[mobile]' 
                 WHERE client_id =".$_GET["clientid"];
+
                 $stmt = $dbh->prepare($query);
-                $stmt->execute();
-
-                header("Location:index.php");
-
+                if(!$stmt->execute()) {
+                    $err = $stmt->errorInfo();
+                    echo "Error adding record to database – contact System Administrator. Error is: <b>" . $err[2] . "</b>";
+                }else{
+                    header("Location:index.php");
+                }
                 break;
         }
         ?>
@@ -226,13 +228,29 @@
 <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- Core plugin JavaScript-->
 <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
-<!-- Page level plugin JavaScript-->
-<script src="../vendor/datatables/jquery.dataTables.js"></script>
-<script src="../vendor/datatables/dataTables.bootstrap4.js"></script>
+
 <!-- Custom scripts for all pages-->
 <script src="../js/sb-admin.min.js"></script>
-<!-- Demo scripts for this page-->
-<script src="../js/demo/datatables-demo.js"></script>
+
 </body>
 </html>
 
+<script type="text/javascript">
+    function submitform()
+    {
+        $('#updateClientForm').submit(function(e){
+            e.preventDefault();
+            alert("form is valid");
+            // do ajax now
+            //console.log("submitted");
+        });
+        alert("Hello");
+        // $('#submitButton').click(function(event){
+        //     $('#updateClientForm').submit();
+        //     event.preventDefault();
+        // });
+
+
+    }
+
+</script>

@@ -105,7 +105,7 @@ $stmt->execute();
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="../clients/add.php">Add Client</a>
+            <a class="btn-block btn btn-primary"     href="../clients/add.html">Add Client</a>
           </li>
         </ol>
 
@@ -118,7 +118,9 @@ $stmt->execute();
         <div class="card mb-3">
           <div class="card-header">
             <i class="fas fa-table"></i>
-            Client Table</div>
+            Client Table
+          </div>
+
           <div class="card-body">
             <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
