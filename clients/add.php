@@ -15,12 +15,12 @@ if (empty($_POST["fname"]))
 
         <tr>
             <td><b>Firstname</b></td>
-            <td><input type="text" name="fname" size="25">
+            <td><input type="text" name="fname" size="25" required>
             </td>
         </tr>
         <tr>
             <td><b>Surname</b></td>
-            <td><input type="text" name="sname" size="25" >
+            <td><input type="text" name="sname" size="25" required>
             </td>
         </tr>
         <tr>
@@ -43,7 +43,7 @@ if (empty($_POST["fname"]))
         </tr>
         <tr>
             <td><b>Email</b></td>
-            <td><input type="text" name="email" size="30" >
+            <td><input type="text" name="email" size="30" required>
             </td>
         </tr>
         <tr>

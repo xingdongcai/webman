@@ -85,17 +85,20 @@ $stmt->execute();
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Categories</span></a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="tables.html">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Clients</span></a>
-      </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>Clients</span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                <a class="dropdown-item" href="../clients/email.php">Email</a>
+            </div>
+        </li>
         <li class="nav-item">
         <a class="nav-link" href="tables.html">
           <i class="fas fa-fw fa-table"></i>
           <span>Projects</span></a>
       </li>
-
     </ul>
 
     <div id="content-wrapper">

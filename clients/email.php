@@ -1,4 +1,18 @@
+<?php
+session_start();
+ob_start();
 
+if($_SESSION["access_status"] != true){
+    header("Location: ../login.php");
+    exit;
+}
+
+include("../connection.php");
+$dsn = "mysql:host=$Host;dbname=$DB;";
+$dbh = new PDO($dsn, $UName, $PWord);
+$stmt = $dbh->prepare("select * from client where client_mailinglist!= 0");
+$stmt->execute();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +24,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin - Blank Page</title>
+    <title>Send Email</title>
 
     <!-- Custom fonts for this template-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -24,7 +38,7 @@
 
 <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-    <a class="navbar-brand mr-1" href="index.html">Start Bootstrap</a>
+    <a class="navbar-brand mr-1" href="index.html">Famox</a>
 
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
@@ -90,34 +104,27 @@
         <li class="nav-item">
             <a class="nav-link" href="index.php">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard</span>
+                <span>Products</span>
             </a>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-fw fa-folder"></i>
-                <span>Pages</span>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                <h6 class="dropdown-header">Login Screens:</h6>
-                <a class="dropdown-item" href="login.html">Login</a>
-                <a class="dropdown-item" href="register.html">Register</a>
-                <a class="dropdown-item" href="forgot-password.html">Forgot Password</a>
-                <div class="dropdown-divider"></div>
-                <h6 class="dropdown-header">Other Pages:</h6>
-                <a class="dropdown-item" href="404.html">404 Page</a>
-                <a class="dropdown-item active" href="blank.html">Blank Page</a>
-            </div>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="charts.html">
                 <i class="fas fa-fw fa-chart-area"></i>
-                <span>Charts</span></a>
+                <span>Categories</span></a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>Clients</span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                <a class="dropdown-item" href="../clients/email.php">Email</a>
+            </div>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="tables.html">
                 <i class="fas fa-fw fa-table"></i>
-                <span>Tables</span></a>
+                <span>Projects</span></a>
         </li>
     </ul>
 
@@ -128,6 +135,42 @@
 
 
             <!-- Page Content -->
+
+
+            <form method="post" action="email.php">
+                <table border="1" cellpadding="5">
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Action</th>
+                    </tr>
+
+                    <?php while($row = $stmt->fetch()){
+                        ?>
+                        <tr>
+                            <td><?php echo $row[1];  ?></td>
+                            <td><?php echo $row[2];  ?></td>
+                            <td><?php echo $row[7];  ?></td>
+                            <td align="center"><input type="checkbox" name="check[]" value=""></td>
+                        </tr>
+                        <?php
+                    }
+                    $stmt->closeCursor();
+                    ?>
+
+
+
+
+
+
+                </table><p />
+            </form>
+
+
+
+
+
             <?php
             if (!isset($_POST["to"]))
             {?>
