@@ -140,8 +140,7 @@ $stmt->execute();
             <form method="post" action="email.php">
                 <table border="1" cellpadding="5">
                     <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
+                        <th>Client Name</th>
                         <th>Email</th>
                         <th>Action</th>
                     </tr>
@@ -149,8 +148,7 @@ $stmt->execute();
                     <?php while($row = $stmt->fetch()){
                         ?>
                         <tr>
-                            <td><?php echo $row[1];  ?></td>
-                            <td><?php echo $row[2];  ?></td>
+                            <td><?php echo $row[1]," ",$row[2];  ?></td>
                             <td><?php echo $row[7];  ?></td>
                             <td align="center"><input type="checkbox" name="check[]" value="<?php echo $row[0]; ?>"></td>
                         </tr>
@@ -158,32 +156,18 @@ $stmt->execute();
                     }
                     $stmt->closeCursor();
                     ?>
-
-
-
-
-
-
-                </table><p />
-            </form>
-
-
-
-
-
+                </table><p/>
             <?php
-            if (!isset($_POST["to"]))
+            if (!isset($_POST["check"]))
             {?>
                 <h2>Send Email</h2>
-
-                <form action="email.php" method="post">
                     E-mail To:<br>
                     <input type="text" name="to"><br>
                     Subject:<br>
-                    <input type="text" name="subject" size="50"><br>
+                    <input type="text" name="subject" size="50" ><br>
                     Message:<br>
                     <td>
-                        <textarea cols="68" name="message" rows="8"></textarea>
+                        <textarea cols="68" name="message" rows="8" ></textarea>
                     </td>
                     <br><br>
                     <input type="submit" value="Send" class="btn btn-primary">
@@ -191,17 +175,31 @@ $stmt->execute();
                 </form>
             <?php
             }else{
-                $from = "From: Harry Helper<xcai0009@student.monash.edu>";
-                $to = $_POST["to"];
-                $msg = $_POST["message"];
-                $subject = $_POST["subject"];
-                if(mail($to, $subject, $msg, $from))
+
+                foreach($_POST["check"] as $id)
                 {
-                    echo "Mail Sent";
+                    $query="Select client_email FROM client WHERE client_id ='$id'";
+                    $stmt = $dbh->prepare($query);
+                    if($stmt->execute())
+                    {
+                        $row = $stmt->fetch();
+                        echo "client Email='$row[0]'<br/>";
+                        $from = "From: Harry Helper<xcai0009@student.monash.edu>";
+                        $to = $row[0];
+                        $msg = $_POST["message"];
+                        $subject = $_POST["subject"];
+                        if(mail($to, $subject, $msg, $from))
+                        {
+                            echo "Mail Sent:$row[0]";
+                        }
+                        else {
+                            echo "Error Sending Mail:$row[0]";
+                        }
+                    }
                 }
-                else {
-                    echo "Error Sending Mail";
-                }
+
+
+
             }
             ?>
 
