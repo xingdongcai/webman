@@ -91,7 +91,7 @@
             case "Update":
                 ?>
                 <form method="POST" id="updateClientForm"
-                      action="../clients/ClientModify.php?clientid=<?php echo $_GET["clientid"]; ?>&Action=ConfirmUpdate">
+                      action="ClientModify.php?clientid=<?php echo $_GET["clientid"]; ?>&Action=ConfirmUpdate">
                     <center>Customer details amendment</center>
                     <table align="center" cellpadding="3">
                         <tr>

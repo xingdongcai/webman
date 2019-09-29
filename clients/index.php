@@ -91,7 +91,7 @@ $stmt->execute();
     </ul>
 
     <div id="content-wrapper">
-
+        <form method="post" action="index.php">
       <div class="container-fluid">
 
         <!-- Breadcrumbs-->
@@ -107,7 +107,8 @@ $stmt->execute();
 
 
         <!-- DataTables Example -->
-        <div class="card mb-3">
+
+          <div class="card mb-3">
           <div class="card-header">
             <i class="fas fa-table"></i>
             Client Table
@@ -115,6 +116,7 @@ $stmt->execute();
 
           <div class="card-body">
             <div class="table-responsive">
+
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
@@ -159,7 +161,15 @@ $stmt->execute();
                         <td><?php echo $row[6];  ?></td>
                         <td><?php echo $row[7];  ?></td>
                         <td><?php echo $row[8];  ?></td>
-                        <td><?php echo $row[9];  ?></td>
+                        <td><?php
+                            if ($row[9]==0){
+                                echo "N";
+                            }else{ ?>
+                                <input type="checkbox" name="check[]" value="<?php echo $row[0]; ?>">
+                            <?php
+                            }
+                            ?>
+                        </td>
                         <td>
                             <a href="../clients/CustModify.php?clientid=<?php echo $row[0];?>&Action=Delete">Delete</a>
                         </td>
@@ -182,6 +192,12 @@ $stmt->execute();
 
 
       </div>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <input class="btn-block btn btn-primary" type="submit" value="Send Email">
+            </li>
+        </ol>
+        </form>
       <!-- /.container-fluid -->
 
       <!-- Sticky Footer -->
