@@ -183,14 +183,13 @@ $stmt->execute();
                     if($stmt->execute())
                     {
                         $row = $stmt->fetch();
-                        echo "client Email='$row[0]'<br/>";
                         $from = "From: Harry Helper<xcai0009@student.monash.edu>";
                         $to = $row[0];
                         $msg = $_POST["message"];
                         $subject = $_POST["subject"];
                         if(mail($to, $subject, $msg, $from))
                         {
-                            echo "Mail Sent:$row[0]";
+                            echo "Mail Sent:  $row[0]<br/>";
                         }
                         else {
                             echo "Error Sending Mail:$row[0]";
