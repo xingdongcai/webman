@@ -1,4 +1,12 @@
 <?php
+session_start();
+ob_start();
+
+if($_SESSION["access_status"] != true){
+    header("Location: ../login.php");
+    exit;
+}
+
 include("../connection.php");
 $dsn = "mysql:host=$Host;dbname=$DB;";
 $dbh = new PDO($dsn, $UName, $PWord);
@@ -233,7 +241,7 @@ $stmt->execute();
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+          <a class="btn btn-primary" href="index.php?logout=true">Logout</a>
         </div>
       </div>
     </div>
@@ -289,3 +297,15 @@ $stmt->execute();
         ]
     } );
 </script>
+
+
+
+<?php
+function logout() {
+    unset($_SESSION["access_status"]);
+    header("Location: ../login.php");
+}
+if (isset($_GET['logout'])) {
+    logout();
+}
+?>
