@@ -69,7 +69,7 @@ if(empty($_POST["uname"]))
     {
         echo "Welcome to our site $result->uname";
         $_SESSION["access_status"] = true;
-        header("Location:/clients/index.php");
+        header("Location:clients/index.php");
     }
     else
     {
