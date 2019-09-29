@@ -175,9 +175,8 @@ $stmt->execute();
                         <td><?php
                             if ($row[9]==0){
                                 echo "N";
-                            }else{ ?>
-                                <input type="checkbox" name="check[]" value="<?php echo $row[0]; ?>">
-                            <?php
+                            }else{
+                                echo "Y";
                             }
                             ?>
                         </td>
@@ -203,11 +202,7 @@ $stmt->execute();
 
 
       </div>
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <input class="btn-block btn btn-primary" type="submit" value="Send Email">
-            </li>
-        </ol>
+
         </form>
       <!-- /.container-fluid -->
 

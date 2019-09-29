@@ -152,7 +152,7 @@ $stmt->execute();
                             <td><?php echo $row[1];  ?></td>
                             <td><?php echo $row[2];  ?></td>
                             <td><?php echo $row[7];  ?></td>
-                            <td align="center"><input type="checkbox" name="check[]" value=""></td>
+                            <td align="center"><input type="checkbox" name="check[]" value="<?php echo $row[0]; ?>"></td>
                         </tr>
                         <?php
                     }
