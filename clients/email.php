@@ -138,44 +138,63 @@ $stmt->execute();
 
 
             <form method="post" action="email.php">
-                <table border="1" cellpadding="5">
-                    <tr>
-                        <th>Client Name</th>
-                        <th>Email</th>
-                        <th>Action</th>
-                    </tr>
+        </div>
+        <div class="row">
+                <div class="col-lg-4">
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <i class="fas fa-chart-pie"></i>
+                            Mailing List</div>
+                        <div class="card-body">
+                            <table border="1" cellpadding="5" class="table table-bordered">
+                                <tr>
+                                    <th>Client Name</th>
+                                    <th>Email</th>
+                                    <th>Action</th>
+                                </tr>
 
-                    <?php while($row = $stmt->fetch()){
-                        ?>
-                        <tr>
-                            <td><?php echo $row[1]," ",$row[2];  ?></td>
-                            <td><?php echo $row[7];  ?></td>
-                            <td align="center"><input type="checkbox" name="check[]" value="<?php echo $row[0]; ?>"></td>
-                        </tr>
-                        <?php
-                    }
-                    $stmt->closeCursor();
-                    ?>
-                </table><p/>
+                                <?php while($row = $stmt->fetch()){
+                                    ?>
+                                    <tr>
+                                        <td><?php echo $row[1]," ",$row[2];  ?></td>
+                                        <td><?php echo $row[7];  ?></td>
+                                        <td align="center"><input type="checkbox" name="check[]" value="<?php echo $row[0]; ?>"></td>
+                                    </tr>
+                                    <?php
+                                }
+                                $stmt->closeCursor();
+                                ?>
+                            </table><p/>
+                        </div>
+                    </div>
+                </div>
+
             <?php
             if (!isset($_POST["check"]))
             {?>
-                <h2>Send Email</h2>
-                    E-mail To:<br>
-                    <input type="text" name="to"><br>
-                    Subject:<br>
-                    <input type="text" name="subject" size="50" ><br>
-                    Message:<br>
-                    <td>
-                        <textarea cols="68" name="message" rows="8" ></textarea>
-                    </td>
-                    <br><br>
-                    <input type="submit" value="Send" class="btn btn-primary">
-                    <input type="reset" value="Reset" class="btn btn-secondary">
+                <div class="col-lg-8">
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <i class="fas fa-chart-bar"></i>
+                            Send Email</div>
+                        <div class="card-body">
+                            Subject:<br>
+                            <input type="text" name="subject" size="50"  required><br>
+                            Message:<br>
+                            <td>
+                                <textarea cols="68" name="message" rows="8" required></textarea>
+                            </td>
+                            <br><br>
+                            <input type="submit" value="Send" class="btn btn-primary">
+                            <input type="reset" value="Reset" class="btn btn-secondary">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
                 </form>
             <?php
             }else{
-
                 foreach($_POST["check"] as $id)
                 {
                     $query="Select client_email FROM client WHERE client_id ='$id'";
