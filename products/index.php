@@ -81,6 +81,7 @@ $stmt->execute();
                 </a>
                 <div class="dropdown-menu" aria-labelledby="pagesDropdown">
                     <a class="dropdown-item" href="../products/index.php">Table</a>
+                    <a class="dropdown-item" href="../products/multipleEdit.php">Edit</a>
                     <!--<a class="dropdown-item" href="../clients/email.php">Email</a>-->
                 </div>
             </li>
