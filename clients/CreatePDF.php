@@ -10,7 +10,7 @@ class CreatePDF
 {
     function CustomerPDF($header, $headerWidth, $data)
     {
-        define ('K_PATH_IMAGES', 'product_images/');
+        define ('K_PATH_IMAGES', 'img/');
         // create new PDF document
         $pdf = new TCPDF('L', PDF_UNIT, PDF_PAGE_FORMAT, true);
         // set document header information. This appears at the top of each page of the PDF document
