@@ -10,11 +10,11 @@ class CreatePDF
 {
     function CustomerPDF($header, $headerWidth, $data)
     {
-        define ('K_PATH_IMAGES', 'images/');
+        define ('K_PATH_IMAGES', 'product_images/');
         // create new PDF document
         $pdf = new TCPDF('L', PDF_UNIT, PDF_PAGE_FORMAT, true);
         // set document header information. This appears at the top of each page of the PDF document
-        $pdf->SetHeaderData("famox.gif","20", "Famox Client List", '');
+        $pdf->SetHeaderData("login_image.png","20", "Famox Client List", '');
 
         // set header and footer fonts
         $pdf->setHeaderFont(array('helvetica', '', 20));
