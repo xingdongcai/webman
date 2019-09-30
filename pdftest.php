@@ -4,7 +4,7 @@ ob_start();
     $pdf = new TCPDF('L', 'mm', 'A4', true);
     $pdf->setHeaderFont(array('helvetica', 'B',24));
     $pdf->setHeaderData(null,null,'My First PDF Document','');
-    //$pdf->SetFont(array('helvetica'),'',16);
+    $pdf->SetFont(array('helvetica'),'',16);
     $pdf->AddPage();
     $pdf->Cell(40,10,'First Cell - no border',0,1);
     $pdf->Cell(100,10,'Second Cell - border/centred', 1,1,'C');
