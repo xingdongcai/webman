@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <!-- Page level plugin CSS-->
-    <link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-    <!-- Custom styles for this template-->
-    <link href="../css/sb-admin.css" rel="stylesheet">
-
-</head>
-</html>
 
 <?php
 /**
@@ -43,7 +33,7 @@ class CreatePDF
 
         $pdf->Ln();
 
-        $table = '<table class="table table-bordered"     cellpadding="5" cellspacing="5" border="0">';
+        $table = '<table class=""     cellpadding="5" cellspacing="5" border="0">';
         $table.='<tr bgcolor="#336888">';
         for($i = 0; $i < sizeof($header); ++$i)
         {

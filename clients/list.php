@@ -7,6 +7,10 @@ include("CreatePDF.php");
 <html>
 <head>
     <title>PHP PDF Creation</title>
+    <!-- Page level plugin CSS-->
+    <link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="../css/sb-admin.css" rel="stylesheet">
 </head>
 <body>
 <h1>Create PDF</h1>
@@ -29,11 +33,12 @@ $PDF = new CreatePDF();
 //pass it headers, headerWidth and data
 $table = $PDF->CustomerPDF($header, $headerWidth, $allRows);
 
-echo "<img src='img/Famox1.gif' />";
 echo $table;
-echo "<br />";
-echo "<a href='PDFS/Customers.pdf'>Click here to see PDF</a>";
-echo "<br />";
+?>
+<br/>
+<center><button class="btn-primary btn" OnClick="window.location='PDFs/Customers.pdf'">Click here to see PDF</button></center>
+<br/>
+<?php
 //echo dirname($_SERVER["SCRIPT_FILENAME"]);
 ?>
 
