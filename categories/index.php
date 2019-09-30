@@ -10,7 +10,7 @@ if($_SESSION["access_status"] != true){
 include("../connection.php");
 $dsn = "mysql:host=$Host;dbname=$DB;";
 $dbh = new PDO($dsn, $UName, $PWord);
-$stmt = $dbh->prepare("select * from project");
+$stmt = $dbh->prepare("select * from category");
 $stmt->execute();
 ?>
 
@@ -121,7 +121,7 @@ $stmt->execute();
                     <!-- Breadcrumbs-->
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a class="btn-block btn btn-primary"     href="../projects/add.php">Add project</a>
+                            <a class="btn-block btn btn-primary"     href="../categories/add.php">Add category</a>
                         </li>
                     </ol>
 
@@ -135,7 +135,7 @@ $stmt->execute();
                     <div class="card mb-3">
                         <div class="card-header">
                             <i class="fas fa-table"></i>
-                            Project Table
+                            Categories Table
                         </div>
 
                         <div class="card-body">
@@ -144,18 +144,14 @@ $stmt->execute();
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
-                                        <th>project description</th>
-                                        <th>project country</th>
-                                        <th>project city</th>
+                                        <th>category name</th>
                                         <th>Delete</th>
                                         <th>Edit</th>
                                     </tr>
                                     </thead>
                                     <tfoot>
                                     <tr>
-                                        <th>project description</th>
-                                        <th>project country</th>
-                                        <th>project city</th>
+                                        <th>category name</th>
                                         <th>Delete</th>
                                         <th>Edit</th>
                                     </tr>
@@ -166,13 +162,11 @@ $stmt->execute();
                                         ?>
                                         <tr>
                                             <td><?php echo $row[1];  ?></td>
-                                            <td><?php echo $row[2];  ?></td>
-                                            <td><?php echo $row[3];  ?></td>
                                             <td>
-                                                <a href="../projects/ProjectModify.php?projectId=<?php echo $row[0];?>&Action=Delete">Delete</a>
+                                                <a href="../categories/categoryModify.php?categoryId=<?php echo $row[0];?>&Action=Delete">Delete</a>
                                             </td>
                                             <td>
-                                                <a href="../projects/ProjectModify.php?projectId=<?php echo $row[0];?>&Action=Update">Edit</a>
+                                                <a href="../categories/categoryModify.php?categoryId=<?php echo $row[0];?>&Action=Update">Edit</a>
                                             </td>
 
                                         </tr>
@@ -237,12 +231,12 @@ $stmt->execute();
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Please confirm deletion of the following Project record</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Please confirm deletion of the following Category record</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body"><?php echo $_GET["projectId"]; ?></div>
+                <div class="modal-body"><?php echo $_GET["categoryId"]; ?></div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                     <a class="btn btn-primary" href="login.html">Confirm</a>
