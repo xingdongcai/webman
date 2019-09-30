@@ -212,7 +212,7 @@ $stmt->execute();
 
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a class="btn-block btn btn-primary"  href="../clients/add.php">Generate PDF</a>
+                <a class="btn-block btn btn-primary" target="_blank"  href="PDFS/Customers.pdf">Generate PDF</a>
             </li>
         </ol>
       <!-- Sticky Footer -->

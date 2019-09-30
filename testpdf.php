@@ -13,13 +13,13 @@ $pdf->Ln();
 $pdf->SetFillColor(255,0,0);
 $pdf->Cell(100,10,'Fourth Cell - border/filled', 1,1,'C',1);
 ob_clean();
-$saveDir= dirname($_SERVER["SCRIPT_FILENAME"])."/PDFS/";
+$saveDir= dirname($_SERVER["SCRIPT_FILENAME"])."/clients/PDFS/";
 $pdf->Output($saveDir.'PDFFile1.pdf','F');
 
 ?>
 <html>
 <head><title></title></head>
 <body>
-<a href="PDFS/PDFFile1.pdf">Click here to see PDF</a>
+<a href="clients/PDFS/PDFFile1.pdf">Click here to see PDF</a>
 </body>
 </html>

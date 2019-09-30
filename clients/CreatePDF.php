@@ -1,3 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Page level plugin CSS-->
+    <link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="../css/sb-admin.css" rel="stylesheet">
+
+</head>
+</html>
+
 <?php
 /**
  * Created by PhpStorm.
@@ -14,7 +26,7 @@ class CreatePDF
         // create new PDF document
         $pdf = new TCPDF('L', PDF_UNIT, PDF_PAGE_FORMAT, true);
         // set document header information. This appears at the top of each page of the PDF document
-        $pdf->SetHeaderData("login_image.png","20", "Famox Client List", '');
+        $pdf->SetHeaderData("Famox1.gif","20", "Famox Client List", '');
 
         // set header and footer fonts
         $pdf->setHeaderFont(array('helvetica', '', 20));
@@ -31,7 +43,7 @@ class CreatePDF
 
         $pdf->Ln();
 
-        $table = '<table cellpadding="5" cellspacing="5" border="0">';
+        $table = '<table class="table table-bordered"     cellpadding="5" cellspacing="5" border="0">';
         $table.='<tr bgcolor="#336888">';
         for($i = 0; $i < sizeof($header); ++$i)
         {
@@ -69,7 +81,6 @@ class CreatePDF
         //alignment
 
         $saveDir= dirname($_SERVER["SCRIPT_FILENAME"])."/PDFS/";
-
         if($pdf->Output($saveDir.'Customers.pdf','F'));
         {
             return $table;
