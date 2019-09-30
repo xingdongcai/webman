@@ -51,10 +51,10 @@ class CreatePDF
             {
                 $table.='<tr valign="top">';
             }
-            $table.="<td>$row[cust_no]</td>";
-            $table.="<td>$row[firstname] $row[surname]</td>";
-            $table.="<td>$row[address]</td>";
-            $table.="<td>$row[contact]</td>";
+            $table.="<td>$row[client_id]</td>";
+            $table.="<td>$row[client_gname] $row[client_fname]</td>";
+            $table.="<td>$row[client_street]</td>";
+            $table.="<td>$row[client_mobile]</td>";
             $table.="</tr>";
             $rowCount++;
         }
