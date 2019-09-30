@@ -215,7 +215,9 @@ $stmt->execute();
       <footer class="sticky-footer">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright © Famox 2019</span>
+              <span><?php echo "Current Directory  is ".dirname($_SERVER['SCRIPT_FILENAME']) ;?></span><br>
+              <?php $file = $_SERVER['SCRIPT_FILENAME']?>
+              <?php echo "<a target=\"_blank\"   href='displaysource.php?filename=".$file."'>" .$file."</a><br />";?>
           </div>
         </div>
       </footer>
@@ -311,4 +313,6 @@ function logout() {
 if (isset($_GET['logout'])) {
     logout();
 }
+
+
 ?>

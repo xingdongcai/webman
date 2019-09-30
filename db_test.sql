@@ -13,7 +13,7 @@ create table CLIENT
         primary key,
     client_gname varchar(50) not null,
     client_fname varchar(50) not null,
-    client_street char(100),
+    client_street varchar(100),
     client_suburb varchar(50),
     client_state varchar(6),
     client_pc varchar(4),
@@ -74,8 +74,8 @@ create table PRODUCT_IMAGE
 create table ADMIN
 (
     admin_id int not null primary key,
-    uname varchar(50),
-    pword  varchar(50)
+    uname varchar(255),
+    pword  varchar(255)
 
 );
 
