@@ -30,10 +30,10 @@ $PDF = new CreatePDF();
 //pass it headers, headerWidth and data
 $table = $PDF->CustomerPDF($header, $headerWidth, $allRows);
 
-//echo "<img src='images/famox.gif' />";
+echo "<img src='../product_images/login_image.png' />";
 echo $table;
 echo "<br />";
-echo "<a href='PDFS/Customers.pdf'>Click here to see PDF</a>";
+echo "<a href='../PDFS/Customers.pdf'>Click here to see PDF</a>";
 echo "<br />";
 //echo dirname($_SERVER["SCRIPT_FILENAME"]);
 ?>
