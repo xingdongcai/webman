@@ -4,6 +4,7 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/vendor/bootstrap/js" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bootstrap/scss" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/fontawesome-free/css" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/fontawesome-free/js" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/fontawesome-free/less" />
@@ -11,6 +12,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/fontawesome-free/sprites" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/fontawesome-free/svgs" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/fontawesome-free/webfonts" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/tecnickcom/tcpdf" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -136,7 +136,7 @@ $stmt->execute();
                     <div class="card mb-3">
                         <div class="card-header">
                             <i class="fas fa-table"></i>
-                            Client Table
+                            Product Table
                         </div>
 
                         <div class="card-body">
@@ -275,15 +275,10 @@ $stmt->execute();
             "columns": [
                 null,
                 null,
-                { "orderable": false },
                 null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                { "orderable": false },
-                { "orderable": false }
+                {"bSearchable": false},
+                { "orderable": false,"bSearchable": false },
+                { "orderable": false,"bSearchable": false }
             ]
         } );
     </script>
