@@ -9,7 +9,7 @@ if (empty($_POST["ppp"]))
 ?>
 
 <form method="POST"
-      action="add.php">
+      action="add.php" enctype="multipart/form-data">
     <center>Product details amendment</center>
     <table align="center" cellpadding="3">
 
@@ -30,6 +30,10 @@ if (empty($_POST["ppp"]))
         <tr>
             <td><b>Product country of origin</b></td>
             <td><input type="text" name="pco" size="10" ></td>
+        </tr>
+        <tr>
+            <td><b>Product image</b></td>
+            <td><input type="file" size="50" name="image"></td>
         </tr>
 
     </table>
@@ -57,14 +61,26 @@ if (empty($_POST["ppp"]))
         echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
         $stmt->execute();
     }else{
-        ?>
-        <script language="JavaScript">
-            alert("Customer record successfully added");
-        </script>
-        <?php
-        header("Location: index.php");
+        $image = "../product_images/".$_FILES["image"]["name"];
+        if($_FILES["image"]["type"] != "image/gif" ||
+            $_FILES["image"]["type"] != "image/pjpeg" ||
+            $_FILES["image"]["type"] != "image/jpeg")
+        {
+            echo "ERROR: You may only upload .jpg or .gif files";
+        }else{
+            if(!move_uploaded_file($_FILES["image"]["tmp_name"],$image))
+            {
+                echo "ERROR: Could Not Move File into Directory";
+            }else{
+                ?>
+                <script language="JavaScript">
+                    alert("Product record successfully added");
+                </script>
+                <?php
+                header("Location: index.php");
+            }
+        }
+
     }
-
 }
-
 ?>
