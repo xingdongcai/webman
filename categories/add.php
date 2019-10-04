@@ -28,7 +28,7 @@ if (empty($_POST["cn"]))
     </form>
 </div>
 
-
+    <?php include("../displayPHP.php")   ?>
 <?php
     include("../templateBottom.html");
 }else{

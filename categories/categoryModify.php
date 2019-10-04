@@ -115,5 +115,5 @@ if($stmt->execute())
 
 
 
-
+<?php include("../displayPHP.php")   ?>
 <?php include("../templateBottom.html");?>
