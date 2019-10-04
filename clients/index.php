@@ -34,8 +34,7 @@ $stmt->execute();
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
-                    <th>Gname</th>
-                    <th>Fname</th>
+                    <th>Name</th>
                     <th>Street</th>
                     <th>Surburb</th>
                     <th>State</th>
@@ -49,8 +48,7 @@ $stmt->execute();
                 </thead>
                 <tfoot>
                   <tr>
-                    <th>Gname</th>
-                    <th>Fname</th>
+                    <th>Name</th>
                     <th>Street</th>
                     <th>Surburb</th>
                     <th>State</th>
@@ -67,8 +65,7 @@ $stmt->execute();
                 <?php while($row = $stmt->fetch()){
                 ?>
                     <tr>
-                        <td><?php echo $row[1];  ?></td>
-                        <td><?php echo $row[2];  ?></td>
+                        <td><?php echo $row[1]." ".$row[2];  ?></td>
                         <td><?php echo $row[3];  ?></td>
                         <td><?php echo $row[4];  ?></td>
                         <td><?php echo $row[5];  ?></td>
@@ -77,9 +74,9 @@ $stmt->execute();
                         <td><?php echo $row[8];  ?></td>
                         <td><?php
                             if ($row[9]==0){
-                                echo "N";
+                                echo "No";
                             }else{
-                                echo "Y";
+                                echo "Yes";
                             }
                             ?>
                         </td>
@@ -121,7 +118,6 @@ $stmt->execute();
 <script>
     $('#dataTable').dataTable( {
         "columns": [
-            null,
             null,
             { "orderable": false },
             null,

@@ -12,25 +12,25 @@ if (empty($_POST["fname"]))
             <table class="table table-bordered" align="center" cellpadding="3">
                 <tr>
                     <td><b>Firstname</b></td>
-                    <td><input class="border" type="text" name="fname" size="25" required>
+                    <td><input class="border" type="text" name="fname" size="20" required>
                     </td>
                 </tr>
                 <tr>
                     <td><b>Surname</b></td>
-                    <td><input class="border" type="text" name="sname" size="25" required>
+                    <td><input class="border" type="text" name="sname" size="20" required>
                     </td>
                 </tr>
                 <tr>
                     <td><b>Street</b></td>
-                    <td><input class="border" type="text" name="street" size="40"></td>
+                    <td><input class="border" type="text" name="street" size="45"></td>
                 </tr>
                 <tr>
                     <td><b>Suburb</b></td>
-                    <td><input class="border" type="text" name="suburb" size="10" ></td>
+                    <td><input class="border" type="text" name="suburb" size="20" ></td>
                 </tr>
                 <tr>
                     <td><b>State</b></td>
-                    <td><input class="border" type="text" name="state" size="10">
+                    <td><input class="border" type="text" name="state" size="15">
                     </td>
                 </tr>
                 <tr>
@@ -40,16 +40,25 @@ if (empty($_POST["fname"]))
                 </tr>
                 <tr>
                     <td><b>Email</b></td>
-                    <td><input class="border" type="text" name="email" size="30" required>
+                    <td><input class="border" type="email" name="email" size="30" required>
                     </td>
                 </tr>
                 <tr>
                     <td><b>Mobile</b></td>
-                    <td><input class="border" type="text" name="mobile" size="15"></td>
+                    <td><input class="border" type="number" name="mobile" size="15"></td>
                 </tr>
                 <tr>
                     <td><b>Mailing List</b></td>
-                    <td><input class="border" type="number" name="mailinglist" size="5"></td>
+                    <td>
+                        <div>
+                            <select name="mailinglist">
+                                <option value=1>Yes</option>
+                                <option value=0>No</option>
+                            </select>
+                        </div>
+                    </td>
+
+<!--                    <td><input class="border" type="number" name="mailinglist" size="5"></td>-->
                 </tr>
             </table>
             <br><br/>

@@ -14,10 +14,9 @@ if(empty($_POST["check"]))
     ?>
 
 <?php include("../templateTop.html")    ?>
+    <div id="content-wrapper">
         <div class="container">
             <h3 align="center"><b>Product Details</b></h3>
-
-
             <form method="post" action="multipleEdit.php">
                 <table class="table-bordered" border="1" cellpadding="5" align="center">
                     <tr>
@@ -34,7 +33,7 @@ if(empty($_POST["check"]))
                             <td><?php echo $Titles->product_id; ?></td>
                             <td><?php echo $Titles->product_name; ?></td>
                             <td align="center"><input type="checkbox" name="check[]" value="<?php echo $Titles->product_id; ?>"></td>
-                            <td align="center"><input class="border" type="text" size="5" name="<?php echo $Titles->product_id; ?>" value="<?php echo $Titles->product_sale_price; ?>"></td>
+                            <td align="center">$<input class="border" type="text" size="8" name="<?php echo $Titles->product_id; ?>" value="<?php echo $Titles->product_sale_price; ?>"></td>
                         </tr>
                         <?php
                     }
@@ -47,7 +46,7 @@ if(empty($_POST["check"]))
 
             </form>
         </div>
-
+    </div>
     <?php
 
         }
