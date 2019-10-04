@@ -34,6 +34,7 @@ if (empty($_POST["pc"]))
             </tr>
         </table>
     </form>
+    <?php include("../displayPHP.php")   ?>
 </div>
 
 

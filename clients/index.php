@@ -119,16 +119,7 @@ $stmt->execute();
       </div>
 
         </form>
-      <!-- Sticky Footer -->
-      <footer class="sticky-footer">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-              <span><?php echo "Current Directory  is ".dirname($_SERVER['SCRIPT_FILENAME']) ;?></span><br>
-              <?php $file = $_SERVER['SCRIPT_FILENAME']?>
-              <?php echo "<a target=\"_blank\"   href='displaysource.php?filename=".$file."'>" .$file."</a><br />";?>
-          </div>
-        </div>
-      </footer>
+        <?php include("../displayPHP.php")   ?>
 
     </div>
 

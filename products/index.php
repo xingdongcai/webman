@@ -105,14 +105,7 @@ include("../templateTop.html")
 
             <!-- /.container-fluid -->
 
-            <!-- Sticky Footer -->
-            <footer class="sticky-footer">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright © Famox 2019</span>
-                    </div>
-                </div>
-            </footer>
+            <?php include("../displayPHP.php")   ?>
 
         </div>
         <!-- /.content-wrapper -->

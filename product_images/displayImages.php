@@ -62,7 +62,8 @@ if(empty($_POST["delete"]))
             </div>
 
     </form>
+
     </div>
 
-
+<?php include("../displayPHP.php")   ?>
 <?php include("../templateBottom.html") ?>

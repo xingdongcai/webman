@@ -60,6 +60,7 @@ if (empty($_POST["fname"]))
                 </tr>
             </table>
         </form>
+        <?php include("../displayPHP.php")   ?>
     </div>
 
 

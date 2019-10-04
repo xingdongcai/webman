@@ -41,6 +41,7 @@ if (empty($_POST["ppp"]))
             </tr>
         </table>
     </form>
+    <?php include("../displayPHP.php")   ?>
 </div>
 
 

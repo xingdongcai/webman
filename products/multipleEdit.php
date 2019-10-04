@@ -68,5 +68,5 @@ if(empty($_POST["check"]))
         $stmt->closeCursor();
 
         ?>
-
+<?php include("../displayPHP.php")   ?>
 <?php include("../templateBottom.html");    ?>

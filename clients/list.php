@@ -31,6 +31,7 @@ include("../templateTop.html")
     <br/>
     <center><button class="btn-primary btn" OnClick="window.location='PDFs/Customers.pdf'">Click here to see PDF</button></center>
     <br/>
+    <?php include("../displayPHP.php")   ?>
 </div>
 
 
