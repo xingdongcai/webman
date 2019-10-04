@@ -11,7 +11,7 @@ include("../templateTop.html")
     $dsn= "mysql:host=$Host;dbname=$DB";
     $dbh = new PDO($dsn,$UName,$PWord);
 
-    $stmt = $dbh->prepare("SELECT * FROM client ORDER BY client_fname");
+    $stmt = $dbh->prepare("SELECT * FROM client ORDER BY client_id");
     $stmt->execute();
     $allRows=$stmt->fetchAll(PDO::FETCH_ASSOC);
 
