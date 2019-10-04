@@ -27,58 +27,58 @@ case "Update":
     <div class="container-fluid">
         <form method="post" action="CustModify.php?clientid=<?php echo $_GET["clientid"]; ?>&Action=ConfirmUpdate">
             <center><h3>Customer details amendment</h3><br /></center><p />
-            <table align="center" cellpadding="3">
+            <table class="table table-bordered" align="center" cellpadding="3">
                 <tr />
-                <td><b>Cust. No.</b></td>
+                <td><b>Client. No.</b></td>
                 <td><?php echo $row->client_id; ?></td>
                 </tr>
                 <tr>
-                    <td><b>Cust. Firstname</b></td>
-                    <td><input type="text" name="fname" size="30" value="<?php echo $row->client_gname; ?>"></td>
+                    <td><b>Client. Firstname</b></td>
+                    <td><input class="border" type="text" name="fname" size="30" value="<?php echo $row->client_gname; ?>"></td>
                 </tr>
                 <tr>
-                    <td><b>Cust. Surname</b></td>
-                    <td><input type="text" name="sname" size="30" value="<?php echo $row->client_fname; ?>"></td>
+                    <td><b>Client. Surname</b></td>
+                    <td><input class="border" type="text" name="sname" size="30" value="<?php echo $row->client_fname; ?>"></td>
                 </tr>
                 <tr>
-                    <td><b>Cust. Address</b></td>
-                    <td><input type="text" name="street" size="40" value="<?php echo $row->client_street; ?>"></td>
+                    <td><b>Address</b></td>
+                    <td><input class="border" type="text" name="street" size="40" value="<?php echo $row->client_street; ?>"></td>
                 </tr>
                 <tr>
-                    <td><b>Cust. suburb</b></td>
-                    <td><input type="text" name="suburb" size="10" value="<?php echo $row->client_suburb; ?>"></td>
+                    <td><b>Suburb</b></td>
+                    <td><input class="border" type="text" name="suburb" size="10" value="<?php echo $row->client_suburb; ?>"></td>
                 </tr>
                 <tr>
                     <td><b>State</b></td>
-                    <td><input type="text" name="state" size="10" value="<?php echo $row->client_state; ?>">
+                    <td><input class="border" type="text" name="state" size="10" value="<?php echo $row->client_state; ?>">
                     </td>
                 </tr>
                 <tr>
                     <td><b>Postcode</b></td>
-                    <td><input type="text" name="postcode" size="10" value="<?php echo $row->client_pc; ?>">
+                    <td><input class="border" type="text" name="postcode" size="10" value="<?php echo $row->client_pc; ?>">
                     </td>
                 </tr>
                 <tr>
                     <td><b>Email</b></td>
-                    <td><input type="text" name="email" size="30" value="<?php echo $row->client_email; ?>">
+                    <td><input class="border" type="text" name="email" size="30" value="<?php echo $row->client_email; ?>">
                     </td>
                 </tr>
                 <tr>
                     <td><b>Mobile</b></td>
-                    <td><input type="text" name="mobile" size="15"
+                    <td><input class="border" type="text" name="mobile" size="15"
                                value="<?php echo $row->client_mobile; ?>"></td>
                 </tr>
                 <tr>
                     <td><b>Mailing List</b></td>
-                    <td><input type="number" name="mailinglist" size="5"
+                    <td><input class="border" type="number" name="mailinglist" size="5"
                                value="<?php echo $row->client_mailinglist; ?>"></td>
                 </tr>
             </table>
             <br/>
             <table align="center">
                 <tr>
-                    <td><input type="submit" value="Update Customer"></td>
-                    <td><input type="button" value="Return to List" OnClick="window.location='index.php'"></td>
+                    <td><input class="btn btn-primary" type="submit" value="Update"></td>
+                    <td><input class="btn btn-secondary" type="button" value="Return to List" OnClick="window.location='index.php'"></td>
                 </tr>
             </table>
         </form>
@@ -103,11 +103,11 @@ case "ConfirmUpdate":
 case "Delete":
     ?>
     <div class="container-fluid">
-        <h3>Confirm deletion of the following customer record</h3>
-        <hr>
-        <table>
+        <center><h3>Confirm deletion of the following customer record</h3></center>
+        <br>
+        <table class="table-bordered table" align="center">
             <tr>
-                <td><b>Cust. No.</b></td>
+                <td><b>Client. No.</b></td>
                 <td><?php echo $row->client_id; ?></td>
             </tr>
             <tr>
@@ -116,10 +116,12 @@ case "Delete":
             </tr>
         </table>
         <br>
-        <table>
+        <hr>
+
+        <table align="center">
             <tr>
-                <td><input type="button" value="Confirm" OnClick="confirm_delete();">
-                <td><input type="button" value="Cancel" OnClick="window.location='index.php'"></td>
+                <td><input class="btn btn-primary" type="button" value="Confirm" OnClick="confirm_delete();">
+                <td><input class="btn btn-secondary" type="button" value="Cancel" OnClick="window.location='index.php'"></td>
             </tr>
         </table>
     </div>

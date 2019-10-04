@@ -62,10 +62,10 @@ include("../templateTop.html");
                             Send Email</div>
                         <div class="card-body">
                             Subject:<br>
-                            <input type="text" name="subject" size="50"  required><br>
+                            <input class="border" type="text" name="subject" size="50"  required><br>
                             Message:<br>
                             <td>
-                                <textarea cols="68" name="message" rows="8" required></textarea>
+                                <textarea class="border" cols="68" name="message" rows="8" required></textarea>
                             </td>
                             <br><br>
                             <input type="submit" value="Send" class="btn btn-primary">
