@@ -16,10 +16,15 @@ ob_start();
 include("../connection.php");
 $dsn= "mysql:host=$Host;dbname=$DB";
 $dbh = new PDO($dsn,$UName,$PWord);
-$query="SELECT * FROM product WHERE product_id =".$_GET["productId"];
+$query="SELECT * FROM product  WHERE product_id =".$_GET["productId"];
+$sql="SELECT * FROM category";
 $stmt = $dbh->prepare($query);
+$stmtc = $dbh->prepare($sql);
 $stmt->execute();
+$stmtc->execute();
 $row=$stmt->fetchObject();
+$pId= $_GET["productId"];
+
 
 $strAction = $_GET["Action"];
 
@@ -58,7 +63,41 @@ case "Update":
                 <td><input type="submit" value="Update Product"></td>
                 <td><input type="button" value="Return to List" OnClick="window.location='index.php'"></td>
             </tr>
-        </table>
+        </table><!--
+
+/*
+        $query="SELECT * FROM category ";
+        $stmt = $dbh->prepare($query);
+        $stmt->execute();
+        /* $row=$stmt->fetchObject();*/
+
+        /*$strAction = $_GET["Action"];*/
+
+        */?>
+
+        <form method="post" action="ProductModify.php">
+            <table border="1" cellpadding="5">
+                <tr>
+                    <th>CATEGORY</th>
+                    <th></th>
+
+                </tr>
+                <?php
+/*                while ($Titles= $stmt->fetchObject())
+                {
+                    */?>
+                    <tr>
+                        <td><?php /*echo $Titles->category_name; */?></td>
+                        <td align="center"><input type="checkbox" name="check[]" value="<?php /*echo $Titles->category_id; */?>"></td>
+
+                    </tr>
+                    <?php
+/*                }
+                */?>
+            </table><p />
+            <center><input type="submit" value="Update Selected Titles"></center>
+        </form>-->
+
     </form>
     <?php
     break;
@@ -68,9 +107,32 @@ case "ConfirmUpdate":
 	            product_purchase_price='$_POST[ppp]', product_sale_price='$_POST[psp]',
 	            product_country_of_origin='$_POST[pco]'
                 WHERE product.product_id =".$_GET["productId"];
-
     $stmt = $dbh->prepare($query);
-    $stmt->execute();
+
+
+   /*
+    foreach($_POST["check"] as $change)
+    {
+
+        $stmtc = $dbh->prepare( "INSERT INTO product_category( category_id,product_id) values (1,1)");
+        $stmtc->execute();
+    }*/
+
+    if(!$stmt->execute()) {
+        $err = $stmt->errorInfo();
+        echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+    }
+    else{
+
+        $stmt = $dbh->prepare( "INSERT INTO product_category( product_id,category_id) values (1,4)");
+        $stmt->execute();
+
+    }
+
+
+
+
+
 
     header("Location: index.php");
 
