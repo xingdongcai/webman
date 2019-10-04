@@ -30,7 +30,7 @@ switch($strAction)
 case "Update":
     ?>
     <div class="container">
-        <form method="post" action="ProductModify.php?productId=<?php echo $_GET["productId"]; ?>&Action=ConfirmUpdate">
+        <form method="post" name="updateProductForm" action="ProductModify.php?productId=<?php echo $_GET["productId"]; ?>&Action=ConfirmUpdate" onsubmit="return validateForm()">
             <h3 align="center">Product details amendment</h3>
             <table class="table table-bordered" align="center" cellpadding="3">
                 <tr />
@@ -188,3 +188,19 @@ if($stmt->execute())
 <?php include("../displayPHP.php")   ?>
 <?php include("../templateBottom.html");?>
 
+<script>
+    function validateForm() {
+        //It returns -1 if the argument passed a negative number.
+        var purchasePrice = document.forms["updateProductForm"]["ppp"].value;
+        if ( Number(purchasePrice)<0) {
+            alert("Please Check Your Product Purchase Price.");
+            return false;
+        }
+
+        var salePrice = document.forms["updateProductForm"]["psp"].value;
+        if (Number(salePrice) < 0 ) {
+            alert("Please Check Your Product Sale Price.");
+            return false;
+        }
+    }
+</script>

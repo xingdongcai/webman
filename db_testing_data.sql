@@ -1,11 +1,6 @@
 INSERT INTO admin(uname, pword) VALUES ('admin',SHA2('admin',0));
 INSERT INTO admin(uname, pword) VALUES ('admin2',SHA2('admin2',0));
 
-
-
-
-
-
 INSERT INTO client(client_gname,client_fname, client_street,client_suburb,client_state,client_pc,client_email,client_mobile,client_mailinglist) VALUES ('Harry','Potter','1 Melbourne Street','Melbourne','VIC','3000','harry@mail.com','0413987754',1);
 INSERT INTO client(client_gname,client_fname, client_street,client_suburb,client_state,client_pc,client_email,client_mobile,client_mailinglist) VALUES ('Mary','Lee','100 Sydney Street','Sydney','NSW','2000','mary@gmail.com','0413557754',1);
 INSERT INTO client(client_gname,client_fname, client_street,client_suburb,client_state,client_pc,client_email,client_mobile,client_mailinglist) VALUES ('Loren','Chan','10 High Street','Clayton','VIC','3168','lor@gmail.com','0413557324',1);
@@ -20,16 +15,27 @@ INSERT INTO client(client_gname,client_fname, client_street,client_suburb,client
 INSERT INTO client(client_gname,client_fname, client_street,client_suburb,client_state,client_pc,client_email,client_mobile,client_mailinglist) VALUES ('Lory','White','1/3 Lock Street','South Yarra','VIC','3141','jon@gmail.com','0403998754',1);
 INSERT INTO client(client_gname,client_fname, client_street,client_suburb,client_state,client_pc,client_email,client_mobile,client_mailinglist) VALUES ('Emma','Bilston','3 Ann Street','Prahran','VIC','3181','emma@gmail.com','0443198554',0);
 
-
-INSERT INTO project(project_desc, project_country, project_city) values ('good','china','beijing');
-
 INSERT INTO category(category_name) values ('Electronics');
 INSERT INTO category(category_name) values ('Clothing');
 INSERT INTO category(category_name) values ('Home');
 INSERT INTO category(category_name) values ('Sports');
+INSERT INTO category(category_name) values ('Instrument');
+INSERT INTO category(category_name) values ('School');
 
 
-INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('guitar','112','250','china');
+INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Guitar','200','180','Australia');
+INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Pencil','2','1.4','China');
+INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('iPhone4','130','98.8','US');
+INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Fiction','30','30','US');
+INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Cake','28','18.9','Australia');
+INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Banana','2','1.2','Australia');
+INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Apple','1.8','0.9','Australia');
+INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('T-shirt','20','16.9','Japan');
+INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Basketball','38','38','China');
+INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Airpods','299','230','US');
+INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Bottle','20','14','China');
+INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Microwave','180','118','Australia');
+INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Violin','300','298','Australia');
 
 
 INSERT INTO project(project_desc, project_country, project_city) VALUES ('Sponsor a child','Australia','Melbourne');

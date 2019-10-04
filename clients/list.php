@@ -7,7 +7,7 @@ include("../templateTop.html")
 ?>
 
 <div class="container-fluid">
-    <h1>Create PDF</h1>
+    <h1 align="center">Create PDF</h1>
     <?php
     $dsn= "mysql:host=$Host;dbname=$DB";
     $dbh = new PDO($dsn,$UName,$PWord);
@@ -33,6 +33,7 @@ include("../templateTop.html")
     <center><button class="btn-primary btn" OnClick="window.location='PDFs/Customers.pdf'">Click here to see PDF</button></center>
     <br/>
     <?php include("../displayPHP.php")   ?>
+
 </div>
 
 

@@ -1,5 +1,4 @@
 
-
 <?php
 /**
  * Created by PhpStorm.
@@ -33,7 +32,7 @@ class CreatePDF
 
         $pdf->Ln();
 
-        $table = '<table class=""     cellpadding="5" cellspacing="5" border="0">';
+        $table = '<table align="center" class="" cellpadding="5" cellspacing="5" border="0">';
         $table.='<tr bgcolor="#336888">';
         for($i = 0; $i < sizeof($header); ++$i)
         {

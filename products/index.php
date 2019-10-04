@@ -42,9 +42,9 @@ include("../templateTop.html")
                                     <thead>
                                     <tr>
                                         <th>Product name</th>
-                                        <th>Purchase price</th>
-                                        <th>Sale price</th>
-                                        <th>Country of origin</th>
+                                        <th>Purchase price($)</th>
+                                        <th>Sale price($)</th>
+                                        <th>Country</th>
                                         <th>Delete</th>
                                         <th>Edit</th>
                                     </tr>
@@ -52,9 +52,9 @@ include("../templateTop.html")
                                     <tfoot>
                                     <tr>
                                         <th>Product name</th>
-                                        <th>Purchase price</th>
-                                        <th>Sale price</th>
-                                        <th>Country of origin</th>
+                                        <th>Purchase price($)</th>
+                                        <th>Sale price($)</th>
+                                        <th>Country</th>
                                         <th>Delete</th>
                                         <th>Edit</th>
                                     </tr>
@@ -65,8 +65,8 @@ include("../templateTop.html")
                                         ?>
                                         <tr>
                                             <td><?php echo $row[1];  ?></td>
-                                            <td><?php echo $row[2];  ?></td>
-                                            <td><?php echo $row[3];  ?></td>
+                                            <td><?php echo "$".$row[2];  ?></td>
+                                            <td><?php echo "$".$row[3];  ?></td>
                                             <td><?php echo $row[4];  ?></td>
                                             <td>
                                                 <a href="../products/ProductModify.php?productId=<?php echo $row[0];?>&Action=Delete">Delete</a>
