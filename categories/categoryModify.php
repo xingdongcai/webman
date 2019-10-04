@@ -1,17 +1,16 @@
 <?php
 ob_start();
+include("../templateTop.html");
 ?>
-<html>
-<head><title></title></head>
-<link rel="stylesheet" type="text/css" href="style.css">
-<body>
+
+
 <script language="javascript">
     function confirm_delete()
     {
         window.location='categoryModify.php?categoryId=<?php echo $_GET["categoryId"]; ?>&Action=ConfirmDelete';
     }
 </script>
-<center><h3>Category Modification</h3></center>
+
 <?php
 include("../connection.php");
 $dsn= "mysql:host=$Host;dbname=$DB";
@@ -27,27 +26,29 @@ switch($strAction)
 {
 case "Update":
     ?>
-    <form method="post" action="categoryModify.php?categoryId=<?php echo $_GET["categoryId"]; ?>&Action=ConfirmUpdate">
-        <center>Category details amendment<br /></center><p />
-        <table align="center" cellpadding="3">
-            <tr />
-            <td><b>Category. No.</b></td>
-            <td><?php echo $row->category_id; ?></td>
-            </tr>
-            <tr>
-                <td><b>Category. Name</b></td>
-                <td><input type="text" name="cn" size="30" value="<?php echo $row->category_name; ?>"></td>
-            </tr>
+    <div class="container">
+        <form method="post" action="categoryModify.php?categoryId=<?php echo $_GET["categoryId"]; ?>&Action=ConfirmUpdate">
+            <center><h3>Category details amendment</h3><br /></center><p />
+            <table align="center" cellpadding="3">
+                <tr />
+                <td><b>Category. No.</b></td>
+                <td><?php echo $row->category_id; ?></td>
+                </tr>
+                <tr>
+                    <td><b>Category. Name</b></td>
+                    <td><input type="text" name="cn" size="30" value="<?php echo $row->category_name; ?>"></td>
+                </tr>
 
-        </table>
-        <br/>
-        <table align="center">
-            <tr>
-                <td><input type="submit" value="Update Category"></td>
-                <td><input type="button" value="Return to List" OnClick="window.location='index.php'"></td>
-            </tr>
-        </table>
-    </form>
+            </table>
+            <br/>
+            <table align="center">
+                <tr>
+                    <td><input class="btn btn-primary" type="submit" value="Update Category"></td>
+                    <td><input class="btn btn-secondary" type="button" value="Return to List" OnClick="window.location='index.php'"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
     <?php
     break;
 
@@ -64,24 +65,27 @@ case "ConfirmUpdate":
 
 case "Delete":
     ?>
-    <center>Confirm deletion of the following category record<br /></center><p />
-    <table align="center" cellpadding="3">
-        <tr />
-        <td><b>Category. No.</b></td>
-        <td><?php echo $row->category_id; ?></td>
-        </tr>
-        <tr>
-            <td><b>Name</b></td>
-            <td><?php echo "$row->category_name"; ?></td>
-        </tr>
-    </table>
-    <br/>
-    <table align="center">
-        <tr>
-            <td><input type="button" value="Confirm" OnClick="confirm_delete();">
-            <td><input type="button" value="Cancel" OnClick="window.location='index.php'"></td>
-        </tr>
-    </table>
+    <div class="container">
+        <center><h3>Confirm deletion of the following category record</h3><br/></center><p />
+        <table align="center" cellpadding="3">
+            <tr />
+            <td><b>Category. No.</b></td>
+            <td><?php echo $row->category_id; ?></td>
+            </tr>
+            <tr>
+                <td><b>Name</b></td>
+                <td><?php echo "$row->category_name"; ?></td>
+            </tr>
+        </table>
+        <br/>
+        <table align="center">
+            <tr>
+                <td><input class="btn btn-primary" type="button" value="Confirm" OnClick="confirm_delete();">
+                <td><input class="btn btn-secondary" type="button" value="Cancel" OnClick="window.location='index.php'"></td>
+            </tr>
+        </table>
+    </div>
+
     <?php
     break;
 
@@ -106,5 +110,7 @@ if($stmt->execute())
     }
     $stmt->closeCursor();
     ?>
-</body>
-</html>
+
+
+
+<?php include("../templateBottom.html");?>
