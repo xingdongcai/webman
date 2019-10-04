@@ -28,7 +28,7 @@ include("../templateTop.html");
                     <!-- Breadcrumbs-->
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a class="btn-block btn btn-primary"     href="../categories/add.php">Add category</a>
+                            <a class="btn-block btn btn-primary"     href="../categories/add.php">Add Category</a>
                         </li>
                     </ol>
 
