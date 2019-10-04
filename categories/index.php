@@ -102,13 +102,3 @@ include("../templateTop.html");
     </script>
 
 
-
-<?php
-function logout() {
-    unset($_SESSION["access_status"]);
-    header("Location: ../login.php");
-}
-if (isset($_GET['logout'])) {
-    logout();
-}
-?>
