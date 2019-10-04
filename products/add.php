@@ -19,16 +19,16 @@ if (empty($_POST["ppp"]))
             </td>
         </tr>
         <tr>
-            <td><b>Product purchase price</b></td>
+            <td><b>Purchase price</b></td>
             <td><input type="text" name="ppp" size="25" required>
             </td>
         </tr>
         <tr>
-            <td><b>Product sale price</b></td>
+            <td><b>Sale price</b></td>
             <td><input type="text" name="psp" size="40"></td>
         </tr>
         <tr>
-            <td><b>Product country of origin</b></td>
+            <td><b>Country of origin</b></td>
             <td><input type="text" name="pco" size="10" ></td>
         </tr>
         <tr>
@@ -59,25 +59,33 @@ if (empty($_POST["ppp"]))
     if(!$stmt->execute()) {
         $err = $stmt->errorInfo();
         echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
-        $stmt->execute();
     }else{
-        $image = "../product_images/".$_FILES["image"]["name"];
-        if($_FILES["image"]["type"] != "image/gif" ||
-            $_FILES["image"]["type"] != "image/pjpeg" ||
-            $_FILES["image"]["type"] != "image/jpeg")
+        $imageName = $_FILES["image"]["name"];
+        $imageDir = "../product_images/".$_FILES["image"]["name"];
+        if(1===2)
         {
-            echo "ERROR: You may only upload .jpg or .gif files";
+            echo "ERROR: You may only upload .jpg or .gif or .png files";
         }else{
-            if(!move_uploaded_file($_FILES["image"]["tmp_name"],$image))
+            if(!move_uploaded_file($_FILES["image"]["tmp_name"],$imageDir))
             {
+
                 echo "ERROR: Could Not Move File into Directory";
             }else{
-                ?>
-                <script language="JavaScript">
-                    alert("Product record successfully added");
-                </script>
-                <?php
-                header("Location: index.php");
+                $queryImage = "INSERT INTO product_image (product_id, image_name)
+                VALUES (last_insert_id(),'$imageName')";
+                $stmt = $dbh->prepare($queryImage);
+                if(!$stmt->execute()){
+                    $err = $stmt->errorInfo();
+                    echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+                }else{
+                    ?>
+                    <script language="JavaScript">
+                        alert("Product record successfully added");
+                    </script>
+                    <?php
+                    header("Location: index.php");
+                }
+
             }
         }
 

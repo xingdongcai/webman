@@ -23,5 +23,10 @@ INSERT INTO client(client_gname,client_fname, client_street,client_suburb,client
 
 INSERT INTO project(project_desc, project_country, project_city) values ('good','china','beijing');
 
+INSERT INTO category(category_name) values ('Electronics');
+INSERT INTO category(category_name) values ('Clothing');
+INSERT INTO category(category_name) values ('Home');
+INSERT INTO category(category_name) values ('Sports');
+
 
 INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('guitar','112','250','china');

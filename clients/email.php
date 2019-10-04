@@ -146,19 +146,19 @@ $stmt->execute();
                             <i class="fas fa-chart-pie"></i>
                             Mailing List</div>
                         <div class="card-body">
-                            <table border="1" cellpadding="5" class="table table-bordered">
+                            <table class="table-bordered">
                                 <tr>
                                     <th>Client Name</th>
-                                    <th>Email</th>
-                                    <th>Action</th>
+                                    <th style="text-align:center">Email</th>
+                                    <th>Send</th>
                                 </tr>
 
                                 <?php while($row = $stmt->fetch()){
                                     ?>
                                     <tr>
                                         <td><?php echo $row[1]," ",$row[2];  ?></td>
-                                        <td><?php echo $row[7];  ?></td>
-                                        <td align="center"><input type="checkbox" name="check[]" value="<?php echo $row[0]; ?>"></td>
+                                        <td style="text-align:center"><?php echo $row[7];  ?></td>
+                                        <td style="text-align:center" ><input type="checkbox" name="check[]" value="<?php echo $row[0]; ?>"></td>
                                     </tr>
                                     <?php
                                 }

@@ -64,7 +64,7 @@ create table PROJECT
 );
 create table PRODUCT_IMAGE
     (
-        image_id int not null primary key,
+        image_id int not null primary key auto_increment,
         product_id int not null,
         image_name  varchar(40) not null,
         constraint PRODUCT_IMAGE_PRODUCT_id_fk

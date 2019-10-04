@@ -145,20 +145,20 @@ $stmt->execute();
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
-                                        <th>product name</th>
-                                        <th>product purchase price</th>
-                                        <th>product sale price</th>
-                                        <th>product country of origin</th>
+                                        <th>Product name</th>
+                                        <th>Purchase price</th>
+                                        <th>Sale price</th>
+                                        <th>Country of origin</th>
                                         <th>Delete</th>
                                         <th>Edit</th>
                                     </tr>
                                     </thead>
                                     <tfoot>
                                     <tr>
-                                        <th>product name</th>
-                                        <th>product purchase price</th>
-                                        <th>product sale price</th>
-                                        <th>product country of origin</th>
+                                        <th>Product name</th>
+                                        <th>Purchase price</th>
+                                        <th>Sale price</th>
+                                        <th>Country of origin</th>
                                         <th>Delete</th>
                                         <th>Edit</th>
                                     </tr>
