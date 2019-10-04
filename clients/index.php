@@ -209,8 +209,12 @@ $stmt->execute();
       </div>
 
         </form>
-      <!-- /.container-fluid -->
-
+        <!--PDF Creation-->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a style="text-align:center;" class="btn-block btn btn-primary" target="_blank"  href="list.php">Generate PDF</a>
+            </li>
+        </ol>
       <!-- Sticky Footer -->
       <footer class="sticky-footer">
         <div class="container my-auto">

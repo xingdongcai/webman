@@ -1,3 +1,5 @@
+
+
 <?php
 /**
  * Created by PhpStorm.
@@ -10,11 +12,11 @@ class CreatePDF
 {
     function CustomerPDF($header, $headerWidth, $data)
     {
-        define ('K_PATH_IMAGES', 'images/');
+        define ('K_PATH_IMAGES', 'img/');
         // create new PDF document
         $pdf = new TCPDF('L', PDF_UNIT, PDF_PAGE_FORMAT, true);
         // set document header information. This appears at the top of each page of the PDF document
-        $pdf->SetHeaderData("famox.gif","20", "Famox Client List", '');
+        $pdf->SetHeaderData("Famox1.gif","20", "Famox Client List", '');
 
         // set header and footer fonts
         $pdf->setHeaderFont(array('helvetica', '', 20));
@@ -31,7 +33,7 @@ class CreatePDF
 
         $pdf->Ln();
 
-        $table = '<table cellpadding="5" cellspacing="5" border="0">';
+        $table = '<table class=""     cellpadding="5" cellspacing="5" border="0">';
         $table.='<tr bgcolor="#336888">';
         for($i = 0; $i < sizeof($header); ++$i)
         {
@@ -51,10 +53,10 @@ class CreatePDF
             {
                 $table.='<tr valign="top">';
             }
-            $table.="<td>$row[cust_no]</td>";
-            $table.="<td>$row[firstname] $row[surname]</td>";
-            $table.="<td>$row[address]</td>";
-            $table.="<td>$row[contact]</td>";
+            $table.="<td>$row[client_id]</td>";
+            $table.="<td>$row[client_gname] $row[client_fname]</td>";
+            $table.="<td>$row[client_street]</td>";
+            $table.="<td>$row[client_mobile]</td>";
             $table.="</tr>";
             $rowCount++;
         }
@@ -69,7 +71,6 @@ class CreatePDF
         //alignment
 
         $saveDir= dirname($_SERVER["SCRIPT_FILENAME"])."/PDFS/";
-
         if($pdf->Output($saveDir.'Customers.pdf','F'));
         {
             return $table;

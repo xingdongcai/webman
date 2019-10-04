@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit7b883ea1bf203f466e5b43da00dd6e1d
+class ComposerStaticInit959066014abf2f7c3e2e3c058a330448
 {
     public static $classMap = array (
         'Datamatrix' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/barcodes/datamatrix.php',
@@ -26,7 +26,7 @@ class ComposerStaticInit7b883ea1bf203f466e5b43da00dd6e1d
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->classMap = ComposerStaticInit7b883ea1bf203f466e5b43da00dd6e1d::$classMap;
+            $loader->classMap = ComposerStaticInit959066014abf2f7c3e2e3c058a330448::$classMap;
 
         }, null, ClassLoader::class);
     }

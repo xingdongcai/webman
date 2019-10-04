@@ -264,14 +264,6 @@ $stmt->execute();
         $('#dataTable').dataTable( {
             "columns": [
                 null,
-                null,
-                { "orderable": false },
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
                 { "orderable": false },
                 { "orderable": false }
             ]
