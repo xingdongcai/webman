@@ -30,3 +30,7 @@ INSERT INTO category(category_name) values ('Sports');
 
 
 INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('guitar','112','250','china');
+
+
+INSERT INTO project(project_desc, project_country, project_city) VALUES ('Sponsor a child','Australia','Melbourne');
+INSERT INTO project(project_desc, project_country, project_city) VALUES ('Volunteer in Education','Australia','Sydney');

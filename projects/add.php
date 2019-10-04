@@ -1,45 +1,44 @@
-<html>
-<head>
-    <title>Add Project</title>
-</head>
-<body>
 <?php
+include("../templateTop.html");
+
 if (empty($_POST["pc"]))
 {
 ?>
+<div class="container">
+    <form method="POST"
+          action="add.php">
+        <center><h3>Project details amendment</h3></center>
+        <table align="center" cellpadding="3">
 
-<form method="POST"
-      action="add.php">
-    <center>Project details amendment</center>
-    <table align="center" cellpadding="3">
+            <tr>
+                <td><b>Project description</b></td>
+                <td><input class="border" type="text" name="pd" size="25" required>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Project country</b></td>
+                <td><input class="border" type="text" name="pc" size="25" required>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Project city</b></td>
+                <td><input class="border" type="text" name="pct" size="40"></td>
+            </tr>
 
-        <tr>
-            <td><b>Project description</b></td>
-            <td><input type="text" name="pd" size="25" required>
-            </td>
-        </tr>
-        <tr>
-            <td><b>Project country</b></td>
-            <td><input type="text" name="pc" size="25" required>
-            </td>
-        </tr>
-        <tr>
-            <td><b>Project city</b></td>
-            <td><input type="text" name="pct" size="40"></td>
-        </tr>
+        </table>
+        <br><br/>
+        <table align="center">
+            <tr>
+                <td><input class="btn-primary btn" type="submit"  value="Submit"></td>
+                <td><input class="btn btn-secondary" type="button"  value="Return to List"  OnClick="window.location='index.php'"></td>
+            </tr>
+        </table>
+    </form>
+</div>
 
-    </table>
-    <br><br/>
-    <table align="center">
-        <tr>
-            <td><input type="submit"  value="Submit"></td>
-            <td><input type="button"  value="Return to List"  OnClick="window.location='index.php'"></td>
-        </tr>
-    </table>
-</form>
-</body>
-</html>
+
 <?php
+    include("../templateBottom.html");
 }else{
     include("../connection.php");
     $dsn= "mysql:host=$Host;dbname=$DB";
@@ -62,5 +61,4 @@ if (empty($_POST["pc"]))
     }
 
 }
-
 ?>

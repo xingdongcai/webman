@@ -95,21 +95,24 @@ $stmt = $dbh->prepare($query);
 if($stmt->execute())
 {
 ?>
-<center>
-    The following customer record has been successfully deleted<p/>
-    <?php
-    echo "Category No. $row->category_id";
-    echo "</center><p />";
-    }
-    else
-    {
-        echo "<center>Error deleting customer record<p /></center>";
-    }
-    echo "<center><input type='button' value='Return to List' OnClick='window.location=\"index.php\"'></center>";
-    break;
-    }
-    $stmt->closeCursor();
-    ?>
+<div class="container">
+    <center>
+        <h3>The following customer record has been successfully deleted</h3><p/>
+        <?php
+        echo "Category No. $row->category_id";
+        echo "</center><p />";
+        }
+        else
+        {
+            echo "<center>Error deleting customer record<p /></center>";
+        }
+        echo "<center><input class='btn btn-secondary' type='button' value='Return to List' OnClick='window.location=\"index.php\"'></center>";
+        break;
+        }
+        $stmt->closeCursor();
+        ?>
+</div>
+
 
 
 

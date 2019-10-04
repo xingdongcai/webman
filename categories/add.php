@@ -1,37 +1,36 @@
-<html>
-<head>
-    <title>Add category</title>
-</head>
-<body>
+
 <?php
+include("../templateTop.html");
 if (empty($_POST["cn"]))
 {
 ?>
+<div class="container">
+    <form method="POST"
+          action="add.php">
+        <h3 align="center">Category details amendment</h3>
+        <table class="" align="center" cellpadding="3">
 
-<form method="POST"
-      action="add.php">
-    <center>category details amendment</center>
-    <table align="center" cellpadding="3">
-
-        <tr>
-            <td><b>category_name</b></td>
-            <td><input type="text" name="cn" size="25" required>
-            </td>
-        </tr>
+            <tr>
+                <td><b>category_name</b></td>
+                <td><input class="border" type="text" name="cn" size="25" required>
+                </td>
+            </tr>
 
 
-    </table>
-    <br><br/>
-    <table align="center">
-        <tr>
-            <td><input type="submit"  value="Submit"></td>
-            <td><input type="button"  value="Return to List"  OnClick="window.location='index.php'"></td>
-        </tr>
-    </table>
-</form>
-</body>
-</html>
+        </table>
+        <br><br/>
+        <table align="center">
+            <tr>
+                <td><input class="btn btn-primary" type="submit"  value="Submit"></td>
+                <td><input class="btn btn-secondary" type="button"  value="Return to List"  OnClick="window.location='index.php'"></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+
 <?php
+    include("../templateBottom.html");
 }else{
     include("../connection.php");
     $dsn= "mysql:host=$Host;dbname=$DB";
@@ -54,5 +53,4 @@ if (empty($_POST["cn"]))
     }
 
 }
-
 ?>
