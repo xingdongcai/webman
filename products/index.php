@@ -136,7 +136,7 @@ $stmt->execute();
                     <div class="card mb-3">
                         <div class="card-header">
                             <i class="fas fa-table"></i>
-                            Client Table
+                            Product Table
                         </div>
 
                         <div class="card-body">
@@ -187,15 +187,20 @@ $stmt->execute();
 
                                     </tbody>
                                 </table>
+
+
                             </div>
                         </div>
+
                         <div class="card-footer small text-muted">Famox</div>
                     </div>
 
 
                 </div>
 
+
             </form>
+
             <!-- /.container-fluid -->
 
             <!-- Sticky Footer -->

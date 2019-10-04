@@ -50,7 +50,6 @@ if (empty($_POST["ppp"]))
     $dbh = new PDO($dsn,$UName,$PWord);
     $query = "INSERT INTO product (product_name, product_purchase_price, product_sale_price, product_country_of_origin)
                 VALUES ('$_POST[pname]','$_POST[ppp]', '$_POST[psp]', '$_POST[pco]')";
-    $stmt = $dbh->prepare($query);
 
     if(!$stmt->execute()) {
         $err = $stmt->errorInfo();
