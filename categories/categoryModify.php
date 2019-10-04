@@ -36,7 +36,7 @@ case "Update":
                 </tr>
                 <tr>
                     <td><b>Category. Name</b></td>
-                    <td><input type="text" name="cn" size="30" value="<?php echo $row->category_name; ?>"></td>
+                    <td><input class="border" type="text" name="cn" size="30" value="<?php echo $row->category_name; ?>"></td>
                 </tr>
 
             </table>
