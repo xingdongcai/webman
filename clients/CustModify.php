@@ -1,5 +1,5 @@
 <?php
-ob_start();
+include("../loginCheck.php");
 include('../templateTop.html');
 ?>
 

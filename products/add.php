@@ -1,4 +1,5 @@
 <?php
+include("../loginCheck.php");
 include("../templateTop.html");
 if (empty($_POST["ppp"]))
 {

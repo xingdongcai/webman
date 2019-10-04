@@ -1,12 +1,5 @@
 <?php
-session_start();
-ob_start();
-
-if($_SESSION["access_status"] != true){
-    header("Location: ../login.php");
-    exit;
-}
-
+include("../loginCheck.php");
 include("../connection.php");
 $dsn = "mysql:host=$Host;dbname=$DB;";
 $dbh = new PDO($dsn, $UName, $PWord);

@@ -72,8 +72,25 @@ if(empty($_POST["uname"]))
         header("Location:clients/index.php");
     }
     else
-    {
-        echo "Sorry, login details incorrect";
+    {   ?>
+        <div class="container">
+            <div class="card card-login mx-auto mt-5">
+                <div class="card-header">Login</div>
+                <div class="card-body">
+                    <form action="login.php">
+                        <div align="center" class="alert alert-danger" role="alert">
+                            Login Details Incorrect
+                        </div>
+                        <div class="form-group">
+                            <hr>
+                        </div>
+                        <input class="btn btn-secondary btn-block" type="submit" value="Try Again" >
+                    </form>
+
+                </div>
+            </div>
+        </div>
+<?php
     }
 } ?>
 
@@ -86,3 +103,10 @@ if(empty($_POST["uname"]))
 
 <!-- Core plugin JavaScript-->
 <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<script language="javascript">
+    function displayError()
+    {
+        alert("Sorry, Login details incorrect")
+    }
+</script>

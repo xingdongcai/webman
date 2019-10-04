@@ -1,6 +1,6 @@
-<?php include("../templateTop.html"); ?>
-
-
+<?php
+include("../loginCheck.php");
+include("../templateTop.html"); ?>
 <?php
 if (empty($_POST["fname"]))
 {

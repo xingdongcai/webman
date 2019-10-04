@@ -1,4 +1,5 @@
-<?php ob_start();
+<?php
+include("../loginCheck.php");
 require "../vendor/autoload.php";
 include("../connection.php");
 include("CreatePDF.php");

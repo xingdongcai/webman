@@ -1,5 +1,5 @@
 <?php
-ob_start();
+include("../loginCheck.php");
 include("../connection.php");
 $dsn= "mysql:host=$Host;dbname=$DB";
 $dbh = new PDO($dsn,$UName,$PWord);
