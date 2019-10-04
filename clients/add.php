@@ -1,13 +1,10 @@
-<html>
-<head>
-    <title>Add Client Account</title>
-</head>
-<body>
+<?php include("../templateTop.html"); ?>
+
+
 <?php
 if (empty($_POST["fname"]))
 {
 ?>
-
 <form method="POST"
       action="add.php">
     <center>Customer details amendment</center>
@@ -63,8 +60,7 @@ if (empty($_POST["fname"]))
         </tr>
     </table>
 </form>
-</body>
-</html>
+
 <?php
 }else{
     include("../connection.php");
@@ -86,7 +82,8 @@ if (empty($_POST["fname"]))
     <?php
         header("Location: index.php");
     }
-
 }
-
 ?>
+
+<?php include("../templateBottom.html"); ?>
+

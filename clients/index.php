@@ -117,12 +117,7 @@ $stmt->execute();
           </li>
         </ol>
 
-
-
-
-
-
-        <!-- DataTables Example -->
+        <!-- DataTables -->
 
           <div class="card mb-3">
           <div class="card-header">
@@ -195,7 +190,6 @@ $stmt->execute();
                     </tr>
                 <?php
                 }
-                //$stmt->closeCursor();
                 ?>
 
                 </tbody>
@@ -227,10 +221,7 @@ $stmt->execute();
       </footer>
 
     </div>
-    <!-- /.content-wrapper -->
-
   </div>
-  <!-- /#wrapper -->
 
   <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
