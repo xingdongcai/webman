@@ -63,7 +63,9 @@ if (empty($_POST["ppp"]))
     }else{
         $imageName = $_FILES["image"]["name"];
         $imageDir = "../product_images/".$_FILES["image"]["name"];
-        if(1===2)
+        $allowTypes = array('jpg','png','jpeg','gif');
+        $fileType = pathinfo($imageDir,PATHINFO_EXTENSION);
+        if(!in_array($fileType,$allowTypes))
         {
             echo "ERROR: You may only upload .jpg or .gif or .png files";
         }else{

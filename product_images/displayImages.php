@@ -15,47 +15,85 @@ $dir = opendir($currdir);
 if(empty($_POST["delete"]))
 {
 ?>
+    <div id="content-wrapper">
+        <div class="container-fluid">
 
-    <div class="container-fluid">
+            <form method="post" action="displayImages.php">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <input  class='btn btn-primary' type='submit' value='Delete Selected Files'>
+                    </li>
+                </ol>
 
-        <form method="post" action="displayImages.php">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-            <input  class='btn btn-primary' type='submit' value='Delete Selected Files'>
-        </li>
-    </ol>
-        <div class="row">
-            <?php
-            while ($row = $stmt->fetch())
-            {
-                ?>
-                    <div class="col-md-3">
-                        <div class="thumbnail">
-                            <img src="<?= $row[2] ;?>"style="width: 100%"/><br/>
-                            <?php
-                            $stmtProduct = $dbh->prepare("select * from product where product_id=".$row[1]);
-                            $stmtProduct->execute();
-                            $productRow=$stmtProduct->fetch();
 
-                            echo "<br>Product Name: ".$productRow[1];
-                            echo "<br>Purchase Price: "."$".$productRow[2];
-                            echo "<br>Sale Price: "."$".$productRow[3];
-                            echo "<br>Country: ".$productRow[4];
 
-                            ?>
-                            <hr>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input" name="delete[]" value="<?= $row[2]?>"><?= $row[2]?>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
+                <!--        <div class="row">-->
+                <!--            --><?php
+                //            while ($row = $stmt->fetch())
+                //            {
+                //                ?>
+                <!--                    <div class="col-md-3">-->
+                <!--                        <div class="thumbnail">-->
+                <!--                            <img src="--><?//= $row[2] ;?><!--"style="width: 100%"/><br/>-->
+                <!--                            --><?php
+                //                            $stmtProduct = $dbh->prepare("select * from product where product_id=".$row[1]);
+                //                            $stmtProduct->execute();
+                //                            $productRow=$stmtProduct->fetch();
+                //
+                //                            echo "<br>Product Name: ".$productRow[1];
+                //                            echo "<br>Purchase Price: "."$".$productRow[2];
+                //                            echo "<br>Sale Price: "."$".$productRow[3];
+                //                            echo "<br>Country: ".$productRow[4];
+                //
+                //                            ?>
+                <!--                            <hr>-->
+                <!--                            <div class="form-check">-->
+                <!--                                <label class="form-check-label">-->
+                <!--                                    <input type="checkbox" class="form-check-input" name="delete[]" value="--><?//= $row[2]?><!--">--><?//= $row[2]?>
+                <!--                                </label>-->
+                <!--                            </div>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                    --><?php
+                //            }
+                //            ?>
+                <!--        </div>-->
+                <div class="card mb-3">
                     <?php
-            }
-            ?>
-        </div>
+                    while($file = readdir($dir))
+                    {
+                        if(fnmatch("*.jpg",$file)|| fnmatch("*.png",$file)){
+                            ?>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <!--                            --><?php //echo $file ?>
+                                    <?php echo '<img src="'.$file.'" style="width: 20%"/><br/>' ;?>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input" name="delete[]" value="<?= $file ?>">
+                                            <?php
+                                            $sql = "select product_id from product_image where image_name='" . $file . "'";
+                                            $stmtProduct = $dbh->prepare("select * from product where product_id="."(".$sql.")");
+                                            $stmtProduct->execute();
+                                            $productRow=$stmtProduct->fetch();
+                                            echo "Product Name: $productRow[1]";
+                                            echo "<br>Purchase Price: $$productRow[2]";
+                                            echo "<br>Sale Price: $$productRow[3]";
+                                            echo "<br>Country: $productRow[4]";
+                                            ?>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php
+                        }
+                    }
 
+                    ?>
+                </div>
+            </form>
+        </div>
+    </div>
 
         <?php
         }
