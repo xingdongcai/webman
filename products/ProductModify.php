@@ -7,6 +7,12 @@ include("../templateTop.html")
     {
         window.location='ProductModify.php?productId=<?php echo $_GET["productId"]; ?>&Action=ConfirmDelete';
     }
+    function check(id,check) {
+        if (check) {
+            $('.' +id).find('input[type="checkbox"]').prop('checked', true);
+        }
+        else { $('.' +id).find('input[type="checkbox"]').removeAttr('checked'); }
+    }
 
 </script>
 <center><h3>Product Modification</h3></center>
@@ -67,13 +73,35 @@ case "Update":
         $query="SELECT * FROM category ";
         $stmt = $dbh->prepare($query);
         $stmt->execute();
-        /* $row=$stmt->fetchObject();*/
 
-        /*$strAction = $_GET["Action"];*/
+
+        $stmtI = $dbh->prepare("SELECT * FROM product_category where product_id=".$_GET["productId"]);
+        $stmtI->execute();
+        $aList=[];
+        while( $sql=$stmtI->fetchObject() ) {?>
+        <td><?php echo $sql->category_id; ?></td><?php
+        array_push($aList,$sql->category_id);
+
+        }
+        function pChecked($v1,$list){
+            $pChecked="";
+            for($i=0;$i<sizeof($list);$i++)
+            {
+                if($v1==$list[$i])
+                {
+                    $pChecked="checked";
+
+                }
+            }
+            return $pChecked;
+
+
+        }
+
 
         ?>
 
-        <form method="post" action="ProductModify.php">
+        <form method="post" name="editForm" action="ProductModify.php">
             <table border="1" cellpadding="5">
                 <tr>
                     <th>CATEGORY</th>
@@ -81,16 +109,20 @@ case "Update":
 
                 </tr>
                 <?php
-                while ($Titles= $stmt->fetchObject())
-                {
+                while ($Titles = $stmt->fetchObject()) {
                     ?>
                     <tr>
-                        <td><?php echo $Titles->category_name;?></td>
-                        <td align="center"><input type="checkbox" name="check[]" value="<?php echo $Titles->category_id; ?>"></td>
+                        <td><?php echo $Titles->category_name; ?></td>
+                        <td align="center"><input type="checkbox" name="check[]"
+                                                  value="<?php echo $Titles->category_id; ?>"
+                                <?php echo pChecked($Titles->category_id, $aList) ?>>
+                        </td>
 
                     </tr>
                     <?php
+
                 }
+
                 ?>
             </table><p />
         </form>
@@ -113,6 +145,8 @@ case "ConfirmUpdate":
         echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
     }
     else{
+        $stmt = $dbh->prepare( "DELETE FROM product_category where product_id=$cId");
+        $stmt->execute();
 
         foreach($_POST["check"] as $change)
         {
@@ -173,3 +207,15 @@ if($stmt->execute())
     ?>
 </body>
 </html>
+<script>
+
+
+   /* document.getElementById('0').checked=true;*/
+
+
+
+
+
+
+
+</script>
