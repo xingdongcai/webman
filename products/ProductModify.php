@@ -10,6 +10,7 @@ ob_start();
     {
         window.location='ProductModify.php?productId=<?php echo $_GET["productId"]; ?>&Action=ConfirmDelete';
     }
+
 </script>
 <center><h3>Product Modification</h3></center>
 <?php
@@ -19,11 +20,11 @@ $dbh = new PDO($dsn,$UName,$PWord);
 $query="SELECT * FROM product  WHERE product_id =".$_GET["productId"];
 $sql="SELECT * FROM category";
 $stmt = $dbh->prepare($query);
-$stmtc = $dbh->prepare($sql);
+
 $stmt->execute();
-$stmtc->execute();
+
 $row=$stmt->fetchObject();
-$pId= $_GET["productId"];
+
 
 
 $strAction = $_GET["Action"];
@@ -63,9 +64,9 @@ case "Update":
                 <td><input type="submit" value="Update Product"></td>
                 <td><input type="button" value="Return to List" OnClick="window.location='index.php'"></td>
             </tr>
-        </table><!--
+        </table>
 
-/*
+        <?php
         $query="SELECT * FROM category ";
         $stmt = $dbh->prepare($query);
         $stmt->execute();
@@ -73,7 +74,7 @@ case "Update":
 
         /*$strAction = $_GET["Action"];*/
 
-        */?>
+        ?>
 
         <form method="post" action="ProductModify.php">
             <table border="1" cellpadding="5">
@@ -83,20 +84,20 @@ case "Update":
 
                 </tr>
                 <?php
-/*                while ($Titles= $stmt->fetchObject())
+                while ($Titles= $stmt->fetchObject())
                 {
-                    */?>
+                    ?>
                     <tr>
-                        <td><?php /*echo $Titles->category_name; */?></td>
-                        <td align="center"><input type="checkbox" name="check[]" value="<?php /*echo $Titles->category_id; */?>"></td>
+                        <td><?php echo $Titles->category_name;?></td>
+                        <td align="center"><input type="checkbox" name="check[]" value="<?php echo $Titles->category_id; ?>"></td>
 
                     </tr>
                     <?php
-/*                }
-                */?>
+                }
+                ?>
             </table><p />
             <center><input type="submit" value="Update Selected Titles"></center>
-        </form>-->
+        </form>
 
     </form>
     <?php
@@ -108,15 +109,8 @@ case "ConfirmUpdate":
 	            product_country_of_origin='$_POST[pco]'
                 WHERE product.product_id =".$_GET["productId"];
     $stmt = $dbh->prepare($query);
+    $cId=$_GET["productId"];
 
-
-   /*
-    foreach($_POST["check"] as $change)
-    {
-
-        $stmtc = $dbh->prepare( "INSERT INTO product_category( category_id,product_id) values (1,1)");
-        $stmtc->execute();
-    }*/
 
     if(!$stmt->execute()) {
         $err = $stmt->errorInfo();
@@ -124,15 +118,14 @@ case "ConfirmUpdate":
     }
     else{
 
-        $stmt = $dbh->prepare( "INSERT INTO product_category( product_id,category_id) values (1,4)");
-        $stmt->execute();
+        foreach($_POST["check"] as $change)
+        {
+
+            $stmt = $dbh->prepare( "INSERT INTO product_category( category_id,product_id) values ('$change','$cId')");
+            $stmt->execute();
+        }
 
     }
-
-
-
-
-
 
     header("Location: index.php");
 
