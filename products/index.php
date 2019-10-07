@@ -108,13 +108,14 @@ include("../templateTop.html")
 
     <script>
         $('#dataTable').dataTable( {
+            searching:false,
             "columns": [
                 null,
                 null,
                 null,
-                {"bSearchable": false},
-                { "orderable": false,"bSearchable": false },
-                { "orderable": false,"bSearchable": false }
+                null,
+                { "orderable": false },
+                { "orderable": false }
             ]
         } );
     </script>

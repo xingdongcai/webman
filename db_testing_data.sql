@@ -40,3 +40,5 @@ INSERT INTO product(product_name, product_purchase_price, product_sale_price, pr
 
 INSERT INTO project(project_desc, project_country, project_city) VALUES ('Sponsor a child','Australia','Melbourne');
 INSERT INTO project(project_desc, project_country, project_city) VALUES ('Volunteer in Education','Australia','Sydney');
+
+DELETE FROM product_image WHERE image_name = 'banana.png';
