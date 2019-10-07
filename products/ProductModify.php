@@ -1,10 +1,7 @@
 <?php
-ob_start();
+include("../loginCheck.php");
+include("../templateTop.html")
 ?>
-<html>
-<head><title></title></head>
-<link rel="stylesheet" type="text/css" href="style.css">
-<body>
 <script language="javascript">
     function confirm_delete()
     {
@@ -160,7 +157,7 @@ $stmt = $dbh->prepare($query);
 if($stmt->execute())
 {
 ?>
-<center>
+
     The following customer record has been successfully deleted<p/>
     <?php
     echo "Product No. $row->product_id $row->product_name";
