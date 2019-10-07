@@ -35,90 +35,109 @@ switch($strAction)
 {
 case "Update":
     ?>
-    <div class="container-fluid">
-        <form method="post" action="ProductModify.php?productId=<?php echo $_GET["productId"]; ?>&Action=ConfirmUpdate">
-            <center><h4>Product details amendment</h4><br /></center><p />
-            <table align="center" cellpadding="3">
-                <tr />
-                <td><b>Product. No.</b></td>
-                <td><?php echo $row->product_id; ?></td>
-                </tr>
-                <tr>
-                    <td><b>Product. Name</b></td>
-                    <td><input type="text" name="pname" size="30" value="<?php echo $row->product_name; ?>"></td>
-                </tr>
-                <tr>
-                    <td><b>Product. Purchse Price</b></td>
-                    <td><input type="number" name="ppp" size="30" value="<?php echo $row->product_purchase_price; ?>"></td>
-                </tr>
-                <tr>
-                    <td><b>Product. Sale Price</b></td>
-                    <td><input type="number" name="psp" size="40" value="<?php echo $row->product_sale_price; ?>"></td>
-                </tr>
-                <tr>
-                    <td><b>Product. Country of origin</b></td>
-                    <td><input type="text" name="pco" size="10" value="<?php echo $row->product_country_of_origin; ?>"></td>
-                </tr>
-
-            </table>
-            <br/>
-            <table align="center">
-                <tr>
-                    <td><input class="btn btn-primary" type="submit" value="Update Product"></td>
-                    <td><input class="btn btn-secondary" type="button" value="Return to List" OnClick="window.location='index.php'"></td>
-                </tr>
-            </table>
-
-            <?php
-            $query="SELECT * FROM category ";
-            $stmt = $dbh->prepare($query);
-            $stmt->execute();
-
-
-            $stmtI = $dbh->prepare("SELECT * FROM product_category where product_id=".$_GET["productId"]);
-            $stmtI->execute();
-            $aList=[];
-            while( $sql=$stmtI->fetchObject() ) {?>
-                <td><?php //echo $sql->category_id; ?></td><?php
-                array_push($aList,$sql->category_id);
-            }
-            function pChecked($v1,$list){
-                $pChecked="";
-                for($i=0;$i<sizeof($list);$i++)
-                {
-                    if($v1==$list[$i])
-                    {
-                        $pChecked="checked";
-                    }
-                }
-                return $pChecked;
-            }
-            ?>
-            <hr>
-            <form method="post" name="editForm" action="ProductModify.php">
-                <table  align="center" border="1" cellpadding="5">
-                    <tr>
-                        <th>CATEGORY</th>
-                        <th></th>
+    <div id="content-wrapper">
+        <div class="container-fluid">
+            <form method="post" action="ProductModify.php?productId=<?php echo $_GET["productId"]; ?>&Action=ConfirmUpdate">
+                <center><h4>Product details amendment</h4><br /></center><p />
+                <table align="center" cellpadding="3">
+                    <tr />
+                    <td><b>Product. No.</b></td>
+                    <td><?php echo $row->product_id; ?></td>
                     </tr>
-                    <?php
-                    while ($Titles = $stmt->fetchObject()) {
+                    <tr>
+                        <td><b>Product. Name</b></td>
+                        <td><input type="text" name="pname" size="30" value="<?php echo $row->product_name; ?>"></td>
+                    </tr>
+                    <tr>
+                        <td><b>Product. Purchse Price</b></td>
+                        <td><input type="number" name="ppp" size="30" value="<?php echo $row->product_purchase_price; ?>"></td>
+                    </tr>
+                    <tr>
+                        <td><b>Product. Sale Price</b></td>
+                        <td><input type="number" name="psp" size="40" value="<?php echo $row->product_sale_price; ?>"></td>
+                    </tr>
+                    <tr>
+                        <td><b>Product. Country of origin</b></td>
+                        <td><input type="text" name="pco" size="10" value="<?php echo $row->product_country_of_origin; ?>"></td>
+                    </tr>
+                    <tr>
+                        <td><b>Image</b></td>
+                        <?php
+                            $query="SELECT * FROM product_image WHERE product_id=".$row->product_id;
+                            $stmt = $dbh->prepare($query);
+                            $stmt->execute();
+                            while($rowImage = $stmt->fetch()){
+                                ?>
+                                <td><img src="/product_images/<?= $rowImage[2] ?>" style="width: 20%"/></td>
+                                <?php
+//                                echo "<td>$rowImage[2]</td>";
+//                                echo "";
+                            }
                         ?>
+
+                    </tr>
+
+                </table>
+                <br/>
+                <table align="center">
+                    <tr>
+                        <td><input class="btn btn-primary" type="submit" value="Update Product"></td>
+                        <td><input class="btn btn-secondary" type="button" value="Return to List" OnClick="window.location='index.php'"></td>
+                    </tr>
+                </table>
+
+                <?php
+                $query="SELECT * FROM category ";
+                $stmt = $dbh->prepare($query);
+                $stmt->execute();
+
+
+                $stmtI = $dbh->prepare("SELECT * FROM product_category where product_id=".$_GET["productId"]);
+                $stmtI->execute();
+                $aList=[];
+                while( $sql=$stmtI->fetchObject() ) {?>
+                    <td><?php //echo $sql->category_id; ?></td><?php
+                    array_push($aList,$sql->category_id);
+                }
+                function pChecked($v1,$list){
+                    $pChecked="";
+                    for($i=0;$i<sizeof($list);$i++)
+                    {
+                        if($v1==$list[$i])
+                        {
+                            $pChecked="checked";
+                        }
+                    }
+                    return $pChecked;
+                }
+                ?>
+                <hr>
+                <form method="post" name="editForm" action="ProductModify.php">
+                    <table  align="center" border="1" cellpadding="5">
                         <tr>
-                            <td><?php echo $Titles->category_name; ?></td>
-                            <td align="center"><input type="checkbox" name="check[]"
-                                                      value="<?php echo $Titles->category_id; ?>"
-                                    <?php echo pChecked($Titles->category_id, $aList) ?>>
-                            </td>
+                            <th>CATEGORY</th>
+                            <th></th>
                         </tr>
                         <?php
+                        while ($Titles = $stmt->fetchObject()) {
+                            ?>
+                            <tr>
+                                <td><?php echo $Titles->category_name; ?></td>
+                                <td align="center"><input type="checkbox" name="check[]"
+                                                          value="<?php echo $Titles->category_id; ?>"
+                                        <?php echo pChecked($Titles->category_id, $aList) ?>>
+                                </td>
+                            </tr>
+                            <?php
 
-                    }
-                    ?>
-                </table><p />
+                        }
+                        ?>
+                    </table><p />
+                </form>
+
             </form>
+        </div>
 
-        </form>
     </div>
     <?php
     break;
