@@ -1,17 +1,14 @@
 <?php
-ob_start();
+include("../loginCheck.php");
+include("../templateTop.html")
 ?>
-<html>
-<head><title></title></head>
-<link rel="stylesheet" type="text/css" href="style.css">
-<body>
+
 <script language="javascript">
     function confirm_delete()
     {
         window.location='ProjectModify.php?projectId=<?php echo $_GET["projectId"]; ?>&Action=ConfirmDelete';
     }
 </script>
-<center><h3>Project Modification</h3></center>
 <?php
 include("../connection.php");
 $dsn= "mysql:host=$Host;dbname=$DB";
@@ -27,35 +24,37 @@ switch($strAction)
 {
 case "Update":
     ?>
-    <form method="post" action="ProjectModify.php?projectId=<?php echo $_GET["projectId"]; ?>&Action=ConfirmUpdate">
-        <center>Project details amendment<br /></center><p />
-        <table align="center" cellpadding="3">
-            <tr />
-            <td><b>Project. No.</b></td>
-            <td><?php echo $row->project_id; ?></td>
-            </tr>
-            <tr>
-                <td><b>Project. Description</b></td>
-                <td><input type="text" name="pd" size="30" value="<?php echo $row->project_desc; ?>"></td>
-            </tr>
-            <tr>
-                <td><b>Project. country</b></td>
-                <td><input type="text" name="pc" size="30" value="<?php echo $row->project_country; ?>"></td>
-            </tr>
-            <tr>
-                <td><b>Project. city</b></td>
-                <td><input type="text" name="pct" size="40" value="<?php echo $row->project_city; ?>"></td>
-            </tr>
+    <div class="container">
+        <form method="post" action="ProjectModify.php?projectId=<?php echo $_GET["projectId"]; ?>&Action=ConfirmUpdate">
+            <center><h3>Project details amendment</h3><br /></center><p />
+            <table class="table table-bordered" align="center" cellpadding="3">
+                <tr />
+                <td><b>Project. No.</b></td>
+                <td><?php echo $row->project_id; ?></td>
+                </tr>
+                <tr>
+                    <td><b>Project. Description</b></td>
+                    <td><input class="border" type="text" name="pd" size="30" value="<?php echo $row->project_desc; ?>"></td>
+                </tr>
+                <tr>
+                    <td><b>Project. country</b></td>
+                    <td><input class="border" type="text" name="pc" size="30" value="<?php echo $row->project_country; ?>"></td>
+                </tr>
+                <tr>
+                    <td><b>Project. city</b></td>
+                    <td><input class="border" type="text" name="pct" size="40" value="<?php echo $row->project_city; ?>"></td>
+                </tr>
 
-        </table>
-        <br/>
-        <table align="center">
-            <tr>
-                <td><input type="submit" value="Update Project"></td>
-                <td><input type="button" value="Return to List" OnClick="window.location='index.php'"></td>
-            </tr>
-        </table>
-    </form>
+            </table>
+            <br/>
+            <table align="center">
+                <tr>
+                    <td><input class="btn btn-primary" type="submit" value="Update Project"></td>
+                    <td><input class="btn btn-secondary" type="button" value="Return to List" OnClick="window.location='index.php'"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
     <?php
     break;
 
@@ -73,24 +72,27 @@ case "ConfirmUpdate":
 
 case "Delete":
     ?>
-    <center>Confirm deletion of the following project record<br /></center><p />
-    <table align="center" cellpadding="3">
-        <tr/>
-        <td><b>Project. No.</b></td>
-        <td><?php echo $row->project_id; ?></td>
-        </tr>
-        <tr>
-            <td><b>Description</b></td>
-            <td><?php echo "$row->project_desc"; ?></td>
-        </tr>
-    </table>
-    <br/>
-    <table align="center">
-        <tr>
-            <td><input type="button" value="Confirm" OnClick="confirm_delete();">
-            <td><input type="button" value="Cancel" OnClick="window.location='index.php'"></td>
-        </tr>
-    </table>
+    <div class="container">
+        <center><h3>Confirm deletion of the following project record</h3><br /></center><p />
+        <table align="center" cellpadding="3">
+            <tr/>
+            <td><b>Project. No.</b></td>
+            <td><?php echo $row->project_id; ?></td>
+            </tr>
+            <tr>
+                <td><b>Description</b></td>
+                <td><?php echo "$row->project_desc"; ?></td>
+            </tr>
+        </table>
+        <br/>
+        <table align="center">
+            <tr>
+                <td><input class="btn btn-primary" type="button" value="Confirm" OnClick="confirm_delete();">
+                <td><input class="btn btn-secondary" type="button" value="Cancel" OnClick="window.location='index.php'"></td>
+            </tr>
+        </table>
+    </div>
+
     <?php
     break;
 
@@ -100,20 +102,24 @@ $stmt = $dbh->prepare($query);
 if($stmt->execute())
 {
 ?>
-<center>
-    The following project record has been successfully deleted<p/>
+<div class="container">
+    <h3 align="center">The following project record has been successfully deleted</h3><p/>
     <?php
-    echo "Project No. $row->project_id ";
+    echo "<center>Project No. $row->project_id ";
     echo "</center><p />";
     }
     else
     {
         echo "<center>Error deleting project record<p /></center>";
     }
-    echo "<center><input type='button' value='Return to List' OnClick='window.location=\"index.php\"'></center>";
+    echo "<center><input class='btn btn-secondary' type='button' value='Return to List' OnClick='window.location=\"index.php\"'></center>";
     break;
     }
     $stmt->closeCursor();
     ?>
-</body>
-</html>
+</div>
+
+
+<?php include("../displayPHP.php")   ?>
+<?php include("../templateBottom.html") ?>
+

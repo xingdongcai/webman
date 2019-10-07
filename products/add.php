@@ -1,52 +1,53 @@
-<html>
-<head>
-    <title>Add Product</title>
-</head>
-<body>
 <?php
+include("../loginCheck.php");
+include("../templateTop.html");
+
 if (empty($_POST["ppp"]))
 {
 ?>
+<div class="container">
+    <form method="POST"
+          action="add.php" enctype="multipart/form-data" name="addProductForm" onsubmit="return validateForm()">
+        <center><h3>Product details amendment</h3></center>
+        <table class="table table-bordered" align="center" cellpadding="3">
+            <tr>
+                <td><b>Product name</b></td>
+                <td><input class="border" type="text" name="pname" size="25" required>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Purchase price</b></td>
+                <td>$<input class="border" type="text" name="ppp" size="10" required>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Sale price</b></td>
+                <td>$<input class="border" type="text" name="psp" size="10" required></td>
+            </tr>
+            <tr>
+                <td><b>Country of origin</b></td>
+                <td><input class="border" type="text" name="pco" size="15" required></td>
+            </tr>
+            <tr>
+                <td><b>Product image</b></td>
+                <td><input class="border" type="file" size="50" name="image"></td>
+            </tr>
 
-<form method="POST"
-      action="add.php" enctype="multipart/form-data">
-    <center>Product details amendment</center>
-    <table align="center" cellpadding="3">
+        </table>
+        <br><br/>
+        <table align="center">
+            <tr>
+                <td><input class="btn btn-primary" type="submit"  value="Submit"></td>
+                <td><input class="btn btn-secondary" type="button"  value="Return to List"  OnClick="window.location='index.php'"></td>
+            </tr>
+        </table>
+    </form>
+    <?php include("../displayPHP.php")   ?>
+</div>
 
-        <tr>
-            <td><b>Product name</b></td>
-            <td><input type="text" name="pname" size="25" required>
-            </td>
-        </tr>
-        <tr>
-            <td><b>Purchase price</b></td>
-            <td><input type="text" name="ppp" size="25" required>
-            </td>
-        </tr>
-        <tr>
-            <td><b>Sale price</b></td>
-            <td><input type="text" name="psp" size="40"></td>
-        </tr>
-        <tr>
-            <td><b>Country of origin</b></td>
-            <td><input type="text" name="pco" size="10" ></td>
-        </tr>
-        <tr>
-            <td><b>Product image</b></td>
-            <td><input type="file" size="50" name="image"></td>
-        </tr>
 
-    </table>
-    <br><br/>
-    <table align="center">
-        <tr>
-            <td><input type="submit"  value="Submit"></td>
-            <td><input type="button"  value="Return to List"  OnClick="window.location='index.php'"></td>
-        </tr>
-    </table>
-</form>
-</body>
-</html>
+<?php include("../templateBottom.html") ?>
+
 <?php
 }else{
     include("../connection.php");
@@ -91,3 +92,20 @@ if (empty($_POST["ppp"]))
     }
 }
 ?>
+
+<script>
+    function validateForm() {
+        //It returns -1 if the argument passed a negative number.
+        var purchasePrice = document.forms["addProductForm"]["ppp"].value;
+        if ( Number(purchasePrice)<0) {
+            alert("Please Check Your Product Purchase Price.");
+            return false;
+        }
+
+        var salePrice = document.forms["addProductForm"]["psp"].value;
+        if (Number(salePrice) < 0 ) {
+            alert("Please Check Your Product Sale Price.");
+            return false;
+        }
+    }
+</script>

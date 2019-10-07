@@ -1,5 +1,4 @@
-
-
+<link href="../css/sb-admin.css" rel="stylesheet">
 <?php
 /**
  * Created by PhpStorm.
@@ -16,7 +15,7 @@ class CreatePDF
         // create new PDF document
         $pdf = new TCPDF('L', PDF_UNIT, PDF_PAGE_FORMAT, true);
         // set document header information. This appears at the top of each page of the PDF document
-        $pdf->SetHeaderData("Famox1.gif","20", "Famox Client List", '');
+        $pdf->SetHeaderData("Famox.png","50", "Client List", '');
 
         // set header and footer fonts
         $pdf->setHeaderFont(array('helvetica', '', 20));
@@ -33,7 +32,7 @@ class CreatePDF
 
         $pdf->Ln();
 
-        $table = '<table class=""     cellpadding="5" cellspacing="5" border="0">';
+        $table = '<table class="table-bordered" align="center" class="" cellpadding="5" cellspacing="5" border="0">';
         $table.='<tr bgcolor="#336888">';
         for($i = 0; $i < sizeof($header); ++$i)
         {
