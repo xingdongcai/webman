@@ -17,12 +17,12 @@ if (empty($_POST["ppp"]))
             </tr>
             <tr>
                 <td><b>Purchase price</b></td>
-                <td>$<input class="border" type="text" name="ppp" size="10" required>
+                <td>$<input class="border" type="number" name="ppp" size="10" required>
                 </td>
             </tr>
             <tr>
                 <td><b>Sale price</b></td>
-                <td>$<input class="border" type="text" name="psp" size="10" required></td>
+                <td>$<input class="border" type="number" name="psp" size="10" required></td>
             </tr>
             <tr>
                 <td><b>Country of origin</b></td>
@@ -55,6 +55,7 @@ if (empty($_POST["ppp"]))
     $dbh = new PDO($dsn,$UName,$PWord);
     $query = "INSERT INTO product (product_name, product_purchase_price, product_sale_price, product_country_of_origin)
                 VALUES ('$_POST[pname]','$_POST[ppp]', '$_POST[psp]', '$_POST[pco]')";
+    $stmt = $dbh->prepare($query);
 
     if(!$stmt->execute()) {
         $err = $stmt->errorInfo();
@@ -94,6 +95,7 @@ if (empty($_POST["ppp"]))
 ?>
 
 <script>
+    //JavaScript Validation
     function validateForm() {
         //It returns -1 if the argument passed a negative number.
         var purchasePrice = document.forms["addProductForm"]["ppp"].value;
