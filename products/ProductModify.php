@@ -93,7 +93,6 @@ case "Update":
                 }
                 ?>
             </table><p />
-            <center><input type="submit" value="Update Selected Titles"></center>
         </form>
 
     </form>
