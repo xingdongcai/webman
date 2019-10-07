@@ -25,14 +25,13 @@ include("../templateTop.html")
                     </ol>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <div class="input-group md-form form-sm form-1 pl-0">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text purple lighten-3" id="basic-text1">
-                                        <i class="fas fa-search text-white" aria-hidden="true"></i>
-                                    </span>
-                                </div>
-                                <input class="form-control my-0 py-1" type="text" placeholder="Search" aria-label="Search">
-                            </div>
+                            <!-- Search form -->
+                            <form class="form-inline active-purple-3 active-purple-4">
+                                <i class="fas fa-search" aria-hidden="true"></i>
+                                <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search"
+                                       aria-label="Search">
+                                <input class="btn  btn-primary" type="submit"  value="Search">
+                            </form>
 
                         </li>
                     </ol>
