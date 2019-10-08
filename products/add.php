@@ -30,7 +30,7 @@ if (empty($_POST["ppp"]))
             </tr>
             <tr>
                 <td><b>Product image</b></td>
-                <td><input class="border" type="file" size="50" name="image"></td>
+                <td><input class="border" type="file" size="50" name="images[]" multiple></td>
             </tr>
 
         </table>
@@ -61,34 +61,58 @@ if (empty($_POST["ppp"]))
         $err = $stmt->errorInfo();
         echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
     }else{
-        $imageName = $_FILES["image"]["name"];
-        $imageDir = "../product_images/".$_FILES["image"]["name"];
-        if(1===2)
-        {
-            echo "ERROR: You may only upload .jpg or .gif or .png files";
-        }else{
-            if(!move_uploaded_file($_FILES["image"]["tmp_name"],$imageDir))
-            {
+        $stmt = $dbh->prepare("SELECT LAST_INSERT_ID() INTO @lastID");
+        $stmt->execute();
+        $allowTypes = array('jpg','png','jpeg','gif');
+        $targetDir = "../product_images/";
+        if(!empty(array_filter($_FILES['images']['name']))){
+            foreach ($_FILES['images']['name'] as $key=>$val){
+                $fileName = basename($_FILES['images']['name'][$key]);
+                $targetFilePath = $targetDir . $fileName;
+                $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+                if(in_array($fileType, $allowTypes)){
+                    if(!move_uploaded_file($_FILES["images"]["tmp_name"][$key], $targetFilePath)){
+                        echo "ERROR: Could Not Move File: $fileName into Directory";
+                    }else{
 
-                echo "ERROR: Could Not Move File into Directory";
-            }else{
-                $queryImage = "INSERT INTO product_image (product_id, image_name)
-                VALUES (last_insert_id(),'$imageName')";
-                $stmt = $dbh->prepare($queryImage);
-                if(!$stmt->execute()){
-                    $err = $stmt->errorInfo();
-                    echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
-                }else{
-                    ?>
-                    <script language="JavaScript">
-                        alert("Product record successfully added");
-                    </script>
-                    <?php
-                    header("Location: index.php");
+                        $queryImage = "INSERT INTO product_image (product_id, image_name) 
+                                        VALUES (@lastID,'$fileName')";
+                        $stmt = $dbh->prepare($queryImage);
+                        if(!$stmt->execute()){
+                            $err = $stmt->errorInfo();
+                            echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+                        }else{
+                            header("Location: index.php");
+                        }
+                    }
                 }
-
             }
         }
+//        $imageName = $_FILES["image"]["name"];
+//        $imageDir = "../product_images/".$_FILES["image"]["name"];
+//        $allowTypes = array('jpg','png','jpeg','gif');
+//        $fileType = pathinfo($imageDir,PATHINFO_EXTENSION);
+//        if(!in_array($fileType,$allowTypes))
+//        {
+//            echo "ERROR: You may only upload .jpg or .gif or .png files";
+//        }else{
+//            if(!move_uploaded_file($_FILES["image"]["tmp_name"],$imageDir))
+//            {
+//
+//                echo "ERROR: Could Not Move File into Directory";
+//            }else{
+//                $queryImage = "INSERT INTO product_image (product_id, image_name)
+//                VALUES (last_insert_id(),'$imageName')";
+//                $stmt = $dbh->prepare($queryImage);
+//                if(!$stmt->execute()){
+//                    $err = $stmt->errorInfo();
+//                    echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+//                }else{
+//                    header("Location: index.php");
+//                }
+//
+//            }
+//        }
 
     }
 }
