@@ -7,10 +7,7 @@ $dsn = "mysql:host=$Host;dbname=$DB;";
 $dbh = new PDO($dsn, $UName, $PWord);
 $result=$_GET["key"];
 
-$query_rs= "SELECT * FROM category WHERE category_name LIKE '%$result%'";
 
-$rs=$dbh->prepare($query_rs) ;
-$rs->execute();
 
 /*while($totalRows_rs = $rs->fetchObject()){
     */?><!--
@@ -22,12 +19,20 @@ $rs->execute();
     --><?php
 /*
 }*/
-$stmt = $dbh->prepare("drop table searchtable;");
-$stmt->execute();
-$stmt = $dbh->prepare("CREATE TABLE searchTable AS SELECT * FROM category WHERE category_name LIKE '%$result%'");
-$stmt->execute();
-$stmt = $dbh->prepare("SELECT pc.product_id,product_name,product_purchase_price,product_sale_price,product_country_of_origin FROM product inner join product_category pc on product.product_id = pc.product_id inner join searchtable s on pc.category_id = s.category_id");
-$stmt->execute();
+if(empty($_GET["key"])){
+    $stmt = $dbh->prepare("SELECT * FROM product");
+            $stmt->execute();
+}
+else{
+    $stmt = $dbh->prepare("drop table searchtable;");
+    $stmt->execute();
+    $stmt = $dbh->prepare("CREATE TABLE searchTable AS SELECT * FROM category WHERE category_name LIKE '%$result%'");
+    $stmt->execute();
+    $stmt = $dbh->prepare("SELECT pc.product_id,product_name,product_purchase_price,product_sale_price,product_country_of_origin FROM product inner join product_category pc on product.product_id = pc.product_id inner join searchtable s on pc.category_id = s.category_id");
+    $stmt->execute();
+
+}
+
 
 ?>
 <div id="content-wrapper">
