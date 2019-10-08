@@ -69,7 +69,7 @@ case "Update":
                             while($rowImage = $stmt->fetch()){
                                 ?>
                                 <td><b>Image</b></td>
-                                <td><img src="/product_images/<?= $rowImage[2] ?>" style="width: 20%"/></td>
+                                <td><img src="../product_images/<?= $rowImage[2] ?>" style="width: 20%"/></td>
                                 <?php
 //                                echo "<td>$rowImage[2]</td>";
 //                                echo "";
