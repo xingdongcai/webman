@@ -82,7 +82,7 @@ case "Update":
                 <table align="center">
                     <tr>
                         <td><input class="btn btn-primary" type="submit" value="Update Product"></td>
-                        <td><input class="btn btn-secondary" type="button" value="Return to List" OnClick="window.location='index.php'"></td>
+                        <td><input class="btn btn-secondary" type="button" value="Return to List" OnClick="window.location='index.php?key='"></td>
                     </tr>
                 </table>
 
@@ -168,7 +168,7 @@ case "ConfirmUpdate":
 
     }
 
-    header("Location: index.php");
+    header("Location: index.php?key=");
 
     break;
 
@@ -190,7 +190,7 @@ case "Delete":
         <table align="center">
             <tr>
                 <td><input type="button" class="btn btn-primary" value="Confirm" OnClick="confirm_delete();">
-                <td><input type="button" class="btn btn-secondary" value="Cancel" OnClick="window.location='index.php'"></td>
+                <td><input type="button" class="btn btn-secondary" value="Cancel" OnClick="window.location='index.php?key='"></td>
             </tr>
         </table>
     </div>
@@ -236,7 +236,7 @@ if($stmt->execute())
         } else {
             echo "<center>Error deleting product record<p /></center>";
         }
-        echo "<center><input type='button' value='Return to List' OnClick='window.location=\"index.php\"'></center>";
+        echo "<center><input type='button' value='Return to List' OnClick='window.location=\"index.php?key=\"'></center>";
         break;
         }
         ?>

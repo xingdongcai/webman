@@ -38,7 +38,7 @@ if (empty($_POST["ppp"]))
         <table align="center">
             <tr>
                 <td><input class="btn btn-primary" type="submit"  value="Submit"></td>
-                <td><input class="btn btn-secondary" type="button"  value="Return to List"  OnClick="window.location='index.php'"></td>
+                <td><input class="btn btn-secondary" type="button"  value="Return to List"  OnClick="window.location='index.php?key='"></td>
             </tr>
         </table>
     </form>
@@ -82,7 +82,7 @@ if (empty($_POST["ppp"]))
                             $err = $stmt->errorInfo();
                             echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
                         }else{
-                            header("Location: index.php");
+                            header("Location: index.php?key=");
                         }
                     }
                 }

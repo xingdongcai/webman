@@ -62,7 +62,7 @@ if(empty($_POST["check"]))
                 $stmt = $dbh->prepare("UPDATE product set product_sale_price = $_POST[$change] where product_id='$change'");
                 $stmt->execute();
             }
-            header("Location: index.php");
+            header("Location: index.php?key=");
         }
         $stmt->closeCursor();
 

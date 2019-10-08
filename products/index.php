@@ -67,7 +67,7 @@ else{
         <!-- DataTables -->
 
         <div class="card mb-3">
-            <form method="post" action="index.php">
+            <form method="post" action="index.php?key=">
                 <div class="card-header">
                     <i class="fas fa-table"></i>
                     Product Table
