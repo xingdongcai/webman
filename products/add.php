@@ -18,12 +18,12 @@ if (empty($_POST["ppp"]))
                     </tr>
                     <tr>
                         <td><b>Purchase price</b></td>
-                        <td>$<input class="border" type="number" name="ppp" size="10" required>
+                        <td>$<input class="border" type="text" name="ppp" size="10" required>
                         </td>
                     </tr>
                     <tr>
                         <td><b>Sale price</b></td>
-                        <td>$<input class="border" type="number" name="psp" size="10" required></td>
+                        <td>$<input class="border" type="text" name="psp" size="10" required></td>
                     </tr>
                     <tr>
                         <td><b>Country of origin</b></td>
@@ -148,15 +148,26 @@ if (empty($_POST["ppp"]))
 <script>
     //JavaScript Validation
     function validateForm() {
+        var productName = document.forms["addProductForm"]["pname"].value;
+        if(!/^[a-zA-Z]+$/.test(productName)){
+            alert("Please Check Your Product Name. Do not include special characters");
+            return false;
+        }
+
+        var country = document.forms["addProductForm"]["pco"].value;
+        if(!/^[a-zA-Z]+$/.test(country)){
+            alert("Please Check Product Country Name. Do not include special characters")
+        }
+
         //It returns -1 if the argument passed a negative number.
         var purchasePrice = document.forms["addProductForm"]["ppp"].value;
-        if ( Number(purchasePrice)<0) {
+        if ( Number(purchasePrice)<0 || purchasePrice.length>10 || isNaN(purchasePrice)) {
             alert("Please Check Your Product Purchase Price.");
             return false;
         }
 
         var salePrice = document.forms["addProductForm"]["psp"].value;
-        if (Number(salePrice) < 0 ) {
+        if (Number(salePrice) < 0 || salePrice.length>10 || isNaN(salePrice)) {
             alert("Please Check Your Product Sale Price.");
             return false;
         }

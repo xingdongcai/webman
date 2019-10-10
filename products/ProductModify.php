@@ -2,33 +2,7 @@
 include("../loginCheck.php");
 include("../templateTop.html")
 ?>
-<script language="javascript">
-    function confirm_delete()
-    {
-        window.location='ProductModify.php?productId=<?php echo $_GET["productId"]; ?>&Action=ConfirmDelete';
-    }
-    function check(id,check) {
-        if (check) {
-            $('.' +id).find('input[type="checkbox"]').prop('checked', true);
-        }
-        else { $('.' +id).find('input[type="checkbox"]').removeAttr('checked'); }
-    }
-    //JavaScript Validation
-    function validateForm() {
-        //It returns -1 if the argument passed a negative number.
-        var purchasePrice = document.forms["editProductForm"]["ppp"].value;
-        if ( Number(purchasePrice)<0) {
-            alert("Please Check Your Product Purchase Price. Unaccepted negative number.");
-            return false;
-        }
 
-        var salePrice = document.forms["editProductForm"]["psp"].value;
-        if (Number(salePrice) < 0 ) {
-            alert("Please Check Your Product Sale Price.Unaccepted negative number.");
-            return false;
-        }
-    }
-</script>
 <?php
 include("../connection.php");
 $dsn= "mysql:host=$Host;dbname=$DB";
@@ -182,7 +156,7 @@ case "ConfirmUpdate":
 
     if(!$stmt->execute()) {
         $err = $stmt->errorInfo();
-        echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+        echo "Error update record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
     }
     else{
         $stmt = $dbh->prepare( "DELETE FROM product_category where product_id=$cId");
@@ -345,4 +319,30 @@ else if($stmt->execute())
 
 <?php include("../displayPHP.php")   ?>
 <?php include('../templateBottom.html'); ?>
+<script>
+    function confirm_delete()
+    {
+        window.location='ProductModify.php?productId=<?php echo $_GET["productId"]; ?>&Action=ConfirmDelete';
+    }
+    function check(id,check) {
+        if (check) {
+            $('.' +id).find('input[type="checkbox"]').prop('checked', true);
+        }
+        else { $('.' +id).find('input[type="checkbox"]').removeAttr('checked'); }
+    }
+    //JavaScript Validation
+    function validateForm() {
+        //It returns -1 if the argument passed a negative number.
+        var purchasePrice = document.forms["editProductForm"]["ppp"].value;
+        if ( Number(purchasePrice)<0 || purchasePrice.toString().length>11) {
+            alert("Please Check Your Product Purchase Price. Unaccepted number.");
+            return false;
+        }
 
+        var salePrice = document.forms["editProductForm"]["psp"].value;
+        if (Number(salePrice) < 0 || purchasePrice.toString().length>11) {
+            alert("Please Check Your Product Sale Price.Unaccepted number.");
+            return false;
+        }
+    }
+</script>
