@@ -161,12 +161,15 @@ case "ConfirmUpdate":
     else{
         $stmt = $dbh->prepare( "DELETE FROM product_category where product_id=$cId");
         $stmt->execute();
-
-        foreach($_POST["check"] as $change)
-        {
-            $stmt = $dbh->prepare( "INSERT INTO product_category( category_id,product_id) values ('$change','$cId')");
-            $stmt->execute();
+        if(!empty($_POST['check'])){
+            foreach($_POST["check"] as $change)
+            {
+                $stmt = $dbh->prepare( "INSERT INTO product_category( category_id,product_id) values ('$change','$cId')");
+                $stmt->execute();
+            }
         }
+
+
     }
 
     if(!empty($_POST['images'])){
@@ -222,7 +225,7 @@ case "ConfirmUpdate":
     }
 
 
-    //header("Location: index.php?key=");
+    header("Location: index.php?key=");
 
     break;
 
