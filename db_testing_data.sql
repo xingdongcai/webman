@@ -42,3 +42,5 @@ INSERT INTO project(project_desc, project_country, project_city) VALUES ('Sponso
 INSERT INTO project(project_desc, project_country, project_city) VALUES ('Volunteer in Education','Australia','Sydney');
 
 DELETE FROM product_image WHERE image_name = 'banana.png';
+
+SELECT image_name FROM product_image WHERE product_id=59;

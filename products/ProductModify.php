@@ -37,7 +37,7 @@ case "Update":
     ?>
     <div id="content-wrapper">
         <div class="container-fluid">
-            <form method="post" action="ProductModify.php?productId=<?php echo $_GET["productId"]; ?>&Action=ConfirmUpdate">
+            <form method="post" enctype="multipart/form-data" action="ProductModify.php?productId=<?php echo $_GET["productId"]; ?>&Action=ConfirmUpdate">
                 <center><h4>Product details amendment</h4><br /></center><p />
                 <table align="center" cellpadding="3">
                     <tr />
@@ -61,20 +61,24 @@ case "Update":
                         <td><input type="text" name="pco" size="10" value="<?php echo $row->product_country_of_origin; ?>"></td>
                     </tr>
                     <tr>
-                        <td><b>Image</b></td>
+
                         <?php
                             $query="SELECT * FROM product_image WHERE product_id=".$row->product_id;
                             $stmt = $dbh->prepare($query);
                             $stmt->execute();
                             while($rowImage = $stmt->fetch()){
                                 ?>
-                                <td><img src="/product_images/<?= $rowImage[2] ?>" style="width: 20%"/></td>
+                                <td><b>Image</b></td>
+                                <td><img src="../product_images/<?= $rowImage[2] ?>" style="width: 20%"/></td>
                                 <?php
 //                                echo "<td>$rowImage[2]</td>";
 //                                echo "";
                             }
                         ?>
-
+                    </tr>
+                    <tr>
+                        <td><b>Update image</b></td>
+                        <td><input class="border" type="file" size="50" name="images[]" multiple></td>
                     </tr>
 
                 </table>
@@ -150,7 +154,6 @@ case "ConfirmUpdate":
     $stmt = $dbh->prepare($query);
     $cId=$_GET["productId"];
 
-
     if(!$stmt->execute()) {
         $err = $stmt->errorInfo();
         echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
@@ -161,14 +164,65 @@ case "ConfirmUpdate":
 
         foreach($_POST["check"] as $change)
         {
-
             $stmt = $dbh->prepare( "INSERT INTO product_category( category_id,product_id) values ('$change','$cId')");
             $stmt->execute();
         }
-
     }
 
-    header("Location: index.php?key=");
+    if(1==1){
+        //delete related images
+        $sql="SELECT * FROM product_image WHERE product_id=".$cId;
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute();
+
+        $targetDir = "../product_images/";
+        while($rowDeleteImg = $stmt->fetch()){
+            echo "<h1>$rowDeleteImg[2]</h1>";
+            $targetFilePath = $targetDir.$rowDeleteImg[2];
+            if(unlink($targetFilePath))
+            {
+                $sql="DELETE FROM product_image WHERE product_id=".$_GET["productId"];
+                $stmt = $dbh->prepare($sql);
+                if(!$stmt->execute()) {
+                    $err = $stmt->errorInfo();
+                    echo "<h4 align='center'>Error deleting record to database – contact System Administrator Error is:</h4> <b><h5 align='center'>" . $err[2] . "</h5></b>";
+                }
+                else {
+                    echo "<center>Image File has been deleted<br></center>";
+                }
+            }else{
+                echo "ERROR: Can't Delete Image File.$rowDeleteImg";
+            }
+        }
+
+        //insert new images
+        $allowTypes = array('jpg','png','jpeg','gif');
+
+        foreach ($_FILES['images']['name'] as $key=>$val){
+            $fileName = basename($_FILES['images']['name'][$key]);
+            $targetFilePath = $targetDir . $fileName;
+            $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+            if(in_array($fileType, $allowTypes)){
+                if(!move_uploaded_file($_FILES["images"]["tmp_name"][$key], $targetFilePath)){
+                    echo "ERROR: Could Not Move File: $fileName into Directory";
+                }else{
+
+                    $queryImage = "INSERT INTO product_image (product_id, image_name) 
+                                        VALUES ('$cId','$fileName')";
+                    $stmt = $dbh->prepare($queryImage);
+                    if(!$stmt->execute()){
+                        $err = $stmt->errorInfo();
+                        echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+                    }else{
+                        header("Location: index.php?key=");
+                    }
+                }
+            }
+        }
+    }
+
+
+    //header("Location: index.php?key=");
 
     break;
 
