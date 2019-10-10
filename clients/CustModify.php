@@ -172,7 +172,10 @@ if($stmt->execute())
         }
         else
         {
-            echo "<center>Error deleting customer record<p /></center>";
+            $err = $stmt->errorInfo();
+            echo "Error delete record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+            $stmt->execute();
+
         }
         echo "<center><input class='btn btn-secondary' type='button' value='Return to List' OnClick='window.location=\"index.php\"'></center>";
         break;

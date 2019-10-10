@@ -223,7 +223,7 @@ case "ConfirmUpdate":
                     $stmt = $dbh->prepare($queryImage);
                     if(!$stmt->execute()){
                         $err = $stmt->errorInfo();
-                        echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+                        echo "Error insert record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
                     }else{
                         header("Location: index.php?key=");
                     }
