@@ -179,15 +179,11 @@ case "ConfirmUpdate":
 
     if(!isset($_POST['images']['name'])){
         //delete related images
-        $queryImageFile="SELECT * FROM product_image WHERE product_id=".$_GET["productId"];
-        $stmtImageFile = $dbh->prepare($queryImageFile);
-        if($stmtImageFile->execute()){
-            while ($image_row = $stmtImageFile->fetch()){
-                unlink($image_row[2]);
-            }
-        }else{
-            echo "<h4 align='center'>Error deleting record to database – contact System Administrator Error is:</h4> <b><h5 align='center'>" . $err[2] . "</h5></b>";
-
+        $sql="SELECT * FROM product_image WHERE product_id=".$cId;
+        $stmt = $dbh->prepare($sql);
+        if(!$stmt->execute()){
+            $err = $stmt->errorInfo();
+            echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
         }
 
         $targetDir = "../product_images/";
@@ -275,6 +271,17 @@ $BaseDir = '../product_images/';
 $images_path = realpath($BaseDir);
 $old = getcwd(); // Save the current directory
 chdir($images_path);
+
+$queryImageFile="SELECT * FROM product_image WHERE product_id=".$_GET["productId"];
+$stmtImageFile = $dbh->prepare($queryImageFile);
+if($stmtImageFile->execute()){
+    while ($image_row = $stmtImageFile->fetch()){
+        unlink($image_row[2]);
+    }
+}else{
+    echo "Error select record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+}
+
 
 $queryImage="DELETE FROM product_image WHERE product_id =".$_GET["productId"];
 $stmtImage = $dbh->prepare($queryImage);
