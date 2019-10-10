@@ -23,7 +23,10 @@ $query="SELECT * FROM product  WHERE product_id =".$_GET["productId"];
 $sql="SELECT * FROM category";
 $stmt = $dbh->prepare($query);
 
-$stmt->execute();
+if(!$stmt->execute()){
+    $err = $stmt->errorInfo();
+    echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+}
 
 $row=$stmt->fetchObject();
 
@@ -65,7 +68,10 @@ case "Update":
                         <?php
                             $query="SELECT * FROM product_image WHERE product_id=".$row->product_id;
                             $stmt = $dbh->prepare($query);
-                            $stmt->execute();
+                        if(!$stmt->execute()){
+                            $err = $stmt->errorInfo();
+                            echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+                        }
                             while($rowImage = $stmt->fetch()){
                                 ?>
                                 <td><b>Image</b></td>
@@ -93,11 +99,17 @@ case "Update":
                 <?php
                 $query="SELECT * FROM category ";
                 $stmt = $dbh->prepare($query);
-                $stmt->execute();
+                if(!$stmt->execute()){
+                    $err = $stmt->errorInfo();
+                    echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+                }
 
 
                 $stmtI = $dbh->prepare("SELECT * FROM product_category where product_id=".$_GET["productId"]);
-                $stmtI->execute();
+                if(!$stmt->execute()){
+                    $err = $stmt->errorInfo();
+                    echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+                }
                 $aList=[];
                 while( $sql=$stmtI->fetchObject() ) {?>
                     <td><?php //echo $sql->category_id; ?></td><?php
@@ -165,7 +177,10 @@ case "ConfirmUpdate":
             foreach($_POST["check"] as $change)
             {
                 $stmt = $dbh->prepare( "INSERT INTO product_category( category_id,product_id) values ('$change','$cId')");
-                $stmt->execute();
+                if(!$stmt->execute()){
+                    $err = $stmt->errorInfo();
+                    echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+                }
             }
         }
 
