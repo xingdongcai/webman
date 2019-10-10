@@ -179,11 +179,15 @@ case "ConfirmUpdate":
 
     if(!isset($_POST['images']['name'])){
         //delete related images
-        $sql="SELECT * FROM product_image WHERE product_id=".$cId;
-        $stmt = $dbh->prepare($sql);
-        if(!$stmt->execute()){
-            $err = $stmt->errorInfo();
-            echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+        $queryImageFile="SELECT * FROM product_image WHERE product_id=".$_GET["productId"];
+        $stmtImageFile = $dbh->prepare($queryImageFile);
+        if($stmtImageFile->execute()){
+            while ($image_row = $stmtImageFile->fetch()){
+                unlink($image_row[2]);
+            }
+        }else{
+            echo "<h4 align='center'>Error deleting record to database – contact System Administrator Error is:</h4> <b><h5 align='center'>" . $err[2] . "</h5></b>";
+
         }
 
         $targetDir = "../product_images/";
@@ -279,6 +283,7 @@ if(!$stmtImage->execute()){
     echo "Error delete record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
 }
 else{
+
     echo "<br><h5 align='center'>Successfully delete related images.</h5>";
 }
 
