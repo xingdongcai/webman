@@ -99,6 +99,8 @@ include("../templateTop.html");
                         }
                     }
                 }
+                echo  "<br><div><button  href='email.php'>Back to mail box</button></div>";
+
 
 
 
