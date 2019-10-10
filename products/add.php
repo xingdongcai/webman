@@ -157,6 +157,7 @@ if (empty($_POST["ppp"]))
         let country = document.forms["addProductForm"]["pco"].value;
         if(!/^[a-zA-Z]+$/.test(country)){
             alert("Please Check Product Country Name. Do not include special characters")
+            return false;
         }
 
         //It returns -1 if the argument passed a negative number.
