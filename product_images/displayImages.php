@@ -58,16 +58,16 @@ if(empty($_POST["delete"]))
                 //            }
                 //            ?>
                 <!--        </div>-->
-                <div class="card mb-3">
+                <div class="row">
                     <?php
                     while($file = readdir($dir))
                     {
                         if(fnmatch("*.jpg",$file)|| fnmatch("*.png",$file)){
                             ?>
-                            <div class="card-body">
-                                <div class="table-responsive">
+                            <div class="col-md-3">
+                                <div class="thumbnail">
                                     <!--                            --><?php //echo $file ?>
-                                    <?php echo '<img src="'.$file.'" style="width: 20%"/><br/>' ;?>
+                                    <?php echo '<img src="'.$file.'" style="width: 80%"/><br/>' ;?>
                                     <div class="form-check">
                                         <label class="form-check-label">
                                             <input type="checkbox" class="form-check-input" name="delete[]" value="<?= $file ?>">

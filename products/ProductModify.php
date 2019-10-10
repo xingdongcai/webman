@@ -13,7 +13,21 @@ include("../templateTop.html")
         }
         else { $('.' +id).find('input[type="checkbox"]').removeAttr('checked'); }
     }
+    //JavaScript Validation
+    function validateForm() {
+        //It returns -1 if the argument passed a negative number.
+        var purchasePrice = document.forms["editProductForm"]["ppp"].value;
+        if ( Number(purchasePrice)<0) {
+            alert("Please Check Your Product Purchase Price. Unaccepted negative number.");
+            return false;
+        }
 
+        var salePrice = document.forms["editProductForm"]["psp"].value;
+        if (Number(salePrice) < 0 ) {
+            alert("Please Check Your Product Sale Price.Unaccepted negative number.");
+            return false;
+        }
+    }
 </script>
 <?php
 include("../connection.php");
@@ -40,7 +54,7 @@ case "Update":
     ?>
     <div id="content-wrapper">
         <div class="container-fluid">
-            <form method="post" enctype="multipart/form-data" action="ProductModify.php?productId=<?php echo $_GET["productId"]; ?>&Action=ConfirmUpdate">
+            <form method="post" enctype="multipart/form-data" name="editProductForm" onsubmit="return validateForm()"  action="ProductModify.php?productId=<?php echo $_GET["productId"]; ?>&Action=ConfirmUpdate">
                 <center><h4>Product details amendment</h4><br /></center><p />
                 <table align="center" cellpadding="3">
                     <tr />
@@ -61,7 +75,7 @@ case "Update":
                     </tr>
                     <tr>
                         <td><b>Product. Country of origin</b></td>
-                        <td><input type="text" name="pco" size="10" value="<?php echo $row->product_country_of_origin; ?>"></td>
+                        <td><input type="text" pattern="[a-zA-Z]*" name="pco" size="10" value="<?php echo $row->product_country_of_origin; ?>"></td>
                     </tr>
                     <tr>
 
@@ -91,7 +105,7 @@ case "Update":
                 <br/>
                 <table align="center">
                     <tr>
-                        <td><input class="btn btn-primary" type="submit" value="Update Product"></td>
+                        <td><input class="btn btn-primary" type="submit" value="Update Product" ></td>
                         <td><input class="btn btn-secondary" type="button" value="Return to List" OnClick="window.location='index.php?key='"></td>
                     </tr>
                 </table>
