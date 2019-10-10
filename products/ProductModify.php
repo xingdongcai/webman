@@ -317,7 +317,13 @@ if($stmtImageFile->execute()){
 }
 chdir($old); // Restore the old working directory
 
-
+$query="DELETE FROM product_category WHERE product_id =".$_GET["productId"];
+$stmt = $dbh->prepare($query);
+if(!$stmt->execute()) {
+    $err = $stmt->errorInfo();
+    echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+    $stmt->execute();
+}
 $query="DELETE FROM product WHERE product_id =".$_GET["productId"];
 $stmt = $dbh->prepare($query);
 if(!$stmt->execute()) {

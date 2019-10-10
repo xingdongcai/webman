@@ -1,101 +1,83 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Page Title</title>
-</head>
-<body>
+<h>SQL statement</h><br><br>
+<font face="Courier New" size="2">
 
-<h1>SQL CREATE Tables</h1>
-<p>
-    drop table PRODUCT_CATEGORY;
-    drop table PRODUCT_IMAGE;
-    drop table CLIENT;
-    drop table CATEGORY;
-    drop table PRODUCT;
-    drop table PROJECT;
-    drop table ADMIN;
+    <font color = "blue">DROP</font>&nbsp;<font color = "blue">TABLE</font>&nbsp;<font color = "maroon">product_category</font><font color = "silver">;</font>
+    <br/>
+    <br/><font color = "blue">DROP</font>&nbsp;<font color = "blue">TABLE</font>&nbsp;<font color = "maroon">product_image</font><font color = "silver">;</font>
+    <br/>
+    <br/><font color = "blue">DROP</font>&nbsp;<font color = "blue">TABLE</font>&nbsp;<font color = "maroon">client</font><font color = "silver">;</font>
+    <br/>
+    <br/><font color = "blue">DROP</font>&nbsp;<font color = "blue">TABLE</font>&nbsp;<font color = "maroon">category</font><font color = "silver">;</font>
+    <br/>
+    <br/><font color = "blue">DROP</font>&nbsp;<font color = "blue">TABLE</font>&nbsp;<font color = "maroon">product</font><font color = "silver">;</font>
+    <br/>
+    <br/><font color = "blue">DROP</font>&nbsp;<font color = "blue">TABLE</font>&nbsp;<font color = "maroon">project</font><font color = "silver">;</font>
+    <br/>
+    <br/><font color = "blue">DROP</font>&nbsp;<font color = "blue">TABLE</font>&nbsp;<font color = "maroon">admin</font><font color = "silver">;</font>
+    <br/>
+    <br/><font color = "blue">CREATE</font>&nbsp;<font color = "blue">TABLE</font>&nbsp;<font color = "maroon">client</font>
+    <br/>&nbsp;&nbsp;<font color = "maroon">(</font>
+    <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "maroon">client_id</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "black"><i>INT</i></font>&nbsp;<font color = "maroon">auto_increment</font>&nbsp;<font color = "blue">PRIMARY</font>&nbsp;<font color = "blue">KEY</font><font color = "silver">,</font>
+    <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "maroon">client_gname</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "black"><i>VARCHAR</i></font><font color = "maroon">(</font><font color = "black">50</font><font color = "maroon">)</font>&nbsp;<font color = "blue">NOT</font>&nbsp;<font color = "blue">NULL</font><font color = "silver">,</font>
+    <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "maroon">client_fname</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "black"><i>VARCHAR</i></font><font color = "maroon">(</font><font color = "black">50</font><font color = "maroon">)</font>&nbsp;<font color = "blue">NOT</font>&nbsp;<font color = "blue">NULL</font><font color = "silver">,</font>
+    <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "maroon">client_street</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "black"><i>CHAR</i></font><font color = "maroon">(</font><font color = "black">100</font><font color = "maroon">)</font>&nbsp;<font color = "blue">NULL</font><font color = "silver">,</font>
+    <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "maroon">client_suburb</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "black"><i>VARCHAR</i></font><font color = "maroon">(</font><font color = "black">50</font><font color = "maroon">)</font>&nbsp;<font color = "blue">NULL</font><font color = "silver">,</font>
+    <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "maroon">client_state</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "black"><i>VARCHAR</i></font><font color = "maroon">(</font><font color = "black">20</font><font color = "maroon">)</font>&nbsp;<font color = "blue">NULL</font><font color = "silver">,</font>
+    <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "maroon">client_pc</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "black"><i>VARCHAR</i></font><font color = "maroon">(</font><font color = "black">4</font><font color = "maroon">)</font>&nbsp;<font color = "blue">NULL</font><font color = "silver">,</font>
+    <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "maroon">client_email</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "black"><i>VARCHAR</i></font><font color = "maroon">(</font><font color = "black">50</font><font color = "maroon">)</font>&nbsp;<font color = "blue">NULL</font><font color = "silver">,</font>
+    <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "maroon">client_mobile</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "black"><i>VARCHAR</i></font><font color = "maroon">(</font><font color = "black">12</font><font color = "maroon">)</font>&nbsp;<font color = "blue">NULL</font><font color = "silver">,</font>
+    <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "maroon">client_mailinglist</font>&nbsp;<font color = "black"><i>TINYINT</i></font><font color = "maroon">(</font><font color = "black">1</font><font color = "maroon">)</font>&nbsp;<font color = "blue">NULL</font>
+    <br/>&nbsp;&nbsp;<font color = "maroon">)</font><font color = "silver">;</font>
+    <br/>
+    <br/><font color = "blue">CREATE</font>&nbsp;<font color = "blue">TABLE</font>&nbsp;<font color = "maroon">category</font>
+    <br/>&nbsp;&nbsp;<font color = "maroon">(</font>
+    <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "maroon">category_id</font>&nbsp;&nbsp;&nbsp;<font color = "black"><i>INT</i></font>&nbsp;<font color = "maroon">auto_increment</font>&nbsp;<font color = "blue">PRIMARY</font>&nbsp;<font color = "blue">KEY</font><font color = "silver">,</font>
+    <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "maroon">category_name</font>&nbsp;<font color = "black"><i>VARCHAR</i></font><font color = "maroon">(</font><font color = "black">100</font><font color = "maroon">)</font>&nbsp;<font color = "blue">NOT</font>&nbsp;<font color = "blue">NULL</font>
+    <br/>&nbsp;&nbsp;<font color = "maroon">)</font><font color = "silver">;</font>
+    <br/>
+    <br/><font color = "blue">CREATE</font>&nbsp;<font color = "blue">TABLE</font>&nbsp;<font color = "maroon">product</font>
+    <br/>&nbsp;&nbsp;<font color = "maroon">(</font>
+    <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "maroon">product_id</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "black"><i>INT</i></font>&nbsp;<font color = "maroon">auto_increment</font>&nbsp;<font color = "blue">PRIMARY</font>&nbsp;<font color = "blue">KEY</font><font color = "silver">,</font>
+    <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "maroon">product_name</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "black"><i>VARCHAR</i></font><font color = "maroon">(</font><font color = "black">100</font><font color = "maroon">)</font>&nbsp;<font color = "blue">NOT</font>&nbsp;<font color = "blue">NULL</font><font color = "silver">,</font>
+    <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "maroon">product_purchase_price</font>&nbsp;&nbsp;&nbsp;&nbsp;<font color = "black"><i>DOUBLE</i></font><font color = "maroon">(</font><font color = "black">11</font><font color = "silver">,</font>&nbsp;<font color = "black">2</font><font color = "maroon">)</font>&nbsp;<font color = "blue">NULL</font><font color = "silver">,</font>
+    <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "maroon">product_sale_price</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "black"><i>DOUBLE</i></font><font color = "maroon">(</font><font color = "black">11</font><font color = "silver">,</font>&nbsp;<font color = "black">2</font><font color = "maroon">)</font>&nbsp;<font color = "blue">NULL</font><font color = "silver">,</font>
+    <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "maroon">product_country_of_origin</font>&nbsp;<font color = "black"><i>VARCHAR</i></font><font color = "maroon">(</font><font color = "black">40</font><font color = "maroon">)</font>&nbsp;<font color = "blue">NULL</font>
+    <br/>&nbsp;&nbsp;<font color = "maroon">)</font><font color = "silver">;</font>
+    <br/>
+    <br/><font color = "blue">CREATE</font>&nbsp;<font color = "blue">TABLE</font>&nbsp;<font color = "maroon">product_category</font>
+    <br/>&nbsp;&nbsp;<font color = "maroon">(</font>
+    <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "maroon">product_id</font>&nbsp;&nbsp;<font color = "black"><i>INT</i></font>&nbsp;<font color = "blue">NOT</font>&nbsp;<font color = "blue">NULL</font><font color = "silver">,</font>
+    <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "maroon">category_id</font>&nbsp;<font color = "black"><i>INT</i></font>&nbsp;<font color = "blue">NOT</font>&nbsp;<font color = "blue">NULL</font><font color = "silver">,</font>
+    <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "blue">PRIMARY</font>&nbsp;<font color = "blue">KEY</font>&nbsp;<font color = "maroon">(</font><font color = "maroon">product_id</font><font color = "silver">,</font>&nbsp;<font color = "maroon">category_id</font><font color = "maroon">)</font><font color = "silver">,</font>
+    <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "blue">CONSTRAINT</font>&nbsp;<font color = "maroon">category_product_id_fk</font>&nbsp;<font color = "blue">FOREIGN</font>&nbsp;<font color = "blue">KEY</font>&nbsp;<font color = "maroon">(</font><font color = "maroon">category_id</font><font color = "maroon">)</font>&nbsp;<font color = "blue">REFERENCES</font>
+    <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "maroon">category</font>&nbsp;<font color = "maroon">(</font><font color = "maroon">category_id</font><font color = "maroon">)</font><font color = "silver">,</font>
+    <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "blue">CONSTRAINT</font>&nbsp;<font color = "maroon">product_category_id_fk</font>&nbsp;<font color = "blue">FOREIGN</font>&nbsp;<font color = "blue">KEY</font>&nbsp;<font color = "maroon">(</font><font color = "maroon">product_id</font><font color = "maroon">)</font>&nbsp;<font color = "blue">REFERENCES</font>
+    <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "maroon">product</font>&nbsp;<font color = "maroon">(</font><font color = "maroon">product_id</font><font color = "maroon">)</font>
+    <br/>&nbsp;&nbsp;<font color = "maroon">)</font><font color = "silver">;</font>
+    <br/>
+    <br/><font color = "blue">CREATE</font>&nbsp;<font color = "blue">TABLE</font>&nbsp;<font color = "maroon">project</font>
+    <br/>&nbsp;&nbsp;<font color = "maroon">(</font>
+    <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "maroon">project_id</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "black"><i>INT</i></font>&nbsp;<font color = "maroon">auto_increment</font>&nbsp;<font color = "blue">PRIMARY</font>&nbsp;<font color = "blue">KEY</font><font color = "silver">,</font>
+    <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "maroon">project_desc</font>&nbsp;&nbsp;&nbsp;&nbsp;<font color = "black"><i>VARCHAR</i></font><font color = "maroon">(</font><font color = "black">100</font><font color = "maroon">)</font>&nbsp;<font color = "blue">NOT</font>&nbsp;<font color = "blue">NULL</font><font color = "silver">,</font>
+    <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "maroon">project_country</font>&nbsp;<font color = "black"><i>VARCHAR</i></font><font color = "maroon">(</font><font color = "black">50</font><font color = "maroon">)</font>&nbsp;<font color = "blue">NULL</font><font color = "silver">,</font>
+    <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "maroon">project_city</font>&nbsp;&nbsp;&nbsp;&nbsp;<font color = "black"><i>VARCHAR</i></font><font color = "maroon">(</font><font color = "black">50</font><font color = "maroon">)</font>&nbsp;<font color = "blue">NULL</font>
+    <br/>&nbsp;&nbsp;<font color = "maroon">)</font><font color = "silver">;</font>
+    <br/>
+    <br/><font color = "blue">CREATE</font>&nbsp;<font color = "blue">TABLE</font>&nbsp;<font color = "maroon">product_image</font>
+    <br/>&nbsp;&nbsp;<font color = "maroon">(</font>
+    <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "maroon">image_id</font>&nbsp;&nbsp;&nbsp;<font color = "black"><i>INT</i></font>&nbsp;<font color = "maroon">auto_increment</font>&nbsp;<font color = "blue">PRIMARY</font>&nbsp;<font color = "blue">KEY</font><font color = "silver">,</font>
+    <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "maroon">product_id</font>&nbsp;<font color = "black"><i>INT</i></font>&nbsp;<font color = "blue">NOT</font>&nbsp;<font color = "blue">NULL</font><font color = "silver">,</font>
+    <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "maroon">image_name</font>&nbsp;<font color = "black"><i>VARCHAR</i></font><font color = "maroon">(</font><font color = "black">40</font><font color = "maroon">)</font>&nbsp;<font color = "blue">NOT</font>&nbsp;<font color = "blue">NULL</font><font color = "silver">,</font>
+    <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "blue">CONSTRAINT</font>&nbsp;<font color = "maroon">product_image_product_id_fk</font>&nbsp;<font color = "blue">FOREIGN</font>&nbsp;<font color = "blue">KEY</font>&nbsp;<font color = "maroon">(</font><font color = "maroon">product_id</font><font color = "maroon">)</font>&nbsp;<font color = "blue">REFERENCES</font>
+    <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "maroon">product</font>&nbsp;<font color = "maroon">(</font><font color = "maroon">product_id</font><font color = "maroon">)</font>
+    <br/>&nbsp;&nbsp;<font color = "maroon">)</font><font color = "silver">;</font>
+    <br/>
+    <br/><font color = "blue">CREATE</font>&nbsp;<font color = "blue">TABLE</font>&nbsp;<font color = "maroon">admin</font>
+    <br/>&nbsp;&nbsp;<font color = "maroon">(</font>
+    <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "maroon">admin_id</font>&nbsp;<font color = "black"><i>INT</i></font>&nbsp;<font color = "maroon">auto_increment</font>&nbsp;<font color = "blue">PRIMARY</font>&nbsp;<font color = "blue">KEY</font><font color = "silver">,</font>
+    <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "maroon">uname</font>&nbsp;&nbsp;&nbsp;&nbsp;<font color = "black"><i>VARCHAR</i></font><font color = "maroon">(</font><font color = "black">255</font><font color = "maroon">)</font>&nbsp;<font color = "blue">NULL</font><font color = "silver">,</font>
+    <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = "maroon">pword</font>&nbsp;&nbsp;&nbsp;&nbsp;<font color = "black"><i>VARCHAR</i></font><font color = "maroon">(</font><font color = "black">255</font><font color = "maroon">)</font>&nbsp;<font color = "blue">NULL</font>
+    <br/>&nbsp;&nbsp;<font color = "maroon">)</font><font color = "silver">;</font>
+    <br/>
 
-
-    create table client
-    (
-    client_id int auto_increment
-    primary key,
-    client_gname varchar(50) not null,
-    client_fname varchar(50) not null,
-    client_street char(100) null,
-    client_suburb varchar(50) null,
-    client_state varchar(20) null,
-    client_pc varchar(4) null,
-    client_email varchar(50) null,
-    client_mobile varchar(12) null,
-    client_mailinglist tinyint(1) null
-    );
-
-
-    create table category
-    (
-    category_id int auto_increment
-    primary key,
-    category_name varchar(100) not null
-    );
-
-    create table product
-    (
-    product_id int auto_increment
-    primary key,
-    product_name varchar(100) not null,
-    product_purchase_price double(11,2) null,
-    product_sale_price double(11,2) null,
-    product_country_of_origin varchar(40) null
-    );
-
-
-    create table product_category
-    (
-    product_id int not null,
-    category_id int not null,
-    primary key (product_id, category_id),
-    constraint CATEGORY_PRODUCT_id_fk
-    foreign key (category_id) references category (category_id),
-    constraint PRODUCT_CATEGORY_id_fk
-    foreign key (product_id) references product (product_id)
-    );
-
-
-    create table project
-    (
-    project_id int auto_increment
-    primary key,
-    project_desc varchar(100) not null,
-    project_country varchar(50) null,
-    project_city varchar(50) null
-    );
-
-
-    create table product_image
-    (
-    image_id int auto_increment
-    primary key,
-    product_id int not null,
-    image_name varchar(40) not null,
-    constraint PRODUCT_IMAGE_PRODUCT_id_fk
-    foreign key (product_id) references product (product_id)
-    );
-
-
-    create table admin
-    (
-    admin_id int auto_increment
-    primary key,
-    uname varchar(255) null,
-    pword varchar(255) null
-    );
-    create table searchtable
-    (
-    category_id int default 0 not null,
-    category_name varchar(100) not null
-    );
-</p>
-
-</body>
-</html>
+</font>
