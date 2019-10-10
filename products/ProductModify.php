@@ -120,13 +120,12 @@ case "Update":
 
 
                 $stmtI = $dbh->prepare("SELECT * FROM product_category where product_id=".$_GET["productId"]);
-                if(!$stmt->execute()){
-                    $err = $stmt->errorInfo();
+                if(!$stmtI->execute()){
+                    $err = $stmtI->errorInfo();
                     echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
                 }
                 $aList=[];
-                while( $sql=$stmtI->fetchObject() ) {?>
-                    <td><?php //echo $sql->category_id; ?></td><?php
+                while( $sql=$stmtI->fetchObject() ) {?><?php
                     array_push($aList,$sql->category_id);
                 }
                 function pChecked($v1,$list){
