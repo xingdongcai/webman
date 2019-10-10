@@ -21,6 +21,7 @@ INSERT INTO category(category_name) values ('Home');
 INSERT INTO category(category_name) values ('Sports');
 INSERT INTO category(category_name) values ('Instrument');
 INSERT INTO category(category_name) values ('School');
+INSERT INTO category(category_name) values ('Fruit');
 
 
 INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Guitar','200','230','Australia');
@@ -30,7 +31,7 @@ INSERT INTO product(product_name, product_purchase_price, product_sale_price, pr
 INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Cake','28','89','Australia');
 INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Banana','2','12','Australia');
 INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Apple','1','9','Australia');
-INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('T-shirt','20','69','Japan');
+INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Tshirt','20','69','Japan');
 INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Basketball','38','48','China');
 INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Airpods','199','230','US');
 INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Bottle','20','34','China');

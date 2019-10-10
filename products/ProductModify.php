@@ -278,7 +278,10 @@ if($stmtImageFile->execute()){
     while ($image_row = $stmtImageFile->fetch()){
         unlink($image_row[2]);
     }
+}else{
+    echo "Error select record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
 }
+
 
 $queryImage="DELETE FROM product_image WHERE product_id =".$_GET["productId"];
 $stmtImage = $dbh->prepare($queryImage);
@@ -287,6 +290,7 @@ if(!$stmtImage->execute()){
     echo "Error delete record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
 }
 else{
+
     echo "<br><h5 align='center'>Successfully delete related images.</h5>";
 }
 
