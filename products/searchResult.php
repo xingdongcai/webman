@@ -10,25 +10,26 @@ $result=$_GET["key"];
 $query_rs= "SELECT * FROM category WHERE category_name LIKE '%$result%'";
 
 $rs=$dbh->prepare($query_rs) ;
-$rs->execute();
+if(!$rs->execute()) {
+    $err = $rs->errorInfo();
+    echo "Error select record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+}
 
-/*while($totalRows_rs = $rs->fetchObject()){
-    */?><!--
-    <tr>
-        <td><?php /*echo $totalRows_rs->category_name;  */?></td>
-    </tr>
-
-
-    --><?php
-/*
-}*/
 $stmt = $dbh->prepare("drop table searchtable;");
-$stmt->execute();
+if(!$stmt->execute()) {
+    $err = $stmt->errorInfo();
+    echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+}
 $stmt = $dbh->prepare("CREATE TABLE searchTable AS SELECT * FROM category WHERE category_name LIKE '%$result%'");
-$stmt->execute();
+if(!$stmt->execute()) {
+    $err = $stmt->errorInfo();
+    echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+}
 $stmt = $dbh->prepare("SELECT pc.product_id,product_name,product_purchase_price,product_sale_price,product_country_of_origin FROM product inner join product_category pc on product.product_id = pc.product_id inner join searchtable s on pc.category_id = s.category_id");
-$stmt->execute();
-
+if(!$stmt->execute()) {
+    $err = $stmt->errorInfo();
+    echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+}
 ?>
 <div id="content-wrapper">
 
