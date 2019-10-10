@@ -78,6 +78,7 @@ create table ADMIN
     pword  varchar(255)
 
 );
+SELECT * FROM category WHERE category_name LIKE '%$result%' a  inner join product_category b on a.category_id=b.category_id inner join product c on b.product_id=c.product_id
 
 
 

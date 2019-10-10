@@ -13,7 +13,11 @@ include("../templateTop.html")
         $dbh = new PDO($dsn,$UName,$PWord);
 
         $stmt = $dbh->prepare("SELECT * FROM client ORDER BY client_id");
-        $stmt->execute();
+        if(!$stmt->execute()) {
+            $err = $stmt->errorInfo();
+            echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+            $stmt->execute();
+        }
         $allRows=$stmt->fetchAll(PDO::FETCH_ASSOC);
 
         //Column titles

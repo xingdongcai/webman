@@ -7,7 +7,10 @@ $dsn = "mysql:host=$Host;dbname=$DB;";
 $dbh = new PDO($dsn, $UName, $PWord);
 $result=$_GET["key"];
 
+$query_rs= "SELECT * FROM category WHERE category_name LIKE '%$result%'";
 
+$rs=$dbh->prepare($query_rs) ;
+$rs->execute();
 
 /*while($totalRows_rs = $rs->fetchObject()){
     */?><!--
@@ -19,36 +22,12 @@ $result=$_GET["key"];
     --><?php
 /*
 }*/
-if(empty($_GET["key"])){
-    $stmt = $dbh->prepare("SELECT * FROM product");
-    if(!$stmt->execute()) {
-        $err = $stmt->errorInfo();
-        echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
-        $stmt->execute();
-    }
-}
-else{
-    $stmt = $dbh->prepare("drop table searchtable;");
-    if(!$stmt->execute()) {
-        $err = $stmt->errorInfo();
-        echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
-        $stmt->execute();
-    }
-    $stmt = $dbh->prepare("CREATE TABLE searchTable AS SELECT * FROM category WHERE category_name LIKE '%$result%'");
-    if(!$stmt->execute()) {
-        $err = $stmt->errorInfo();
-        echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
-        $stmt->execute();
-    }
-    $stmt = $dbh->prepare("SELECT pc.product_id,product_name,product_purchase_price,product_sale_price,product_country_of_origin FROM product inner join product_category pc on product.product_id = pc.product_id inner join searchtable s on pc.category_id = s.category_id");
-    if(!$stmt->execute()) {
-        $err = $stmt->errorInfo();
-        echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
-        $stmt->execute();
-    }
-
-}
-
+$stmt = $dbh->prepare("drop table searchtable;");
+$stmt->execute();
+$stmt = $dbh->prepare("CREATE TABLE searchTable AS SELECT * FROM category WHERE category_name LIKE '%$result%'");
+$stmt->execute();
+$stmt = $dbh->prepare("SELECT pc.product_id,product_name,product_purchase_price,product_sale_price,product_country_of_origin FROM product inner join product_category pc on product.product_id = pc.product_id inner join searchtable s on pc.category_id = s.category_id");
+$stmt->execute();
 
 ?>
 <div id="content-wrapper">
@@ -70,7 +49,7 @@ else{
                     <i class="fas fa-search" aria-hidden="true"></i>
                     <input class="form-control form-control-sm ml-3 w-75" name="key" type="text"  value="<?php echo $_GET["key"];?>" placeholder="Search"
                            aria-label="Search">
-
+                    <!--<a href="../products/searchResult.php?key=<?php /*echo $_GET["key"]; */?>">Search</a>-->
                     <input  class="btn  btn-primary" type="submit" value="Search">
 
 
@@ -83,7 +62,7 @@ else{
         <!-- DataTables -->
 
         <div class="card mb-3">
-            <form method="post" action="index.php?key=">
+            <form method="post" action="index.php">
                 <div class="card-header">
                     <i class="fas fa-table"></i>
                     Product Table
@@ -118,6 +97,10 @@ else{
                             <?php while($row = $stmt->fetch()){
                                 ?>
                                 <tr>
+                                    <!--<td><?php /*echo $row->product_name;  */?></td>
+                                    <td><?php /*echo "$".$row->product_purchase_price;  */?></td>
+                                    <td><?php /*echo "$".$row->product_sale_price;  */?></td>
+                                    <td><?php /*echo $row->product_country_of_origin;  */?></td>-->
                                     <td><?php echo $row[1];  ?></td>
                                     <td><?php echo "$".$row[2];  ?></td>
                                     <td><?php echo "$".$row[3];  ?></td>

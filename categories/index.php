@@ -4,7 +4,11 @@ include("../connection.php");
 $dsn = "mysql:host=$Host;dbname=$DB;";
 $dbh = new PDO($dsn, $UName, $PWord);
 $stmt = $dbh->prepare("select * from category");
-$stmt->execute();
+if(!$stmt->execute()) {
+    $err = $stmt->errorInfo();
+    echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+    $stmt->execute();
+}
 
 include("../templateTop.html");
 ?>

@@ -7,7 +7,11 @@ if(empty($_POST["check"]))
 {
     $query="SELECT * FROM product ";
     $stmt = $dbh->prepare($query);
-    $stmt->execute();
+    if(!$stmt->execute()) {
+        $err = $stmt->errorInfo();
+        echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+        $stmt->execute();
+    }
     /* $row=$stmt->fetchObject();*/
 
     /*$strAction = $_GET["Action"];*/
@@ -60,7 +64,11 @@ if(empty($_POST["check"]))
 
 
                 $stmt = $dbh->prepare("UPDATE product set product_sale_price = $_POST[$change] where product_id='$change'");
-                $stmt->execute();
+                if(!$stmt->execute()) {
+                    $err = $stmt->errorInfo();
+                    echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+                    $stmt->execute();
+                }
             }
             header("Location: index.php?key=");
         }

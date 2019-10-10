@@ -37,7 +37,7 @@ if (empty($_POST["ppp"]))
         <br><br/>
         <table align="center">
             <tr>
-                <td><input class="btn btn-primary" type="submit"  value="Submit"></td>
+                <td><input class="btn btn-primary" type="submit"  value="Submit"  ></td>
                 <td><input class="btn btn-secondary" type="button"  value="Return to List"  OnClick="window.location='index.php?key='"></td>
             </tr>
         </table>

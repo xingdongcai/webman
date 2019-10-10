@@ -4,7 +4,11 @@ include("../connection.php");
 $dsn = "mysql:host=$Host;dbname=$DB;";
 $dbh = new PDO($dsn, $UName, $PWord);
 $stmt = $dbh->prepare("select * from client where client_mailinglist!= 0");
-$stmt->execute();
+if(!$stmt->execute()) {
+    $err = $stmt->errorInfo();
+    echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+    $stmt->execute();
+}
 
 include("../templateTop.html");
 ?>
@@ -74,7 +78,12 @@ include("../templateTop.html");
                 {
                     $query="Select client_email FROM client WHERE client_id ='$id'";
                     $stmt = $dbh->prepare($query);
-                    if($stmt->execute())
+                    if(!$stmt->execute()) {
+                        $err = $stmt->errorInfo();
+                        echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+                        $stmt->execute();
+                    }
+                    else if($stmt->execute())
                     {
                         $row = $stmt->fetch();
                         $from = "From: Harry Helper<xcai0009@student.monash.edu>";

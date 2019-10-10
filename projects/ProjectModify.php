@@ -15,7 +15,11 @@ $dsn= "mysql:host=$Host;dbname=$DB";
 $dbh = new PDO($dsn,$UName,$PWord);
 $query="SELECT * FROM project WHERE project_id =".$_GET["projectId"];
 $stmt = $dbh->prepare($query);
-$stmt->execute();
+if(!$stmt->execute()) {
+    $err = $stmt->errorInfo();
+    echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+    $stmt->execute();
+}
 $row=$stmt->fetchObject();
 
 $strAction = $_GET["Action"];
@@ -64,7 +68,11 @@ case "ConfirmUpdate":
                 WHERE project.project_id =".$_GET["projectId"];
 
     $stmt = $dbh->prepare($query);
-    $stmt->execute();
+    if(!$stmt->execute()) {
+        $err = $stmt->errorInfo();
+        echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+        $stmt->execute();
+    }
 
     header("Location: index.php");
 

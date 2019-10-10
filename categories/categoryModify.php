@@ -17,7 +17,11 @@ $dsn= "mysql:host=$Host;dbname=$DB";
 $dbh = new PDO($dsn,$UName,$PWord);
 $query="SELECT * FROM category WHERE category_id =".$_GET["categoryId"];
 $stmt = $dbh->prepare($query);
-$stmt->execute();
+if(!$stmt->execute()) {
+    $err = $stmt->errorInfo();
+    echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+    $stmt->execute();
+}
 $row=$stmt->fetchObject();
 
 $strAction = $_GET["Action"];
@@ -57,7 +61,11 @@ case "ConfirmUpdate":
                 WHERE category.category_id =".$_GET["categoryId"];
 
     $stmt = $dbh->prepare($query);
-    $stmt->execute();
+    if(!$stmt->execute()) {
+        $err = $stmt->errorInfo();
+        echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+        $stmt->execute();
+    }
 
     header("Location: index.php");
 
@@ -92,7 +100,12 @@ case "Delete":
 case "ConfirmDelete":
 $query="DELETE FROM category WHERE category_id =".$_GET["categoryId"];
 $stmt = $dbh->prepare($query);
-if($stmt->execute())
+if(!$stmt->execute()) {
+    $err = $stmt->errorInfo();
+    echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+    $stmt->execute();
+}
+else if($stmt->execute())
 {
 ?>
 <div class="container">
