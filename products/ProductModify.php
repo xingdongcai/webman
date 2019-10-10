@@ -172,7 +172,10 @@ case "ConfirmUpdate":
     }
     else{
         $stmt = $dbh->prepare( "DELETE FROM product_category where product_id=$cId");
-        $stmt->execute();
+        if(!$stmt->execute()){
+            $err = $stmt->errorInfo();
+            echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+        }
         if(!empty($_POST['check'])){
             foreach($_POST["check"] as $change)
             {
@@ -191,7 +194,10 @@ case "ConfirmUpdate":
         //delete related images
         $sql="SELECT * FROM product_image WHERE product_id=".$cId;
         $stmt = $dbh->prepare($sql);
-        $stmt->execute();
+        if(!$stmt->execute()){
+            $err = $stmt->errorInfo();
+            echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+        }
 
         $targetDir = "../product_images/";
         while($rowDeleteImg = $stmt->fetch()){
@@ -281,9 +287,11 @@ chdir($images_path);
 
 $queryImage="DELETE FROM product_image WHERE product_id =".$_GET["productId"];
 $stmtImage = $dbh->prepare($queryImage);
-if($stmtImage->execute()){
-
-
+if(!$stmt->execute()){
+    $err = $stmt->errorInfo();
+    echo "Error delete record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+}
+else{
     echo "<br><h5 align='center'>Successfully delete related images.</h5>";
 }
 
