@@ -21,6 +21,7 @@ INSERT INTO category(category_name) values ('Home');
 INSERT INTO category(category_name) values ('Sports');
 INSERT INTO category(category_name) values ('Instrument');
 INSERT INTO category(category_name) values ('School');
+INSERT INTO category(category_name) values ('Fruit');
 
 
 INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Guitar','200','230','Australia');

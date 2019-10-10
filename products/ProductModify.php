@@ -272,14 +272,6 @@ $images_path = realpath($BaseDir);
 $old = getcwd(); // Save the current directory
 chdir($images_path);
 
-$queryImageFile="SELECT * FROM product_image WHERE product_id=".$_GET["productId"];
-$stmtImageFile = $dbh->prepare($queryImageFile);
-if($stmtImageFile->execute()){
-    while ($image_row = $stmtImageFile->fetch()){
-        unlink($image_row[2]);
-    }
-}
-
 $queryImage="DELETE FROM product_image WHERE product_id =".$_GET["productId"];
 $stmtImage = $dbh->prepare($queryImage);
 if(!$stmtImage->execute()){
