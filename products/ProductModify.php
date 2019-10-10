@@ -169,7 +169,7 @@ case "ConfirmUpdate":
         }
     }
 
-    if(1==1){
+    if(!empty($_POST['images'])){
         //delete related images
         $sql="SELECT * FROM product_image WHERE product_id=".$cId;
         $stmt = $dbh->prepare($sql);
@@ -261,6 +261,14 @@ $images_path = realpath($BaseDir);
 $old = getcwd(); // Save the current directory
 chdir($images_path);
 
+$queryImage="DELETE FROM product_image WHERE product_id =".$_GET["productId"];
+$stmtImage = $dbh->prepare($queryImage);
+if($stmtImage->execute()){
+
+
+    echo "<br><h5 align='center'>Successfully delete related images.</h5>";
+}
+
 $queryImageFile="SELECT * FROM product_image WHERE product_id=".$_GET["productId"];
 $stmtImageFile = $dbh->prepare($queryImageFile);
 if($stmtImageFile->execute()){
@@ -270,13 +278,7 @@ if($stmtImageFile->execute()){
 }
 chdir($old); // Restore the old working directory
 
-$queryImage="DELETE FROM product_image WHERE product_id =".$_GET["productId"];
-$stmtImage = $dbh->prepare($queryImage);
-if($stmtImage->execute()){
 
-
-    echo "<br><h5 align='center'>Successfully delete related images.</h5>";
-}
 $query="DELETE FROM product WHERE product_id =".$_GET["productId"];
 $stmt = $dbh->prepare($query);
 if(!$stmt->execute()) {

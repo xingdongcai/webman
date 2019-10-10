@@ -88,6 +88,7 @@ if (empty($_POST["ppp"]))
                 }
             }
         }
+        header("Location: index.php?key=");
 //        $imageName = $_FILES["image"]["name"];
 //        $imageDir = "../product_images/".$_FILES["image"]["name"];
 //        $allowTypes = array('jpg','png','jpeg','gif');
