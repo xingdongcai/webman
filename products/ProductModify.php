@@ -332,25 +332,25 @@ else if($stmt->execute())
 
 
     function validateForm() {
-        var productName = document.forms["editProductForm"]["pname"].value;
-        if(!/^[a-zA-Z]+$/.test(productName)){
+        let productName = document.forms["editProductForm"]["pname"].value;
+        if(!/^[a-zA-Z0-9]+$/.test(productName)){
             alert("Please Check Your Product Name. Do not include special characters");
             return false;
         }
 
-        var country = document.forms["editProductForm"]["pco"].value;
+        let country = document.forms["editProductForm"]["pco"].value;
         if(!/^[a-zA-Z]+$/.test(country)){
             alert("Please Check Product Country Name. Do not include special characters")
         }
 
         //It returns -1 if the argument passed a negative number.
-        var purchasePrice = document.forms["editProductForm"]["ppp"].value;
+        let purchasePrice = document.forms["editProductForm"]["ppp"].value;
         if ( Number(purchasePrice)<0 || purchasePrice.length>10 || isNaN(purchasePrice)) {
             alert("Please Check Your Product Purchase Price.");
             return false;
         }
 
-        var salePrice = document.forms["editProductForm"]["psp"].value;
+        let salePrice = document.forms["editProductForm"]["psp"].value;
         if (Number(salePrice) < 0 || salePrice.length>10 || isNaN(salePrice)) {
             alert("Please Check Your Product Sale Price.");
             return false;
