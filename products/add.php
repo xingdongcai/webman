@@ -5,45 +5,85 @@ include("../templateTop.html");
 if (empty($_POST["ppp"]))
 {
 ?>
-<div class="container">
-    <form method="POST"
-          action="add.php" enctype="multipart/form-data" name="addProductForm" onsubmit="return validateForm()">
-        <center><h3>Product details amendment</h3></center>
-        <table class="table table-bordered" align="center" cellpadding="3">
-            <tr>
-                <td><b>Product name</b></td>
-                <td><input class="border" type="text" name="pname" size="25" required>
-                </td>
-            </tr>
-            <tr>
-                <td><b>Purchase price</b></td>
-                <td>$<input class="border" type="number" name="ppp" size="10" required>
-                </td>
-            </tr>
-            <tr>
-                <td><b>Sale price</b></td>
-                <td>$<input class="border" type="number" name="psp" size="10" required></td>
-            </tr>
-            <tr>
-                <td><b>Country of origin</b></td>
-                <td><input class="border" type="text" name="pco" size="15" required></td>
-            </tr>
-            <tr>
-                <td><b>Product image</b></td>
-                <td><input class="border" type="file" size="50" name="images[]" multiple></td>
-            </tr>
+    <div id="content-wrapper">
+        <div class="container">
+            <form method="POST"
+                  action="add.php" enctype="multipart/form-data" name="addProductForm" onsubmit="return validateForm()">
+                <center><h3>Product details amendment</h3></center>
+                <table class="table table-bordered" align="center" cellpadding="3">
+                    <tr>
+                        <td><b>Product name</b></td>
+                        <td><input class="border" type="text" name="pname" size="25" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Purchase price</b></td>
+                        <td>$<input class="border" type="number" name="ppp" size="10" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Sale price</b></td>
+                        <td>$<input class="border" type="number" name="psp" size="10" required></td>
+                    </tr>
+                    <tr>
+                        <td><b>Country of origin</b></td>
+                        <td><input class="border" type="text" name="pco" size="15" required></td>
+                    </tr>
+                    <tr>
+                        <td><b>Product image</b></td>
+                        <td><input class="border" type="file" size="50" name="images[]" multiple></td>
+                    </tr>
 
-        </table>
-        <br><br/>
-        <table align="center">
-            <tr>
-                <td><input class="btn btn-primary" type="submit"  value="Submit"  ></td>
-                <td><input class="btn btn-secondary" type="button"  value="Return to List"  OnClick="window.location='index.php?key='"></td>
-            </tr>
-        </table>
-    </form>
-    <?php include("../displayPHP.php")   ?>
-</div>
+                </table>
+                <br><br/>
+                <table align="center">
+                    <tr>
+                        <td><input class="btn btn-primary" type="submit"  value="Submit"  ></td>
+                        <td><input class="btn btn-secondary" type="button"  value="Return to List"  OnClick="window.location='index.php?key='"></td>
+                    </tr>
+                </table>
+                <?php
+                include("../connection.php");
+                $dsn= "mysql:host=$Host;dbname=$DB";
+                $dbh = new PDO($dsn,$UName,$PWord);
+
+                $query="SELECT * FROM category ";
+                $stmt = $dbh->prepare($query);
+                if(!$stmt->execute()){
+                    $err = $stmt->errorInfo();
+                    echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+                }
+
+
+                ?>
+                <hr>
+                <form method="post" name="editForm" action="ProductModify.php">
+                    <table  align="center" border="1" cellpadding="5">
+                        <tr>
+                            <th>CATEGORY</th>
+                            <th></th>
+                        </tr>
+                        <?php
+                        while ($Titles = $stmt->fetchObject()) {
+                            ?>
+                            <tr>
+                                <td><?php echo $Titles->category_name; ?></td>
+                                <td align="center"><input type="checkbox" name="check[]"
+                                                          value="<?php echo $Titles->category_id; ?>"
+                                        >
+                                </td>
+                            </tr>
+                            <?php
+
+                        }
+                        ?>
+                    </table><p />
+                </form>
+            </form>
+            <?php include("../displayPHP.php")   ?>
+        </div>
+
+    </div>
 
 
 <?php include("../templateBottom.html") ?>
@@ -61,6 +101,16 @@ if (empty($_POST["ppp"]))
         $err = $stmt->errorInfo();
         echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
     }else{
+        if(!empty($_POST['check'])){
+            foreach($_POST["check"] as $change)
+            {
+                $stmt = $dbh->prepare( "INSERT INTO product_category( category_id,product_id) values ('$change',last_insert_id())");
+                if(!$stmt->execute()){
+                    $err = $stmt->errorInfo();
+                    echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+                }
+            }
+        }
         $stmt = $dbh->prepare("SELECT LAST_INSERT_ID() INTO @lastID");
         $stmt->execute();
         $allowTypes = array('jpg','png','jpeg','gif');
@@ -89,31 +139,7 @@ if (empty($_POST["ppp"]))
             }
         }
         header("Location: index.php?key=");
-//        $imageName = $_FILES["image"]["name"];
-//        $imageDir = "../product_images/".$_FILES["image"]["name"];
-//        $allowTypes = array('jpg','png','jpeg','gif');
-//        $fileType = pathinfo($imageDir,PATHINFO_EXTENSION);
-//        if(!in_array($fileType,$allowTypes))
-//        {
-//            echo "ERROR: You may only upload .jpg or .gif or .png files";
-//        }else{
-//            if(!move_uploaded_file($_FILES["image"]["tmp_name"],$imageDir))
-//            {
-//
-//                echo "ERROR: Could Not Move File into Directory";
-//            }else{
-//                $queryImage = "INSERT INTO product_image (product_id, image_name)
-//                VALUES (last_insert_id(),'$imageName')";
-//                $stmt = $dbh->prepare($queryImage);
-//                if(!$stmt->execute()){
-//                    $err = $stmt->errorInfo();
-//                    echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
-//                }else{
-//                    header("Location: index.php");
-//                }
-//
-//            }
-//        }
+
 
     }
 }
