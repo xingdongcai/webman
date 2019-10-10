@@ -272,16 +272,6 @@ $images_path = realpath($BaseDir);
 $old = getcwd(); // Save the current directory
 chdir($images_path);
 
-$queryImage="DELETE FROM product_image WHERE product_id =".$_GET["productId"];
-$stmtImage = $dbh->prepare($queryImage);
-if(!$stmt->execute()){
-    $err = $stmt->errorInfo();
-    echo "Error delete record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
-}
-else{
-    echo "<br><h5 align='center'>Successfully delete related images.</h5>";
-}
-
 $queryImageFile="SELECT * FROM product_image WHERE product_id=".$_GET["productId"];
 $stmtImageFile = $dbh->prepare($queryImageFile);
 if($stmtImageFile->execute()){
@@ -289,6 +279,18 @@ if($stmtImageFile->execute()){
         unlink($image_row[2]);
     }
 }
+
+$queryImage="DELETE FROM product_image WHERE product_id =".$_GET["productId"];
+$stmtImage = $dbh->prepare($queryImage);
+if(!$stmtImage->execute()){
+    $err = $stmtImage->errorInfo();
+    echo "Error delete record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+}
+else{
+    echo "<br><h5 align='center'>Successfully delete related images.</h5>";
+}
+
+
 chdir($old); // Restore the old working directory
 
 $query="DELETE FROM product_category WHERE product_id =".$_GET["productId"];

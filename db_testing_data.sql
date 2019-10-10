@@ -23,24 +23,25 @@ INSERT INTO category(category_name) values ('Instrument');
 INSERT INTO category(category_name) values ('School');
 
 
-INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Guitar','200','180','Australia');
-INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Pencil','2','1.4','China');
-INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('iPhone4','130','98.8','US');
-INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Fiction','30','30','US');
-INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Cake','28','18.9','Australia');
-INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Banana','2','1.2','Australia');
-INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Apple','1.8','0.9','Australia');
-INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('T-shirt','20','16.9','Japan');
-INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Basketball','38','38','China');
-INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Airpods','299','230','US');
-INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Bottle','20','14','China');
-INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Microwave','180','118','Australia');
-INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Violin','300','298','Australia');
+INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Guitar','200','230','Australia');
+INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Pencil','2','4','China');
+INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('iPhone4','130','198','US');
+INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Fiction','30','35','US');
+INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Cake','28','89','Australia');
+INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Banana','2','12','Australia');
+INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Apple','1','9','Australia');
+INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('T-shirt','20','69','Japan');
+INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Basketball','38','48','China');
+INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Airpods','199','230','US');
+INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Bottle','20','34','China');
+INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Microwave','180','198','Australia');
+INSERT INTO product(product_name, product_purchase_price, product_sale_price, product_country_of_origin) VALUES ('Violin','300','498','Australia');
 
 
 INSERT INTO project(project_desc, project_country, project_city) VALUES ('Sponsor a child','Australia','Melbourne');
 INSERT INTO project(project_desc, project_country, project_city) VALUES ('Volunteer in Education','Australia','Sydney');
-
-DELETE FROM product_image WHERE image_name = 'banana.png';
-
-SELECT image_name FROM product_image WHERE product_id=59;
+INSERT INTO project(project_desc, project_country, project_city) VALUES ('Volunteer in Planting','Australia','Clayton');
+INSERT INTO project(project_desc, project_country, project_city) VALUES ('Activity in Monash','Australia','Caulfield');
+INSERT INTO project(project_desc, project_country, project_city) VALUES ('Activity in MelUni','Australia','Carlton');
+INSERT INTO project(project_desc, project_country, project_city) VALUES ('Activity in RMIT','Australia','Melbourne');
+INSERT INTO project(project_desc, project_country, project_city) VALUES ('Activity in Deakin','Australia','Burwood');
