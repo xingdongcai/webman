@@ -13,7 +13,7 @@ $stmt = $dbh->prepare($query);
 
 if(!$stmt->execute()){
     $err = $stmt->errorInfo();
-    echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+    echo "Error select record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
 }
 
 $row=$stmt->fetchObject();
@@ -58,7 +58,7 @@ case "Update":
                             $stmt = $dbh->prepare($query);
                         if(!$stmt->execute()){
                             $err = $stmt->errorInfo();
-                            echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+                            echo "Error select record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
                         }
                             while($rowImage = $stmt->fetch()){
                                 ?>
@@ -89,14 +89,14 @@ case "Update":
                 $stmt = $dbh->prepare($query);
                 if(!$stmt->execute()){
                     $err = $stmt->errorInfo();
-                    echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+                    echo "Error select record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
                 }
 
 
                 $stmtI = $dbh->prepare("SELECT * FROM product_category where product_id=".$_GET["productId"]);
                 if(!$stmtI->execute()){
                     $err = $stmtI->errorInfo();
-                    echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+                    echo "Error select record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
                 }
                 $aList=[];
                 while( $sql=$stmtI->fetchObject() ) {?><?php
@@ -161,7 +161,7 @@ case "ConfirmUpdate":
         $stmt = $dbh->prepare( "DELETE FROM product_category where product_id=$cId");
         if(!$stmt->execute()){
             $err = $stmt->errorInfo();
-            echo "Error adding record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
+            echo "Error delete record to database – contact System Administrator Error is: <b>" . $err[2] . "</b>";
         }
         if(!empty($_POST['check'])){
             foreach($_POST["check"] as $change)
@@ -177,7 +177,7 @@ case "ConfirmUpdate":
 
     }
 
-    if(!empty($_POST['images'])){
+    if(!isset($_POST['images']['name'])){
         //delete related images
         $sql="SELECT * FROM product_image WHERE product_id=".$cId;
         $stmt = $dbh->prepare($sql);
