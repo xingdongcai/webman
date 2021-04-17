@@ -24,40 +24,6 @@ if(empty($_POST["delete"]))
                         <input  class='btn btn-primary' type='submit' value='Delete Selected Files'>
                     </li>
                 </ol>
-
-
-
-                <!--        <div class="row">-->
-                <!--            --><?php
-                //            while ($row = $stmt->fetch())
-                //            {
-                //                ?>
-                <!--                    <div class="col-md-3">-->
-                <!--                        <div class="thumbnail">-->
-                <!--                            <img src="--><?//= $row[2] ;?><!--"style="width: 100%"/><br/>-->
-                <!--                            --><?php
-                //                            $stmtProduct = $dbh->prepare("select * from product where product_id=".$row[1]);
-                //                            $stmtProduct->execute();
-                //                            $productRow=$stmtProduct->fetch();
-                //
-                //                            echo "<br>Product Name: ".$productRow[1];
-                //                            echo "<br>Purchase Price: "."$".$productRow[2];
-                //                            echo "<br>Sale Price: "."$".$productRow[3];
-                //                            echo "<br>Country: ".$productRow[4];
-                //
-                //                            ?>
-                <!--                            <hr>-->
-                <!--                            <div class="form-check">-->
-                <!--                                <label class="form-check-label">-->
-                <!--                                    <input type="checkbox" class="form-check-input" name="delete[]" value="--><?//= $row[2]?><!--">--><?//= $row[2]?>
-                <!--                                </label>-->
-                <!--                            </div>-->
-                <!--                        </div>-->
-                <!--                    </div>-->
-                <!--                    --><?php
-                //            }
-                //            ?>
-                <!--        </div>-->
                 <div class="row">
                     <?php
                     while($file = readdir($dir))

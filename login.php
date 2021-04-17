@@ -60,7 +60,7 @@ if(empty($_POST["uname"]))
     $dsn= "mysql:host=$Host;dbname=$DB";
     $dbh = new PDO($dsn,$UName,$PWord);
     $stmt = $dbh->prepare("SELECT uname FROM admin WHERE uname = ? AND pword = ?");
-    $pword = hash('sha256', $_POST["pword"]);
+    $pword = hash('sha1', $_POST["pword"]);
 
     $stmt->execute([$_POST["uname"], $pword]);
 

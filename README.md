@@ -1,8 +1,6 @@
 Authors:<br>
-Name: Xingdong Cai, Jingyu Xiong<br>
-Student ID: 29211530, 29154685 <br>
-Date of Submission: N/A
+Xingdong Cai<br>
+Jingyu Xiong<br><br>
 
-Admin username: admin<br>
-Admin password: admin
+Please modify connection.php file to access your database
 

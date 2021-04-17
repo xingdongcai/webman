@@ -1,10 +1,10 @@
-drop table PRODUCT_CATEGORY;
-drop table PRODUCT_IMAGE;
-drop table CLIENT;
-drop table CATEGORY;
-drop table PRODUCT;
-drop table PROJECT;
-drop table ADMIN;
+# drop table PRODUCT_CATEGORY;
+# drop table PRODUCT_IMAGE;
+# drop table CLIENT;
+# drop table CATEGORY;
+# drop table PRODUCT;
+# drop table PROJECT;
+# drop table ADMIN;
 
 
 create table client
